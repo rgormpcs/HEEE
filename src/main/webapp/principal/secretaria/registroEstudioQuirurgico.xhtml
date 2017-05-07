@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./../../WEB-INF/plantillas/plantillaInicial.xhtml">
+
+            <ui:define name="content">
+
+                <h:form id="contenido">
+
+                    <h1 style="color: #045491;text-align: center">Registro de Estudio Quirúrgico</h1>
+
+                    <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
+
+                    <p:fieldset legend="Datos del Hospital" style="width:80%" >
+                        <h:panelGrid columns="7" id="pgDatosHospital">
+
+                            <p:outputLabel for="txtInstSistema" value="Institución del Sistema: " />
+                            <p:inputText id="txtInstSistema" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:watermark for="txtInstSistema" value="MSP" />
+                            <p:messages for="txtInstSistema"/>
+
+                            <h:outputLabel value="Provincia: " />
+                            <p:selectOneMenu id="cboProvincia" value="#{provinciaController.provincia.idprovincia}" >
+                                <f:selectItem itemLabel="- Seleccione -" itemValue="" />
+                                <f:selectItems value="#{provinciaController.provincias}" var="provincias" itemLabel="#{provincias.nombreprovincia}" itemValue="#{provincias.idprovincia}"/>
+                                <p:ajax update="cboCanton" />
+                            </p:selectOneMenu>
+                            <p:messages for="cboProvincia"/>
+
+                            <p:outputLabel for="txtUniOperat" value="Unidad Operativa: " />
+                            <p:inputText id="txtUniOperat" value="#{registroEQController.hospital.unidadoperativa}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:watermark for="txtUniOperat" value="HEEE" />
+                            <p:messages for="txtUniOperat"/>
+
+                            <h:outputLabel value="Cantón: " />
+                            <p:selectOneMenu id="cboCanton" value="#{cantonController.canton.idcanton}" required="true" requiredMessage="Seleccione el Cantón">
+                                <f:selectItem itemLabel="- Seleccione -" itemValue="" />
+                                <f:selectItems value="#{cantonController.cantones}" var="cantones" itemLabel="#{cantones.nombrecanton}" itemValue="#{cantones.idcanton}"/>
+                            </p:selectOneMenu>
+                            <p:messages for="cboCanton"/>
+
+                            <p:outputLabel for="txtCodUO" value="Cod. UO: " />
+                            <p:inputText id="txtCodUO" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:watermark for="txtCodUO" value="0001" />
+                            <p:messages for="txtCodUO"/>
+
+                            <h:outputLabel value="Parroquia: " />
+                            <p:selectOneMenu id="cboParroquia" value="#{parroquiaController.parroquia.idparroquia}" >
+                                <f:selectItem itemLabel="- Seleccione -" itemValue="" />
+                                <f:selectItems value="#{parroquiaController.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
+                            </p:selectOneMenu>
+                            <p:messages for="cboParroquia"/>
+
+                        </h:panelGrid>
+
+                        <p:separator />
+
+                        <h:panelGrid columns="6" id="pgDatosMuestra">
+
+                            <h:outputLabel for="txtFechaTomaMuestra" value="Fecha de toma de la muestra: " />
+                            <p:calendar id="txtFechaTomaMuestra" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
+                            <p:watermark for="txtFechaTomaMuestra" value="dd-mm-aaaa" />
+                            <p:messages for="txtFechaTomaMuestra"/>
+
+                            <h:outputLabel for="txtHoraTomaMuestra" value="Hora de toma de la muestra: " />
+                            <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true"  />
+                            <p:watermark for="txtHoraTomaMuestra" value="hh:mm" />
+                            <p:messages for="txtHoraTomaMuestra"/>
+
+                        </h:panelGrid>
+                    </p:fieldset>
+
+                    <br/>
+
+                    <p:fieldset legend="Datos del Médico Solicitante" style="width:80%">
+                        <h:panelGrid columns="6" id="pgDatosMedico">
+
+                            <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
+                            <p:inputText id="txtApellidosMS" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:messages for="txtApellidosMS"/>
+
+                            <p:outputLabel for="txtEmail" value="Email: " />
+                            <p:inputText id="txtEmail" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:messages for="txtEmail"/>
+
+                            <p:outputLabel for="txtNombresMS" value="Nombres: " />
+                            <p:inputText id="txtNombresMS" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:messages for="txtNombresMS"/>
+
+                            <p:outputLabel for="txtTel" value="Teléfono: " />
+                            <p:inputText id="txtTel" value="" />
+                            <p:messages for="txtTel"/>
+
+                        </h:panelGrid>
+                    </p:fieldset>
+
+
+                    <br/>
+
+
+                    <p:fieldset legend="Datos del Paciente" style="width:80%">
+
+                        <h:panelGrid columns="3" id="pgDatosConsulta">
+                            <p:selectOneRadio id="rdbConsulta" value="" >
+                                <f:selectItem itemValue="E" itemLabel="Consulta Externa" />
+                                <f:selectItem itemValue="H" itemLabel="Hospitalización" />
+                                <f:selectItem itemValue="O" itemLabel="Otros" />
+                            </p:selectOneRadio>
+                            <p:inputText id="txtOtros" value=""/>
+                            <p:messages for="rdbConsulta"/>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="6" id="pgDatosPaciente">
+
+                            <h:outputLabel for="txtApellidos" value="Apellidos: " />
+                            <p:inputText id="txtApellidos" value=""/>
+                            <p:messages for="txtApellidos"/>
+
+                            <h:outputLabel for="txtNumHCl" value="No. Historia Cl.: " />
+                            <p:inputText id="txtNumHCl" value=""/>
+                            <p:messages for="txtNumHCl"/>
+
+                            <h:outputLabel for="txtNombres" value="Nombres: " />
+                            <p:inputText id="txtNombres" value=""/>
+                            <p:messages for="txtNombres"/>
+
+                            <h:outputLabel for="txtServicio" value="Servicio: " />
+                            <p:inputText id="txtServicio" value=""/>
+                            <p:messages for="txtServicio"/>
+
+                            <h:outputLabel for="txtEdad" value="Edad: " />
+                            <p:inputText id="txtEdad" value=""/>
+                            <p:messages for="txtEdad"/>
+
+                            <h:outputLabel for="txtSala" value="Sala: " />
+                            <p:inputText id="txtSala" value=""/>
+                            <p:messages for="txtSala"/>
+
+                            <h:outputLabel for="txtCI" value="C.I.: " />
+                            <p:inputText id="txtCI" value=""/>
+                            <p:messages for="txtCI"/>
+
+                            <h:outputLabel for="txtCama" value="Cama: " />
+                            <p:inputText id="txtCama" value=""/>
+                            <p:messages for="txtCama"/>
+
+                            <h:outputLabel for="rdbGenero" value="Género: " />
+                            <p:selectOneRadio id="rdbGenero" value="" >
+                                <f:selectItem itemValue="M" itemLabel="Masculino" />
+                                <f:selectItem itemValue="F" itemLabel="Femenino" />
+                            </p:selectOneRadio>
+                            <p:messages for="rdbGenero"/>
+
+                            <h:outputLabel for="rdbPrioridad" value="Prioridad: " />
+                            <p:selectOneRadio id="rdbPrioridad" value="" >
+                                <f:selectItem itemValue="U" itemLabel="Urgente" />
+                                <f:selectItem itemValue="R" itemLabel="Rutina" />
+                                <f:selectItem itemValue="C" itemLabel="Control" />
+                            </p:selectOneRadio>
+                            <p:messages for="rdbPrioridad"/>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3" id="pgTratamiento">
+                            <h:outputLabel for="txtTratamiento" value="Tratamiento que recibe: " />
+                            <p:inputTextarea id="txtTratamiento" rows="3" cols="70"    queryDelay="750" minQueryLength="4" />
+                            <p:messages for="txtTratamiento"/>
+                        </h:panelGrid>
+
+                    </p:fieldset>
+
+                    <br/>
+
+                    <p:fieldset legend="Diagnóstico presuntivo" style="width:80%">
+                        <h:panelGrid id="pgDiagPresuntivo">
+                            <p:inputTextarea id="txtDiagPresuntivo"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
+                            <p:messages for="txtDiagPresuntivo"/>
+                        </h:panelGrid>
+                    </p:fieldset>
+
+                    <br/>
+
+                    <p:fieldset legend="Resumen clínico" style="width:80%">
+                        <h:panelGrid id="pgResumenCl">
+                            <p:inputTextarea id="txtResumenCl"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
+                            <p:messages for="txtResumenCl"/>
+                        </h:panelGrid>
+                    </p:fieldset>
+
+                    <br/>
+
+                    <p:fieldset legend="Muestra o Pieza" style="width:80%">
+                        <h:panelGrid id="pgMuestra">
+                            <p:row>
+                                <p style="font-style: oblique">Describir el procedimiento, origen, número y zona.</p>
+                            </p:row>
+                            <p:row>
+                                <p:inputTextarea id="txtMuestra"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
+                                <p:messages for="txtMuestra"/>
+                            </p:row>
+                        </h:panelGrid>
+                    </p:fieldset>
+
+                    <br/>
+
+                    <p:fieldset legend="Datos del estudio" style="width:80%">
+                        <h:panelGrid columns="3" id="pgOrganos">
+                            <h:outputLabel for="cboOrganos" value="Órganos / Sistemas: " />
+                            <p:selectOneMenu id="cboOrganos" value="#{registroEQController.organoSistema.idos}" required="true" requiredMessage="Seleccione un Órganos / Sistemas">
+                                <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
+                                <f:selectItems value="#{registroEQController.organosSistemas}" var="orgSist" itemLabel="#{orgSist.descripcionmarcadoros}" itemValue="#{orgSist.idos}" />
+                            </p:selectOneMenu>
+                            <p:messages for="cboOrganos"/>
+                            
+                            <h:outputLabel for="cboSubtipo" value="Subtipo: " />
+                            <p:selectOneMenu id="cboSubtipo" value="#{registroEQController.subtipo.idsubtipo}" required="true" requiredMessage="Seleccione un Subtipo">
+                                <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
+                                <f:selectItems value="#{registroEQController.subtipos}" var="subtipos" itemLabel="#{subtipos.descripcionmarcadorsubtipo}" itemValue="#{subtipos.idsubtipo}" />                                
+                            </p:selectOneMenu>
+                            <p:messages for="cboSubtipo"/>
+                            <p:column/>
+                            <p:inputText id="txtOtrosEnSubtipo" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:watermark for="txtOtrosEnSubtipo" value="Otro subtipo" />
+                            
+                            <h:outputLabel for="txtDescripcion" value="Descripción: " /> 
+                            <p:inputTextarea id="txtDescripcion" rows="2" cols="70"    queryDelay="750" minQueryLength="4" />
+                            <p:messages for="txtDescripcion"/>
+
+                        </h:panelGrid>
+                    </p:fieldset>
+
+                    <br/>
+
+                    <h:panelGrid columns="5" cellpadding="10" cellspacing="1" >
+                        <p:commandLink id="agregar" styleClass="content" update="pgDatosHospital, pgDatosMuestra,pgDatosMedico" actionListener="#{registroEQController.registrarEstudioQuirugico()}">
+                            <h:graphicImage value="/resources/images/agregar.PNG" styleClass="content" width="65px" />
+                        </p:commandLink>
+                        <p:tooltip id="toolTipFade1" for="agregar" value="Guardar" trackMouse="true"/>
+
+                        <p:commandLink id="cancelar" styleClass="content" >
+                            <h:graphicImage value="/resources/images/cancelar.PNG" styleClass="content" width="65px"/>
+                        </p:commandLink>
+                        <p:tooltip id="toolTipFade2" for="cancelar" value="Cancelar" trackMouse="true"/>
+
+                        <p:commandLink id="rechazar" styleClass="content">
+                            <h:graphicImage value="/resources/images/rechazar.PNG" styleClass="content" width="65px"/>
+                        </p:commandLink>
+                        <p:tooltip id="toolTipFade3" for="rechazar" value="Guardar y Rechazar" trackMouse="true"/>
+                    </h:panelGrid>
+
+                </h:form>
+
+                <!-- Script para usar el calendario en español-->
+                <h:outputScript library="js" name="spanishLocale.js" />
+                <!-- Script de estilos para el contenido fel formulario-->
+                <h:outputStylesheet library="css" name="estudios.css" />
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

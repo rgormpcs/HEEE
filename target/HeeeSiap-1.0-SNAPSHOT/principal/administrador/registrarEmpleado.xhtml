@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/plantillas/plantillaInicial.xhtml">
+
+            <ui:define name="content">
+
+                <h:form>
+
+                    <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
+
+                    <p:fieldset legend="Datos Personales">
+                        <h:panelGrid columns="3" id="pgDatosPersonales" >
+
+                            <p:outputLabel for="txtNombres" value="Nombres: " />
+                            <p:inputText id="txtNombres" value="#{empleadoController.empleado.nombresempleado}" required="true" requiredMessage="El campo Nombres es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" />
+                            <p:messages for="txtNombres"/>
+
+                            <p:outputLabel for="txtApellidos" value="Apellidos: " />
+                            <p:inputText id="txtApellidos" value="#{empleadoController.empleado.apellidosempleado}" required="true" requiredMessage="El campo Apellidos es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" />
+                            <p:messages for="txtApellidos"/>
+
+                            <h:outputLabel for="rdbGenero" value="Género: " />
+                            <p:selectOneRadio id="rdbGenero" value="#{empleadoController.empleado.generoempleado}" required="true" requiredMessage="Seleccionar el Género">
+                                <f:selectItem itemValue="M" itemLabel="Masculino" />
+                                <f:selectItem itemValue="F" itemLabel="Femenino" />
+                            </p:selectOneRadio>
+                            <p:messages for="rdbGenero"/>
+
+                            <h:outputLabel for="txtFechaNac" value="Fecha de Nacimiento: " />
+                            <p:calendar id="txtFechaNac" locale="es" pattern="dd-MM-yyyy" navigator="true"
+                                        mask="true" required="true" value="#{empleadoController.empleado.fechanacimiento}" requiredMessage="Seleccione la Fecha de Nacimiento" />
+                            <p:messages for="txtFechaNac"/>
+
+                            <p:outputLabel for="txtCedIden" value="Cédula de Identidad: " />
+                            <p:inputText id="txtCedIden" value="#{empleadoController.empleado.ceduidenempleado}" required="true" requiredMessage="El campo Cédula de Identidad es requerido"/>
+                            <p:messages for="txtCedIden"/>
+
+                            <p:outputLabel for="txtDireccion" value="Dirección: " />
+                            <p:inputText id="txtDireccion" value="#{empleadoController.empleado.direccionempleado}" required="true" requiredMessage="El campo Dirección es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();"/>
+                            <p:messages for="txtDireccion"/>
+
+                            <p:outputLabel for="txtTelefono" value="Teléfono: " />
+                            <p:inputText id="txtTelefono" value="#{empleadoController.empleado.numtelempleado}" required="true" requiredMessage="El campo Teléfono es requerido"/>
+                            <p:messages for="txtTelefono"/>
+
+                            <p:outputLabel for="txtEspecialidad" value="Especialidad: " />
+                            <p:inputText id="txtEspecialidad" value="#{empleadoController.empleado.especialidadempleado}" required="true" requiredMessage="El campo Especialidad es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" />
+                            <p:messages for="txtEspecialidad"/>
+
+                        </h:panelGrid>
+                    </p:fieldset>
+
+                    <br/>
+
+                    <p:fieldset legend="Datos de la Cuenta">
+                        <h:panelGrid columns="3" id="pgDatosCuenta">
+
+                            <h:outputLabel for="txtUsuario" value="Usuario: " />
+                            <p:inputText id="txtUsuario" value="#{empleadoController.usuario.usuariousuario}"/>
+                            <p:messages for="txtUsuario"/>
+
+                            <h:outputLabel for="clave" value="Clave: " />
+                            <p:password id="clave" value="#{empleadoController.usuario.claveusuario}" />
+                            <h:column/>
+
+                            <h:outputLabel for="cboTipo" value="Tipo de Usuario: " />
+                            <p:selectOneMenu id="cboTipo" value="#{empleadoController.usuario.tipousuario}" required="true" requiredMessage="Seleccione el Tipo de Usuario">
+                                <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
+                                <f:selectItem itemValue="A" itemLabel="Administrador" />
+                                <f:selectItem itemValue="S" itemLabel="Secretaria" />
+                                <f:selectItem itemValue="R" itemLabel="Médico Residente" />
+                                <f:selectItem itemValue="H" itemLabel="Licenciado de histotecnología" />
+                                <f:selectItem itemValue="R" itemLabel="Médico Patólogo" />
+                            </p:selectOneMenu>
+                            <p:messages for="cboTipo"/>
+
+                        </h:panelGrid>
+
+                        <p:commandButton icon="ui-icon-disk" value="Registrar" update="pgDatosPersonales, pgDatosCuenta, mensaje" actionListener="#{empleadoController.registrarEmpleado()}">
+                            <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </p:fieldset>
+
+                </h:form>
+                <!-- Scrip para usar el calendario en español-->
+                <h:outputScript library="js" name="spanishLocale.js" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

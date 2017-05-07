@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Bienvenido(a)</title>
+        <h:outputStylesheet library="css" name="index.css" />
+    </h:head>
+
+    <h:body>
+
+        <div id="principal" style="background-image: url('resources/images/fondo.png'); background-repeat: no-repeat;background-size: 100%; background-position-x: 20% ;background-position-y: 5%">
+            <h:form id="cuadrado">
+
+                <p:growl id="mensaje" autoUpdate="false" severity="warn, fatal" showSummary="true" showDetail="true"/>
+
+                <h:panelGrid id="pgDatosUsuario" columns="2" cellpadding="8" cellspacing="1" style="margin: 0 auto;">
+                  
+                    <h:column>
+                        <h:panelGrid style="margin: 0 auto; padding-top: 35%">
+                            <h2 style="text-align: center; color: #045491">Bienvenido(a)</h2>
+                            <p style="text-align: center; font-size: 16px">Al Sistema de Información para la Gestión y Administración de los <br/>Procesos Operativos del Laboratorio de Anatomía Patológica del <br/>Hospital de Especialidades Eugenio Espejo.</p>
+                            <p:separator/>
+                        </h:panelGrid>
+
+                        <h2 style="color: #045491;text-align: center">Ingreso al Sistema</h2>
+<!--                        <p:column style="align-content: center">
+                            <span style="margin-left: 320px" class="fa fa-user-md fa-3x"/>
+                        </p:column>-->
+                        
+
+                        <h:panelGrid id="panel" columns="3" cellpadding="5" cellspacing="1" style="margin: 0 auto;">
+                            <p:outputLabel value="Usuario:" />
+                            <p:inputText id="txtUsuario" value="#{ingresar.nombreUsuario}" required="true" requiredMessage="Campo requerido" />
+                            <p:message for="txtUsuario" />
+
+                            <p:outputLabel value="Contraseña:" />
+                            <p:password id="txtClave" value="#{ingresar.contrasenia}" required="true" requiredMessage="Campo es requerido"/>
+                            <p:message for="txtClave" />
+
+                            <f:facet name="footer">
+                                <h:panelGroup style="display:block; text-align:center;padding-top: 5%">
+                                    <p:commandButton icon="ui-icon-key" value="Iniciar Sesión" action="#{ingresar.validarIngreso()}" update="pgDatosUsuario,txtUsuario,txtClave, mensaje"/>
+<!--                                    <p:commandButton icon="ui-icon-key" value="Iniciar Sesión" action="/principal/bienvenida?faces-redirect=true" update="pgDatosUsuario,txtUsuario,txtClave, mensaje"/>-->
+                                </h:panelGroup>
+                            </f:facet>
+                            
+                        </h:panelGrid>  
+                    </h:column>
+                </h:panelGrid>
+
+            </h:form>
+        </div>
+    </h:body>
+</html>
