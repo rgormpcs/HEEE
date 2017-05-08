@@ -2,6 +2,7 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Menu/MenuController.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Menu/Navegar.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAUsuarioDAO.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/ExtremidadDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Detallerecepcionmuestra.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/EmpleadoDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Subcategoria.java
@@ -18,6 +19,7 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Menu/SessionBean.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/FactoryDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAMenuDAO.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/ParteDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Cabeceraestudioespecial.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/ProvinciaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Detalleestudioespecial.java
@@ -38,10 +40,13 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/MenuDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Estudiosamputaciones.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Tipoestudiocitologico.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Amputaciones/AmputacionesListar.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Doctor.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAParteDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Organossistemas.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/ParroquiaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPACantonDAO.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAExtremidadDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Ubicacion/UbicacionListar.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Paciente.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Provincia.java

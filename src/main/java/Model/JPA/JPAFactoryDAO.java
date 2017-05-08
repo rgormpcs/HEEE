@@ -2,10 +2,12 @@ package Model.JPA;
 
 import Model.DAO.CantonDAO;
 import Model.DAO.EmpleadoDAO;
+import Model.DAO.ExtremidadDAO;
 
 import Model.DAO.FactoryDAO;
 import Model.DAO.MenuDAO;
 import Model.DAO.ParroquiaDAO;
+import Model.DAO.ParteDAO;
 import Model.DAO.ProvinciaDAO;
 import Model.DAO.UsuarioDAO;
 
@@ -41,6 +43,16 @@ public class JPAFactoryDAO extends FactoryDAO {
     @Override
     public ParroquiaDAO getParroquiaDAO() {
         return new JPAParroquiaDAO();
+    }
+
+    @Override
+    public ExtremidadDAO getExtremidadDAO() {
+        return new JPAExtremidadDAO();
+    }
+
+    @Override
+    public ParteDAO getParteDAO() {
+        return new JPAParteDAO();
     }
 
    

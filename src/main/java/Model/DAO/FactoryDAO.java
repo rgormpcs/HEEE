@@ -24,6 +24,7 @@ public abstract class FactoryDAO {
     public abstract ProvinciaDAO getProvinciaDAO();
     public abstract CantonDAO getCantonDAO();
     public abstract ParroquiaDAO getParroquiaDAO();
-    
+    public abstract ExtremidadDAO getExtremidadDAO();
+    public abstract ParteDAO getParteDAO();
 
 }

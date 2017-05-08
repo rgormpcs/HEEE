@@ -4,6 +4,7 @@ Bean/Menu/Ingresar.class
 Bean/Menu/PlantillaController.class
 Model/Entity/Usuario_.class
 Model/Entity/Tipoestudiocitologico.class
+Model/DAO/ParteDAO.class
 Model/Entity/Paciente.class
 Model/Entity/Detalleestudioespecial_.class
 Model/DAO/CantonDAO.class
@@ -15,6 +16,7 @@ Model/Entity/Estudiosrevision_.class
 Model/JPA/JPAFactoryDAO.class
 Model/Entity/Subtipo_.class
 Model/Entity/Detalleestudiocitologico_.class
+Bean/CodigoBarras/CodigoBarrasListar.class
 Model/Entity/Estudiosamputaciones.class
 Model/JPA/JPAUsuarioDAO.class
 Bean/Menu/MenuController.class
@@ -25,9 +27,11 @@ Model/Entity/Canton_.class
 Model/DAO/GenericDAO.class
 Model/Entity/Hospital_.class
 Model/Entity/Cabecerarecepcionmuestra_.class
+Model/JPA/JPAParteDAO.class
 Model/Entity/Cabeceraestudiocitologico.class
 Model/DAO/FactoryDAO.class
 Model/Entity/Detalleestudioespecial.class
+Bean/Amputaciones/AmputacionesListar.class
 Model/Entity/Subtipo.class
 Model/Entity/Tipoestudio_.class
 Model/Entity/Hospital.class
@@ -44,6 +48,7 @@ Model/Entity/Organossistemas.class
 Model/Entity/Contadorestipoestudioanio_.class
 Model/Entity/Menu.class
 Model/Entity/Partes.class
+Model/DAO/ExtremidadDAO.class
 Model/Entity/Canton.class
 Model/Entity/Parroquia_.class
 Model/JPA/JPAEmpleadoDAO.class
@@ -54,10 +59,12 @@ Model/Entity/Estudiosrevision.class
 Model/Entity/Detallerecepcionmuestra.class
 Model/Entity/Doctor.class
 Model/Entity/Categoria_.class
+Model/JPA/JPAExtremidadDAO.class
 Bean/Empleado/EmpleadoCrear.class
 Model/Entity/Tipoestudio.class
 Model/DAO/EmpleadoDAO.class
 Model/Entity/Estudiosquirurgicos.class
+.netbeans_automatic_build
 Bean/Menu/Navegar.class
 Model/Entity/Cabeceraestudiocitologico_.class
 Model/DAO/MenuDAO.class

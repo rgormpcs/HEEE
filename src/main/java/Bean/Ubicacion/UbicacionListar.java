@@ -36,6 +36,13 @@ public class UbicacionListar implements Serializable{
     
     
     public UbicacionListar() {
+        provinciaID="";
+        cantonID="";
+        parroquiaID="";
+        provincias=null;
+        cantones=null;
+        parroquias=null;
+                
         listarProvincia();
         
     }
@@ -48,18 +55,7 @@ public class UbicacionListar implements Serializable{
 //    System.out.println("lista:"+provincias.get(i).getNombreprovincia());
 //    }
     }
-     //Metodo para listar cantonces por Provincia
-     public void listarCantonPorProvincia(String idProvincia){
-        System.out.println("informacion de provincia:"+provinciaID);
-        cantones=JPAFactoryDAO.getFactory().getCantonDAO().buscarCantonPorProvincia(idProvincia);
 
-    }
-     //Metodo para listar parroquias por Canton
-      public void listarParroquiaPorCanton(String idParroquia){
-        System.out.println("informacion de canton:"+cantonID);
-        
-
-    }
      //getter and setter
       
       public String getParroquiaID() {
@@ -104,7 +100,7 @@ public class UbicacionListar implements Serializable{
     }   
 
     public List<Parroquia> getParroquias() {
-        System.out.println("informacion de provincia2:"+provinciaID);
+        
         System.out.println("informacion de canton:"+cantonID);
         parroquias=JPAFactoryDAO.getFactory().getParroquiaDAO().buscarParroquiaPorCanton(cantonID);
         return parroquias;

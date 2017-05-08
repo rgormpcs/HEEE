@@ -197,20 +197,21 @@
                     </p:fieldset>
                     <br/>
                     <p:fieldset legend="Estudio Solicitado de Tipo Amputaciones" style="width:80%">
-                        <!--                         <h:outputText value="Code39" />
-                                                 <p:barcode value="0123456789" type="code39" />-->
+
                         <h:panelGrid columns="3" id="pgExtremidades">
-                            <h:outputLabel for="cboExtremidades" value="Extremidad: " />
-                            <p:selectOneMenu id="cboExtremidades" value="#{registroEAController.extremidad.idextremidades}" required="true" requiredMessage="Seleccione una Extremidad">
+                            <h:outputLabel value="Extremidad: " />
+                            <p:selectOneMenu id="cboExtremidades" value="#{amputacionesListar.extremidadesID}"  required="true" requiredMessage="Seleccione una Extremidad">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
-                                <f:selectItems value="#{registroEAController.extremidades}" var="extremidades" itemLabel="#{extremidades.nombreextremidades}" itemValue="#{extremidades.idextremidades}"/>                                
+                                <f:selectItems value="#{amputacionesListar.listaExtremidades}" var="listaExtremidades" itemLabel="#{listaExtremidades.nombreextremidades}" itemValue="#{listaExtremidades.idextremidades}"/>                                
+                                <p:ajax update="cboPartes"  />
                             </p:selectOneMenu>
                             <p:messages for="cboExtremidades"/>
 
-                            <h:outputLabel for="cboPartes" value="Parte: " />
-                            <p:selectOneMenu id="cboPartes" value="#{registroEAController.parte.idpartes}" required="true" requiredMessage="Seleccione una Parte de la Extremidad">
+                            <h:outputLabel value="Parte: " />
+                            <p:selectOneMenu id="cboPartes" value="#{amputacionesListar.extremidadesID}" filter="true" filterMatchMode="startsWith"  required="true" requiredMessage="Seleccione una Parte de la Extremidad">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
-                                <f:selectItems value="#{registroEAController.partes}" var="partes" itemLabel="#{partes.nombrepartes}" itemValue="#{partes.idpartes}" />                                
+                                <f:selectItems value="#{amputacionesListar.listaPartes}" var="listaPartes" itemLabel="#{listaPartes.nombrepartes}" itemValue="#{listaPartes.idpartes}" />                                
+                                <p:ajax update="cboPartes" listener="#{amputacionesListar.listarPartes()}" />
                             </p:selectOneMenu>
                             <p:messages for="cboPartes"/>
 
@@ -247,7 +248,12 @@
                              <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
                                 <p:printer target="codigoB" />
                              </p:commandButton>
-                                
+                            <p:commandButton value="Si" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
+                                <p:printer target="codigoB" />
+                             </p:commandButton>
+                              <p:commandButton value="No" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
+                                <p:printer target="codigoB" />
+                             </p:commandButton> 
                             </h:panelGrid>
                         
                            
