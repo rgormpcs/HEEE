@@ -14,8 +14,11 @@
                 <h:form id="contenido">
                     <h1 style="color: #045491;text-align: center">Registro de Estudio Amputacion</h1>
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
-
-
+                    
+                  
+                            
+                            
+                            
                     <p:fieldset legend="Datos del Hospital" style="width:80%" >
 
                         <h:panelGrid columns="7" id="pgDatosHospital">
@@ -32,8 +35,9 @@
                             </p:selectOneMenu>
                             <p:messages for="cboProvincia"/>
 
+                            
                             <p:outputLabel for="txtUniOperat" value="Unidad Operativa: "  />
-                            <p:inputText id="txtUniOperat" value="#{registroEQController.hospital.unidadoperativa}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtUniOperat" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtUniOperat" value="HEEE" />
                             <p:messages for="txtUniOperat"/>
 
@@ -52,13 +56,14 @@
                             <p:inputText id="txtCodUO" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtCodUO" value="0001" />
                             <p:messages for="txtCodUO"/>
-
-                            <h:outputLabel value="Parroquia: " style="width: 14px; " />
-                            <p:selectOneMenu id="cboParroquia" value="#{ubicacionListar.parroquiaID}" filter="true" filterMatchMode="startsWith" >
+                            
+                            <h:outputLabel value="Parroquia: " />
+                            <p:selectOneMenu id="cboParroquia" value="#{ubicacionListar.parroquiaID}" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{ubicacionListar.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
                             </p:selectOneMenu>
                             <p:messages for="cboParroquia"/>
+                            
 
                         </h:panelGrid>
 
@@ -199,6 +204,9 @@
                     <p:fieldset legend="Estudio Solicitado de Tipo Amputaciones" style="width:80%">
 
                         <h:panelGrid columns="3" id="pgExtremidades">
+                              <!--tipo de estudio para codigo de barras-->
+<!--                            <p:inputText id="txtTipoDeEstudio" type="hidden" value="#{codigoBarrasListar.nombreEstudio='AMPUTACION'}" />-->
+                    
                             <h:outputLabel value="Extremidad: " />
                             <p:selectOneMenu id="cboExtremidades" value="#{amputacionesListar.extremidadesID}"  required="true" requiredMessage="Seleccione una Extremidad">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
@@ -211,7 +219,7 @@
                             <p:selectOneMenu id="cboPartes" value="#{amputacionesListar.extremidadesID}" filter="true" filterMatchMode="startsWith"  required="true" requiredMessage="Seleccione una Parte de la Extremidad">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{amputacionesListar.listaPartes}" var="listaPartes" itemLabel="#{listaPartes.nombrepartes}" itemValue="#{listaPartes.idpartes}" />                                
-                                <p:ajax update="cboPartes" listener="#{amputacionesListar.listarPartes()}" />
+
                             </p:selectOneMenu>
                             <p:messages for="cboPartes"/>
 
@@ -242,25 +250,31 @@
 
                     <!-- PopUP para codigo de barras-->
                     <p:dialog header="Código de barras:" widgetVar="dlg1">
+                        <h:form>
                         <h:panelGrid columns="3" cellpadding="10" >
                             <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
                             <p:barcode id="codigoB" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
-                             <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
+                            <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
                                 <p:printer target="codigoB" />
-                             </p:commandButton>
-                            <p:commandButton value="Si" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
-                                <p:printer target="codigoB" />
-                             </p:commandButton>
-                              <p:commandButton value="No" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
-                                <p:printer target="codigoB" />
-                             </p:commandButton> 
-                            </h:panelGrid>
-                        
-                           
-                                
-                            
-                        
+                            </p:commandButton>
+                        </h:panelGrid>
 
+                        <p:fieldset legend="Desea Ingresar otra solicitud de estudio amputaciones" style="width:90%">
+
+                            <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
+                                
+                                <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
+                                    <p:ajax update="contenido" listener="#{ubicacionListar.resetCombo()}"/>
+
+                                </p:commandButton>
+ 
+                                <p:commandButton value="No" type="button" action="#{amputacionesListar.volver()}" >
+                                    
+                                </p:commandButton>
+
+                            </h:panelGrid>
+                        </p:fieldset>
+                            </h:form>
                     </p:dialog> 
 
                 </h:form>

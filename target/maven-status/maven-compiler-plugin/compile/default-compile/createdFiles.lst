@@ -4,6 +4,7 @@ Bean/Menu/Ingresar.class
 Bean/Menu/PlantillaController.class
 Model/Entity/Usuario_.class
 Model/Entity/Tipoestudiocitologico.class
+Model/DAO/ContadoresTipoEstudioAnioDAO.class
 Model/DAO/ParteDAO.class
 Model/Entity/Paciente.class
 Model/Entity/Detalleestudioespecial_.class
@@ -84,4 +85,5 @@ Bean/Menu/SessionBean.class
 Model/Entity/Categoria.class
 Model/Entity/Tipoestudiocitologico_.class
 Model/Entity/Partes_.class
+Model/JPA/JPAContadoresTipoEstudioAnioDAO.class
 Model/Entity/Estudiosamputaciones_.class

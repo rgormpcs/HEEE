@@ -16,6 +16,9 @@
                     <h1 style="color: #045491;text-align: center">Registro de Estudio Citológico</h1>
 
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
+                    
+                    <!--tipo de estudio para codigo de barras-->
+                    <p:inputText id="txtTipoDeEstudio" type="hidden" value="#{codigoBarrasListar.nombreEstudio='CITOLOGICO'}" />
 
                     <p:fieldset legend="Datos del Hospital" style="width:80%" >
                         <h:panelGrid columns="7" id="pgDatosHospital">
@@ -26,10 +29,10 @@
                             <p:messages for="txtInstSistema"/>
 
                             <h:outputLabel value="Provincia: " />
-                            <p:selectOneMenu id="cboProvincia" value="#{provinciaController.provincia.idprovincia}" >
+                            <p:selectOneMenu id="cboProvincia" value="#{ubicacionListar.provinciaID}" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
-                                <f:selectItems value="#{provinciaController.provincias}" var="provincias" itemLabel="#{provincias.nombreprovincia}" itemValue="#{provincias.idprovincia}"/>
-                                <p:ajax update="cboCanton" />
+                                <f:selectItems value="#{ubicacionListar.provincias}" var="provincias" itemLabel="#{provincias.nombreprovincia}" itemValue="#{provincias.idprovincia}"/>
+                                <p:ajax update="cboCanton, cboParroquia" />
                             </p:selectOneMenu>
                             <p:messages for="cboProvincia"/>
 
@@ -39,9 +42,10 @@
                             <p:messages for="txtUniOperat"/>
 
                             <h:outputLabel value="Cantón: " />
-                            <p:selectOneMenu id="cboCanton" value="#{cantonController.canton.idcanton}" required="true" requiredMessage="Seleccione el Cantón">
+                            <p:selectOneMenu id="cboCanton" value="#{ubicacionListar.cantonID}" required="true" requiredMessage="Seleccione el Cantón">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
-                                <f:selectItems value="#{cantonController.cantones}" var="cantones" itemLabel="#{cantones.nombrecanton}" itemValue="#{cantones.idcanton}"/>
+                                <f:selectItems value="#{ubicacionListar.cantones}" var="cantones" itemLabel="#{cantones.nombrecanton}" itemValue="#{cantones.idcanton}"/>
+                                <p:ajax update="cboParroquia" />
                             </p:selectOneMenu>
                             <p:messages for="cboCanton"/>
 
@@ -51,9 +55,9 @@
                             <p:messages for="txtCodUO"/>
 
                             <h:outputLabel value="Parroquia: " />
-                            <p:selectOneMenu id="cboParroquia" value="#{parroquiaController.parroquia.idparroquia}" >
+                            <p:selectOneMenu id="cboParroquia" value="#{ubicacionListar.parroquiaID}" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
-                                <f:selectItems value="#{parroquiaController.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
+                                <f:selectItems value="#{ubicacionListar.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
                             </p:selectOneMenu>
                             <p:messages for="cboParroquia"/>
 
@@ -252,8 +256,9 @@
                     <br/>
 
                     <h:panelGrid columns="5" cellpadding="10" cellspacing="1" >
-                        <p:commandLink id="agregar" styleClass="content" update="pgDatosHospital, pgDatosMuestra,pgDatosMedico" actionListener="#{registroEQController.registrarEstudioQuirugico()}">
+                        <p:commandLink id="agregar" styleClass="content" update="pgDatosHospital, pgDatosMuestra,pgDatosMedico" actionListener="#{registroEQController.registrarEstudioQuirugico()}" onclick="PF('dlg1').show();" >
                             <h:graphicImage value="/resources/images/agregar.PNG" styleClass="content" width="65px" />
+                            
                         </p:commandLink>
                         <p:tooltip id="toolTipFade1" for="agregar" value="Guardar" trackMouse="true"/>
 
@@ -267,7 +272,38 @@
                         </p:commandLink>
                         <p:tooltip id="toolTipFade3" for="rechazar" value="Guardar y Rechazar" trackMouse="true"/>
                     </h:panelGrid>
+                    
+                    <!-- PopUP para codigo de barras-->
+<!--                    <p:dialog header="Código de barras:" widgetVar="dlg1">
+                        <h:panelGrid columns="3" cellpadding="10" >
+                            <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
+                            
+                            <p:barcode id="codigoBarras" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
+                            
+                            <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
+                                <p:printer target="codigoB" />
+                            </p:commandButton>
+                        </h:panelGrid>
 
+                        <p:fieldset legend="Desea Ingresar otra solicitud de estudio amputaciones" style="width:90%">
+
+                            <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
+                                
+                                <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
+                                    <p:ajax update="contenido" listener="#{ubicacionListar.resetCombo()}"/>
+
+                                </p:commandButton>
+ 
+                                <p:commandButton value="No" type="button" action="#{amputacionesListar.volver()}" >
+                                    
+                                </p:commandButton>
+
+                            </h:panelGrid>
+                        </p:fieldset>
+
+                    </p:dialog> -->
+
+                    
                 </h:form>
 
                 <!-- Script para usar el calendario en español-->

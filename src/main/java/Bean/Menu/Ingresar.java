@@ -63,7 +63,7 @@ public class Ingresar implements Serializable {
                 if (usuarioLista.get(i).getClaveusuario().equals(contrasenia)){
                 System.out.println("correcto entro");
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuarioLista.get(i));
-                redireccion = "/principal/bienvenida?faces-redirect=true";
+                redireccion = "/principal/bienvenida?faces-redirect=true";  
 
                 }else{
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Datos Erróneos"));

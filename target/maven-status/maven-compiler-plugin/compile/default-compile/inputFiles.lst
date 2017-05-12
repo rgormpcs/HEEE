@@ -27,6 +27,7 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Extremidades.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/GenericDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Empleado/EmpleadoCrear.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAContadoresTipoEstudioAnioDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAFactoryDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Marcador.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Cabeceraestudiocitologico.java
@@ -44,6 +45,7 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Doctor.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAParteDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Organossistemas.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/ContadoresTipoEstudioAnioDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/ParroquiaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPACantonDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAExtremidadDAO.java
