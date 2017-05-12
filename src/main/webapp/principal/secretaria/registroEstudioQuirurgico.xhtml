@@ -21,39 +21,41 @@
                         <h:panelGrid columns="7" id="pgDatosHospital">
 
                             <p:outputLabel for="txtInstSistema" value="Institución del Sistema: " />
-                            <p:inputText id="txtInstSistema" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtInstSistema" value="#{QxCrearController.hospital.instituciondelsistema}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtInstSistema" value="MSP" />
                             <p:messages for="txtInstSistema"/>
 
                             <h:outputLabel value="Provincia: " />
-                            <p:selectOneMenu id="cboProvincia" value="#{provinciaController.provincia.idprovincia}" >
+                            <p:selectOneMenu id="cboProvincia" value="#{ubicacionListar.provinciaID}" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
-                                <f:selectItems value="#{provinciaController.provincias}" var="provincias" itemLabel="#{provincias.nombreprovincia}" itemValue="#{provincias.idprovincia}"/>
-                                <p:ajax update="cboCanton" />
+                                <f:selectItems value="#{ubicacionListar.provincias}" var="provincias" itemLabel="#{provincias.nombreprovincia}" itemValue="#{provincias.idprovincia}"/>
+                                <p:ajax update="cboCanton ,cboParroquia"  />
                             </p:selectOneMenu>
                             <p:messages for="cboProvincia"/>
 
                             <p:outputLabel for="txtUniOperat" value="Unidad Operativa: " />
-                            <p:inputText id="txtUniOperat" value="#{registroEQController.hospital.unidadoperativa}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtUniOperat" value="#{QxCrearController.hospital.unidadoperativa}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtUniOperat" value="HEEE" />
                             <p:messages for="txtUniOperat"/>
 
                             <h:outputLabel value="Cantón: " />
-                            <p:selectOneMenu id="cboCanton" value="#{cantonController.canton.idcanton}" required="true" requiredMessage="Seleccione el Cantón">
+                            <p:selectOneMenu id="cboCanton" value="#{ubicacionListar.cantonID}" required="false" requiredMessage="Seleccione el Cantón">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
-                                <f:selectItems value="#{cantonController.cantones}" var="cantones" itemLabel="#{cantones.nombrecanton}" itemValue="#{cantones.idcanton}"/>
+                                <f:selectItems value="#{ubicacionListar.cantones}" var="cantones" itemLabel="#{cantones.nombrecanton}" itemValue="#{cantones.idcanton}"/>
+                            <p:ajax update="cboParroquia"/>
                             </p:selectOneMenu>
+                            
                             <p:messages for="cboCanton"/>
 
                             <p:outputLabel for="txtCodUO" value="Cod. UO: " />
-                            <p:inputText id="txtCodUO" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtCodUO" value="#{QxCrearController.hospital.codigouo}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtCodUO" value="0001" />
                             <p:messages for="txtCodUO"/>
 
                             <h:outputLabel value="Parroquia: " />
-                            <p:selectOneMenu id="cboParroquia" value="#{parroquiaController.parroquia.idparroquia}" >
+                            <p:selectOneMenu id="cboParroquia" value="#{ubicacionListar.parroquiaID}" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
-                                <f:selectItems value="#{parroquiaController.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
+                                <f:selectItems value="#{ubicacionListar.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
                             </p:selectOneMenu>
                             <p:messages for="cboParroquia"/>
 
@@ -64,12 +66,12 @@
                         <h:panelGrid columns="6" id="pgDatosMuestra">
 
                             <h:outputLabel for="txtFechaTomaMuestra" value="Fecha de toma de la muestra: " />
-                            <p:calendar id="txtFechaTomaMuestra" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
+                            <p:calendar id="txtFechaTomaMuestra" value="#{QxCrearController.cabeceraEstudio.fechatomamuestracrm}" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
                             <p:watermark for="txtFechaTomaMuestra" value="dd-mm-aaaa" />
                             <p:messages for="txtFechaTomaMuestra"/>
 
                             <h:outputLabel for="txtHoraTomaMuestra" value="Hora de toma de la muestra: " />
-                            <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true"  />
+                            <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true"  value="#{QxCrearController.cabeceraEstudio.horatomamuestracrm}" />
                             <p:watermark for="txtHoraTomaMuestra" value="hh:mm" />
                             <p:messages for="txtHoraTomaMuestra"/>
 
@@ -216,7 +218,7 @@
                                 <f:selectItems value="#{registroEQController.organosSistemas}" var="orgSist" itemLabel="#{orgSist.descripcionmarcadoros}" itemValue="#{orgSist.idos}" />
                             </p:selectOneMenu>
                             <p:messages for="cboOrganos"/>
-                            
+
                             <h:outputLabel for="cboSubtipo" value="Subtipo: " />
                             <p:selectOneMenu id="cboSubtipo" value="#{registroEQController.subtipo.idsubtipo}" required="true" requiredMessage="Seleccione un Subtipo">
                                 <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
@@ -226,7 +228,7 @@
                             <p:column/>
                             <p:inputText id="txtOtrosEnSubtipo" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtOtrosEnSubtipo" value="Otro subtipo" />
-                            
+
                             <h:outputLabel for="txtDescripcion" value="Descripción: " /> 
                             <p:inputTextarea id="txtDescripcion" rows="2" cols="70"    queryDelay="750" minQueryLength="4" />
                             <p:messages for="txtDescripcion"/>
@@ -237,7 +239,7 @@
                     <br/>
 
                     <h:panelGrid columns="5" cellpadding="10" cellspacing="1" >
-                        <p:commandLink id="agregar" styleClass="content" update="pgDatosHospital, pgDatosMuestra,pgDatosMedico" actionListener="#{registroEQController.registrarEstudioQuirugico()}">
+                        <p:commandLink id="agregar" styleClass="content" action="#{QxCrearController.registrarExamenQX()}">
                             <h:graphicImage value="/resources/images/agregar.PNG" styleClass="content" width="65px" />
                         </p:commandLink>
                         <p:tooltip id="toolTipFade1" for="agregar" value="Guardar" trackMouse="true"/>

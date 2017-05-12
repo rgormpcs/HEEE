@@ -1,10 +1,15 @@
 package Model.JPA;
 
+import Model.DAO.CabecerarecepcionmuestraDAO;
 import Model.DAO.CantonDAO;
+import Model.DAO.DetallerecepcionmuestraDAO;
+import Model.DAO.DoctorDAO;
 import Model.DAO.EmpleadoDAO;
 
 import Model.DAO.FactoryDAO;
+import Model.DAO.HospitalDAO;
 import Model.DAO.MenuDAO;
+import Model.DAO.PacienteDAO;
 import Model.DAO.ParroquiaDAO;
 import Model.DAO.ProvinciaDAO;
 import Model.DAO.UsuarioDAO;
@@ -42,9 +47,32 @@ public class JPAFactoryDAO extends FactoryDAO {
     public ParroquiaDAO getParroquiaDAO() {
         return new JPAParroquiaDAO();
     }
-
-   
-   
     
+    @Override
+    public HospitalDAO getHospitalDAO(){
+        return new JPAHospitalDAO();
+    }
+    
+    @Override
+    public DoctorDAO getDoctorDAO(){
+        return new JPADoctorDAO();
+    }
+    
+    @Override
+    public PacienteDAO getPacienteDAO(){
+        return new JPAPacienteDAO();
+    }
+    
+    @Override
+    public CabecerarecepcionmuestraDAO getCabecerarecepcionmuestraDAO(){
+        return new JPACabecerarecepcionmuestraDAO();
+    }
+    
+    /*
+    @Override
+    public DetallerecepcionmuestraDAO getDetallerecepcionmuestraDAO(){
+        return new JPADetallerecepcionmuestraDAO();
+    }
+    */
     
 }

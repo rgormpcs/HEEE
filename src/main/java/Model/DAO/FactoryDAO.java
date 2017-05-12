@@ -18,6 +18,13 @@ public abstract class FactoryDAO {
     public abstract UsuarioDAO getUsuarioDAO();
     public abstract MenuDAO getMenuDAO();
     
+    //cabecera del estudio
+    public abstract HospitalDAO getHospitalDAO();
+    public abstract DoctorDAO getDoctorDAO();
+    public abstract PacienteDAO getPacienteDAO();
+    public abstract CabecerarecepcionmuestraDAO getCabecerarecepcionmuestraDAO();
+    //public abstract DetallerecepcionmuestraDAO getDetallerecepcionmuestraDAO();
+    
 
     //estudio amputaciones
     
