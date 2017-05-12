@@ -11,6 +11,7 @@ public class JPACantonDAO extends JPAGenericDAO<Canton, Integer> implements Cant
         super(Canton.class);
     }
    
+    @Override
 	public List<Canton> buscarCantonPorProvincia(String idProvincia){
 	List cantonSeleccionado=null;
         try{
