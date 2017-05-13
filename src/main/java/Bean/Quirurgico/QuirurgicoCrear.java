@@ -8,8 +8,10 @@ import Model.Entity.Paciente;
 import Model.JPA.JPAFactoryDAO;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "QxCrearController")
+@RequestScoped
 public class QuirurgicoCrear implements Serializable{
     
     private static final long serialVersionUID = 1L;
@@ -17,7 +19,7 @@ public class QuirurgicoCrear implements Serializable{
     private Hospital hospital;
     private Doctor doctor;
     private Paciente paciente;
-    private Cabecerarecepcionmuestra cabeceraEstudio;    
+    private Cabecerarecepcionmuestra cabeceraEstudio; 
     
     SessionBean sesion = new SessionBean();
     String usuario ="";
@@ -25,7 +27,7 @@ public class QuirurgicoCrear implements Serializable{
     /*Método Constructor*/
     public QuirurgicoCrear(){
         System.out.println("ENTRO QX : ");
-        this.hospital = new Hospital();
+        this.hospital = new Hospital();        
         this.doctor = new Doctor();
         this.paciente = new Paciente();
         this.cabeceraEstudio = new Cabecerarecepcionmuestra();
@@ -35,12 +37,13 @@ public class QuirurgicoCrear implements Serializable{
     /*Método para hacer el registro del examen Qx en el módulo de la Secretaria*/
     public void registrarExamenQX(){
         
-        System.out.println("ENTROoooo QX : ");
+        System.out.println("ENTRO al metodo registrarExamenQX : ");
         try {  
             System.out.println("INSTITUCION : "+hospital.getInstituciondelsistema());
             System.out.println("UNIDAD OPERATIVA : "+hospital.getUnidadoperativa());
             
             JPAFactoryDAO.getFactory().getHospitalDAO().create(this.hospital);
+            
             
             
         } catch (Exception e) {
