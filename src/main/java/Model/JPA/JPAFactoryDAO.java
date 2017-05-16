@@ -17,6 +17,9 @@ import Model.DAO.ProvinciaDAO;
 
 import Model.DAO.UsuarioDAO;
 import Model.DAO.ContadoresTipoEstudioAnioDAO;
+import Model.DAO.OrganosSistemasDAO;
+
+import Model.DAO.SubtipoDAO;
 import Model.DAO.TipoEstudioDAO;
 
 /*Esta clase es una extención de la clase FactoryDAO, en donde se relaciona la entidad de la clase DAO
@@ -101,6 +104,18 @@ public class JPAFactoryDAO extends FactoryDAO {
     public TipoEstudioDAO getTipoEstudioDAO() {
         return new JPATipoEstudioDAO();
     }
+
+    @Override
+    public SubtipoDAO getSubtipoDAO() {
+        return new JPASubtipoDAO();
+    }
+
+    @Override
+    public OrganosSistemasDAO getOrganosSistemasDAO() {
+        return new JPAOrganosSistemasDAO();
+    }
+
+  
 
 
     

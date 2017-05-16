@@ -17,8 +17,8 @@ public class QuirurgicoListar implements Serializable{
    String organosSistemasID;
    String subtipoID;
    List<Organossistemas> organosSistemas;
-//   List<Subtipo> subtipo;
-   List<Provincia> subtipo;
+   List<Subtipo> subtipo;
+//   List<Provincia> subtipo;
     
     
     
@@ -31,30 +31,22 @@ public class QuirurgicoListar implements Serializable{
         subtipoID="";
         organosSistemas=null;
         subtipo=null;
-       // ListarOrganosSistemas();
+       ListarOrganosSistemas();
       ListarSubtipo();
     }
     
     public void ListarOrganosSistemas(){
-//    organosSistemas= JPAFactoryDAO.getFactory().getOrganosSistemasDAO().find();
-    
+    organosSistemas=JPAFactoryDAO.getFactory().getOrganosSistemasDAO().find();
+    System.out.println("entron a lista con el id:"+organosSistemasID);
     }
     
     public void ListarSubtipo(){
-        subtipo=JPAFactoryDAO.getFactory().getProvinciaDAO().find();
+       subtipo=JPAFactoryDAO.getFactory().getSubtipoDAO().find();
+       System.out.println("entron a lista con el id:"+subtipoID);
 //    subtipo=JPAFactoryDAO.getFactory().getSubtipoDAO().find();
     }
     
     //getter and setter
-
-    public List<Provincia> getSubtipo() {
-        return subtipo;
-    }
-
-    public void setSubtipo(List<Provincia> subtipo) {
-        this.subtipo = subtipo;
-    }
-
     
     
     public String getOrganosSistemasID() {
@@ -81,15 +73,15 @@ public class QuirurgicoListar implements Serializable{
     public void setOrganosSistemas(List<Organossistemas> organosSistemas) {
         this.organosSistemas = organosSistemas;
     }
-//
-//    public List<Subtipo> getSubtipo() {
-//        
-//        return subtipo;
-//    }
-//
-//    public void setSubtipo(List<Subtipo> subtipo) {
-//        this.subtipo = subtipo;
-//    }
+
+    public List<Subtipo> getSubtipo() {
+        
+        return subtipo;
+    }
+
+    public void setSubtipo(List<Subtipo> subtipo) {
+        this.subtipo = subtipo;
+    }
 
     public SessionBean getSesion() {
         return sesion;

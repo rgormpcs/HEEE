@@ -1,3 +1,4 @@
+Model/JPA/JPASubtipoDAO.class
 Model/Entity/Subcategoria_.class
 Bean/Menu/PlantillaController.class
 Model/Entity/Tipoestudiocitologico.class
@@ -42,7 +43,6 @@ Model/DAO/PacienteDAO.class
 Model/Entity/Tipoestudio.class
 Model/DAO/EmpleadoDAO.class
 Model/Entity/Estudiosquirurgicos.class
-.netbeans_automatic_build
 Model/JPA/JPAPacienteDAO.class
 Bean/Menu/Navegar.class
 Model/DAO/MenuDAO.class
@@ -70,6 +70,7 @@ Model/Entity/Estudiosrevision_.class
 Bean/CodigoBarras/CodigoBarrasListar.class
 Model/Entity/Estudiosamputaciones.class
 Model/JPA/JPAUsuarioDAO.class
+Model/DAO/OrganosSistemasDAO.class
 Model/Entity/Hospital_.class
 Model/Entity/Cabecerarecepcionmuestra_.class
 Model/Entity/Detalleestudioespecial.class
@@ -92,11 +93,13 @@ Model/Entity/Doctor.class
 Bean/Empleado/EmpleadoCrear.class
 Model/DAO/DoctorDAO.class
 Model/Entity/Cabeceraestudiocitologico_.class
+Model/JPA/JPAOrganosSistemasDAO.class
 Model/JPA/JPAParroquiaDAO.class
 Model/Entity/Provincia.class
 Model/Entity/Estudiosquirurgicos_.class
 Model/Entity/Detallerecepcionmuestra_.class
 Bean/Menu/SessionBean.class
 Model/Entity/Tipoestudiocitologico_.class
+Model/DAO/SubtipoDAO.class
 Model/JPA/JPAContadoresTipoEstudioAnioDAO.class
 Model/Entity/Estudiosamputaciones_.class

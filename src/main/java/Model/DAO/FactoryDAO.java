@@ -40,7 +40,8 @@ public abstract class FactoryDAO {
     public abstract ContadoresTipoEstudioAnioDAO getContadoresTipoEstudioAnioDAO();
     
     //combos estudio Quirurgico
-    
+    public abstract SubtipoDAO getSubtipoDAO();
+    public abstract OrganosSistemasDAO getOrganosSistemasDAO();
     
 
 }
