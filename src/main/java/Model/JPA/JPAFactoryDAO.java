@@ -2,7 +2,6 @@ package Model.JPA;
 
 import Model.DAO.CabecerarecepcionmuestraDAO;
 import Model.DAO.CantonDAO;
-import Model.DAO.DetallerecepcionmuestraDAO;
 import Model.DAO.DoctorDAO;
 import Model.DAO.EmpleadoDAO;
 import Model.DAO.ExtremidadDAO;
@@ -15,7 +14,10 @@ import Model.DAO.ParroquiaDAO;
 import Model.DAO.ParteDAO;
 import Model.DAO.ProvinciaDAO;
 
+
 import Model.DAO.UsuarioDAO;
+import Model.DAO.ContadoresTipoEstudioAnioDAO;
+import Model.DAO.TipoEstudioDAO;
 
 /*Esta clase es una extención de la clase FactoryDAO, en donde se relaciona la entidad de la clase DAO
 con el JPA*/
@@ -88,5 +90,18 @@ public class JPAFactoryDAO extends FactoryDAO {
         return new JPADetallerecepcionmuestraDAO();
     }
     */
+
+
+    @Override
+    public ContadoresTipoEstudioAnioDAO getContadoresTipoEstudioAnioDAO() {
+        return new JPAContadoresTipoEstudioAnioDAO();
+    }
+
+    @Override
+    public TipoEstudioDAO getTipoEstudioDAO() {
+        return new JPATipoEstudioDAO();
+    }
+
+
     
 }

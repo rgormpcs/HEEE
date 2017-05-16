@@ -6,6 +6,7 @@
 package Bean.CodigoBarras;
 
 
+import Model.Entity.Contadorestipoestudioanio;
 import Model.Entity.Tipoestudio;
 import Model.JPA.JPAFactoryDAO;
 import java.io.Serializable;
@@ -27,15 +28,19 @@ public class CodigoBarrasListar implements Serializable{
     private String nombreEstudio;
     private String anioDigitos;
     private Date fecha; 
-    private int ordinal;
-    List<Tipoestudio> totalEstudios;
+    private int numeroEstudios;
+    private int idTipoEstudio;
+    private List<Contadorestipoestudioanio> EstudiosPorIdTipo;
+    List<Tipoestudio> TiposEstudioporNombre;
     
     public CodigoBarrasListar() {
-    ordinal =0;
+    numeroEstudios =0;
     fecha = new Date(); 
     anioDigitos= new SimpleDateFormat("yy").format(fecha); 
     nombreEstudio="";
-    
+    idTipoEstudio=0;
+    EstudiosPorIdTipo=null;
+    TiposEstudioporNombre= null;
     
         
     
@@ -47,17 +52,26 @@ public class CodigoBarrasListar implements Serializable{
     
     public String codigoFormado(){
 //         System.out.println("**********variable estudio:"+nombreEstudio);
-//        totalEstudios=JPAFactoryDAO.getFactory().getTipoEstudioDAO().contarTipoEstudios("AMPUTACION");
-//        for(int i=0; i<totalEstudios.size(); i++){
-//        System.out.println("contenido ordinal:"+totalEstudios);
-//        ordinal=ordinal+1;
-//        }
+        String [] campoTipo={"nombrete"};
+        String [] valorCampoTipo={nombreEstudio};
+        TiposEstudioporNombre= JPAFactoryDAO.getFactory().getTipoEstudioDAO().find(campoTipo,valorCampoTipo);
 
-/// se suma uno al ordinal de estudios del mismo tipo ya que este valor se almacena en base
-//        ordinal= totalEstudios.size()+1;
-        String codigo=nombreEstudio.charAt(0)+"-"+anioDigitos+"-"+String.valueOf(ordinal);
+        //sacar el id unicamente del estudio que esta en la coleccion anterior
+        idTipoEstudio=TiposEstudioporNombre.get(0).getIdte();
+        
+        EstudiosPorIdTipo=JPAFactoryDAO.getFactory().getContadoresTipoEstudioAnioDAO().find();
+        
+        for (Contadorestipoestudioanio  obj : EstudiosPorIdTipo){
+            if(obj.getIdte().getIdte()==idTipoEstudio){
+            numeroEstudios+=1;
+            }
+        }
+//        para sacar el numero del estudio que se esta ingresando en este momento
+        numeroEstudios+=1;
+        String codigo=nombreEstudio.charAt(0)+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
         
         return codigo;
+        
     }
     //getter and setter
 
@@ -95,11 +109,11 @@ public class CodigoBarrasListar implements Serializable{
     }
 
     public int getOrdinal() {
-        return ordinal;
+        return numeroEstudios;
     }
 
     public void setOrdinal(int ordinal) {
-        this.ordinal = ordinal;
+        this.numeroEstudios = ordinal;
     }
     
     

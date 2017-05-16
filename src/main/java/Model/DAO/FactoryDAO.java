@@ -36,5 +36,11 @@ public abstract class FactoryDAO {
     
     
     //codigo de barras
+    public abstract TipoEstudioDAO getTipoEstudioDAO();
+    public abstract ContadoresTipoEstudioAnioDAO getContadoresTipoEstudioAnioDAO();
+    
+    //combos estudio Quirurgico
+    
+    
 
 }

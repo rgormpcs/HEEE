@@ -14,7 +14,7 @@
                 <h:form id="contenido">
 
                     <h1 style="color: #045491;text-align: center">Registro de Estudio Citológico</h1>
-
+                    
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
                     
                     <!--tipo de estudio para codigo de barras-->
@@ -29,7 +29,7 @@
                             <p:messages for="txtInstSistema"/>
 
                             <h:outputLabel value="Provincia: " />
-                            <p:selectOneMenu id="cboProvincia" value="#{ubicacionListar.provinciaID}" >
+                            <p:selectOneMenu id="cboProvincia" value="#{ubicacionListar.provinciaID}" filter="true" filterMatchMode="startsWith" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{ubicacionListar.provincias}" var="provincias" itemLabel="#{provincias.nombreprovincia}" itemValue="#{provincias.idprovincia}"/>
                                 <p:ajax update="cboCanton, cboParroquia" />
@@ -42,7 +42,7 @@
                             <p:messages for="txtUniOperat"/>
 
                             <h:outputLabel value="Cantón: " />
-                            <p:selectOneMenu id="cboCanton" value="#{ubicacionListar.cantonID}" required="true" requiredMessage="Seleccione el Cantón">
+                            <p:selectOneMenu id="cboCanton" value="#{ubicacionListar.cantonID}" filter="true" filterMatchMode="startsWith" required="true" requiredMessage="Seleccione el Cantón" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{ubicacionListar.cantones}" var="cantones" itemLabel="#{cantones.nombrecanton}" itemValue="#{cantones.idcanton}"/>
                                 <p:ajax update="cboParroquia" />
@@ -55,7 +55,7 @@
                             <p:messages for="txtCodUO"/>
 
                             <h:outputLabel value="Parroquia: " />
-                            <p:selectOneMenu id="cboParroquia" value="#{ubicacionListar.parroquiaID}" >
+                            <p:selectOneMenu id="cboParroquia" value="#{ubicacionListar.parroquiaID}"  filter="true" filterMatchMode="startsWith" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{ubicacionListar.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
                             </p:selectOneMenu>
@@ -274,12 +274,11 @@
                     </h:panelGrid>
                     
                     <!-- PopUP para codigo de barras-->
-<!--                    <p:dialog header="Código de barras:" widgetVar="dlg1">
+                    <p:dialog header="Código de barras:" widgetVar="dlg1">
+                        <h:form>
                         <h:panelGrid columns="3" cellpadding="10" >
                             <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
-                            
-                            <p:barcode id="codigoBarras" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
-                            
+                            <p:barcode id="codigoB" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
                             <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
                                 <p:printer target="codigoB" />
                             </p:commandButton>
@@ -300,8 +299,8 @@
 
                             </h:panelGrid>
                         </p:fieldset>
-
-                    </p:dialog> -->
+                            </h:form>
+                    </p:dialog> 
 
                     
                 </h:form>
