@@ -222,7 +222,7 @@
                             <h:outputLabel for="cboSubtipo" value="Subtipo: " />
                             <p:selectOneMenu id="cboSubtipo" value="#{quirurgicoListar.subtipoID}" required="true" requiredMessage="Seleccione un Subtipo">
                                 <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
-<!--                                <f:selectItems value="#{quirurgicoListar.subtipo}" var="subtipo" itemLabel="#{subtipo.descripcionmarcadorsubtipo}" itemValue="#{subtipo.idsubtipo}" />                                -->
+                                <f:selectItems value="#{quirurgicoListar.subtipo}" var="subtipo" itemLabel="#{subtipo.descripcionmarcadorsubtipo}" itemValue="#{subtipo.idsubtipo}" />                                
                                 
                             </p:selectOneMenu>
                             <p:messages for="cboSubtipo"/>

@@ -23,6 +23,7 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAMenuDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/ParteDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Cabeceraestudioespecial.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAOrganosSistemasDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/ProvinciaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Detalleestudioespecial.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAProvinciaDAO.java
@@ -43,6 +44,7 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAGenericDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAEmpleadoDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Parroquia.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/OrganosSistemasDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/MenuDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Estudiosamputaciones.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Tipoestudiocitologico.java
@@ -62,6 +64,8 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Paciente.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPACabecerarecepcionmuestraDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/DoctorDAO.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/SubtipoDAO.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPASubtipoDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Provincia.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAParroquiaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Quirurgico/QuirurgicoListar.java
