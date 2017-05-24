@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
         <ui:composition template="./../../WEB-INF/plantillas/plantillaInicial.xhtml">
@@ -228,19 +229,85 @@
                             <p:accordionPanel>
                                 <p:tab title="Cérvico Vaginales">
                                     <h:panelGrid>
-                                        <p:selectManyCheckbox id="cv" value="#{registroEstCitoController.subcategoria.idsubcategoria}" layout="grid" columns="3">
-                                            <f:selectItems value="#{registroEstCitoController.subcategorias}" var="subcatcv" itemLabel="#{subcatcv.nombresubcategoria}" itemValue="#{subcatcv.idsubcategoria}" />
-                                        </p:selectManyCheckbox>
+<!--                                        lista automaticamente todos los Checkbox definidos en base-->
+                                        <ui:repeat value="#{citologicoListar.listarCategoria('1')}" var="categorias">
+<!--                                            <h2>#{categorias.idcategoria}</h2>-->
+                                            <h3>#{categorias.descripcionmarcadorcategoria}</h3>
+                                         <p:selectManyCheckbox id="grid" value="#{citologicoListar.categoriasID}" layout="grid" columns="3">
+                                             <f:selectItems value="#{citologicoListar.listarSubcategoria(categorias.idcategoria)}" var="subcategorias" itemLabel="#{subcategorias.nombresubcategoria}" itemValue="#{subcategorias.idsubcategoria}" />
+                                            </p:selectManyCheckbox>
+<!--                                            material-->
+
+                                            <h:outputLabel for="txtOtroMaterial" value="Otro: " rendered="#{categorias.idcategoria==1}"  />
+                                            <p:inputTextarea id="txtOtroMaterial"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==1}"/>
+                                            
+                                            <!--anticoncepción-->
+                                            <h:outputLabel for="txtOtroAnticoncepcion" value="Otro: " rendered="#{categorias.idcategoria==4}"  />
+                                            <p:inputTextarea id="txtOtroAnticoncepcion"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==4}"/>
+                                            
+                                            
+                                            <!--edades de--> 
+                                            <h:outputLabel for="txtUltimaCitologia" value="Años inicion relaciones sexuales: " rendered="#{categorias.idcategoria==2}"  />
+                                            <p:inputTextarea id="txtCitologico1"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==2}"/>
+                                            <h:outputLabel for="txtUltimaCitologia" value="Años menopausia: " rendered="#{categorias.idcategoria==2}"  />
+                                            <p:inputTextarea id="txtCitologico2"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==2}"/>
+                                            <h:outputLabel for="txtUltimaCitologia" value="Años menarquia: " rendered="#{categorias.idcategoria==2}"  />
+                                            <p:inputTextarea id="txtCitologico3"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==2}"/>
+                                            
+                                            <h:panelGrid columns="8" id="pgDatosFechas">
+                                                
+
+                                             <h:outputLabel for="txtUltimaMenstruacion" value="Fecha ultima menstruación: " rendered="#{categorias.idcategoria==6}"  />
+                                             <p:calendar id="txtUltimaMenstruacion" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" rendered="#{categorias.idcategoria==6}" />
+                                                <p:watermark for="txtUltimaMenstruacion" value="dd-mm-aaaa" />
+                                                <p:messages for="txtUltimaMenstruacion"/>
+                                                
+                                                <h:outputLabel for="txtUltimoParto" value="Fecha ultimo parto: " rendered="#{categorias.idcategoria==6}"  />
+                                             <p:calendar id="txtUltimoParto" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" rendered="#{categorias.idcategoria==6}" />
+                                                <p:watermark for="txtUltimoParto" value="dd-mm-aaaa" />
+                                                <p:messages for="txtUltimoParto"/>
+                                                
+                                                <h:outputLabel for="txtUltimaCitologia" value="Fecha ultima citología: " rendered="#{categorias.idcategoria==6}"  />
+                                             <p:calendar id="txtUltimaCitologia" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" rendered="#{categorias.idcategoria==6}" />
+                                                <p:watermark for="txtUltimaCitologia" value="dd-mm-aaaa" />
+                                                <p:messages for="txtUltimaCitologia"/>
+                                                
+                                            </h:panelGrid>
+                                          
+                                        </ui:repeat>
+           
                                     </h:panelGrid>
                                 </p:tab>
                                 <p:tab title="Citológico Especial">
                                     <h:panelGrid columns="2" cellpadding="10">
-
+<!--                                        lista automaticamente todos los Checkbox definidos en base-->
+                                        <ui:repeat value="#{citologicoListar.listarCategoria('2')}" var="categorias">
+<!--                                            <h2>#{categorias.idcategoria}</h2>-->
+                                            <h3>#{categorias.descripcionmarcadorcategoria}</h3>
+                                            <p:selectManyCheckbox id="grid" value="#{citologicoListar.categoriasID}" layout="grid" columns="3">
+                                             <f:selectItems value="#{citologicoListar.listarSubcategoria(categorias.idcategoria)}" var="subcategorias" itemLabel="#{subcategorias.nombresubcategoria}" itemValue="#{subcategorias.idsubcategoria}" />
+                                            </p:selectManyCheckbox>
+<!--                                            liquidos-->
+                                            <h:outputLabel for="txtOtroLiquidos" value="Otro: " rendered="#{categorias.idcategoria==7}"  />
+                                            <p:inputTextarea id="txtOtroLiquidos"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==7}"/>
+<!--                                            PAAF-->
+                                            <h:outputLabel for="txtPAAF" value="PAAF: " rendered="#{categorias.idcategoria==10}"  />
+                                            <p:inputTextarea id="txtPAAF"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==10}"/>
+                                            
+                                        </ui:repeat>
                                     </h:panelGrid>
                                 </p:tab>
-                                <p:tab title="Capturas de Híbridos">
-                                    <h:panelGrid columns="2" cellpadding="10">
-
+                                <p:tab title="Tamizage de HPV">
+                                    <h:panelGrid columns="2" cellpadding="10" id="descripcionCitologico">
+                                          <h:panelGrid >
+                                        <p:row>
+                                            <p style="font-style: oblique">Diagnostico Citologico.</p>
+                                        </p:row>
+                                        <p:row>
+                                            <p:inputTextarea id="txtCitologico"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
+                                            <p:messages for="txtCitologico"/>
+                                        </p:row>
+                                     </h:panelGrid>
                                     </h:panelGrid>
                                 </p:tab>
                             </p:accordionPanel>

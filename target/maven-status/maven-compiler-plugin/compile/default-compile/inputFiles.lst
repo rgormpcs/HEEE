@@ -13,6 +13,7 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Canton.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Empleado.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Estudiosrevision.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/CategoriaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Usuario/UsuarioCrear.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Categoria.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Cabecerarecepcionmuestra.java
@@ -28,6 +29,7 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Detalleestudioespecial.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAProvinciaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Extremidades.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/SubcategoriaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/GenericDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/TipoEstudioDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Empleado/EmpleadoCrear.java
@@ -39,7 +41,9 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/HospitalDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Partes.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Estudiosquirurgicos.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPASubcategoriaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Subtipo.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPACategoriaDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Usuario.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAGenericDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAEmpleadoDAO.java
@@ -49,6 +53,8 @@
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Estudiosamputaciones.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Tipoestudiocitologico.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Amputaciones/AmputacionesListar.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Citologico/SelectItem.java
+/home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Bean/Citologico/CitologicoListar.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/Entity/Doctor.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/JPA/JPAParteDAO.java
 /home/mpcs/NetBeansProjects/HeeSiap/src/main/java/Model/DAO/CabecerarecepcionmuestraDAO.java

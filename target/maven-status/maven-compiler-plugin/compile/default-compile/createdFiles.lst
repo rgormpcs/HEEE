@@ -1,5 +1,6 @@
 Model/JPA/JPASubtipoDAO.class
 Model/Entity/Subcategoria_.class
+Model/JPA/JPASubcategoriaDAO.class
 Bean/Menu/PlantillaController.class
 Model/Entity/Tipoestudiocitologico.class
 Model/DAO/DetallerecepcionmuestraDAO.class
@@ -8,6 +9,7 @@ Model/DAO/ParteDAO.class
 Model/Entity/Marcador_.class
 Model/Entity/Paciente_.class
 Model/Entity/Subcategoria.class
+Model/DAO/CategoriaDAO.class
 Model/JPA/JPAFactoryDAO.class
 Model/Entity/Subtipo_.class
 Model/Entity/Detalleestudiocitologico_.class
@@ -73,6 +75,7 @@ Model/JPA/JPAUsuarioDAO.class
 Model/DAO/OrganosSistemasDAO.class
 Model/Entity/Hospital_.class
 Model/Entity/Cabecerarecepcionmuestra_.class
+Model/DAO/SubcategoriaDAO.class
 Model/Entity/Detalleestudioespecial.class
 Model/Entity/Subtipo.class
 Model/Entity/Hospital.class
@@ -82,12 +85,14 @@ Model/Entity/Extremidades_.class
 Model/Entity/Cabeceraestudioespecial_.class
 Model/JPA/JPAGenericDAO.class
 Bean/Quirurgico/QuirurgicoCrear.class
+Model/JPA/JPACategoriaDAO.class
 Model/Entity/Extremidades.class
 Model/Entity/Organossistemas.class
 Model/JPA/JPADoctorDAO.class
 Model/Entity/Menu.class
 Model/DAO/ExtremidadDAO.class
 Model/JPA/JPAEmpleadoDAO.class
+Bean/Citologico/SelectItem.class
 Model/DAO/CabecerarecepcionmuestraDAO.class
 Model/Entity/Doctor.class
 Bean/Empleado/EmpleadoCrear.class
@@ -96,6 +101,7 @@ Model/Entity/Cabeceraestudiocitologico_.class
 Model/JPA/JPAOrganosSistemasDAO.class
 Model/JPA/JPAParroquiaDAO.class
 Model/Entity/Provincia.class
+Bean/Citologico/CitologicoListar.class
 Model/Entity/Estudiosquirurgicos_.class
 Model/Entity/Detallerecepcionmuestra_.class
 Bean/Menu/SessionBean.class
