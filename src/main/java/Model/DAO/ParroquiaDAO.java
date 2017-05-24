@@ -1,6 +1,5 @@
 package Model.DAO;
 
-import Model.Entity.Canton;
 import Model.Entity.Parroquia;
 import java.util.List;
 
