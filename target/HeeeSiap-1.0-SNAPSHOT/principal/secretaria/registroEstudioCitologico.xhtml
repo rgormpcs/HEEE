@@ -233,7 +233,8 @@
                                         <ui:repeat value="#{citologicoListar.listarCategoria('1')}" var="categorias">
 <!--                                            <h2>#{categorias.idcategoria}</h2>-->
                                             <h3>#{categorias.descripcionmarcadorcategoria}</h3>
-                                         <p:selectManyCheckbox id="grid" value="#{citologicoListar.categoriasID}" layout="grid" columns="3">
+                                         
+                                         <p:selectManyCheckbox id="grid" value="#{citologicoListar.categoriasID2}" layout="grid" columns="3">
                                              <f:selectItems value="#{citologicoListar.listarSubcategoria(categorias.idcategoria)}" var="subcategorias" itemLabel="#{subcategorias.nombresubcategoria}" itemValue="#{subcategorias.idsubcategoria}" />
                                             </p:selectManyCheckbox>
 <!--                                            material-->
@@ -301,7 +302,7 @@
                                     <h:panelGrid columns="2" cellpadding="10" id="descripcionCitologico">
                                           <h:panelGrid >
                                         <p:row>
-                                            <p style="font-style: oblique">Diagnostico Citologico.</p>
+                                            <p style="font-style: oblique">Diagnostico Citologico:</p>
                                         </p:row>
                                         <p:row>
                                             <p:inputTextarea id="txtCitologico"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />

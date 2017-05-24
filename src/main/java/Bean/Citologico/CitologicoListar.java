@@ -29,7 +29,7 @@ public class CitologicoListar {
 
     
     
-    private String [] categoriasID1;
+    private String [] categoriasID;
     private String [] categoriasID2;
     private String [] categoriasID3;
     private String [] categoriasID4;
@@ -117,12 +117,12 @@ categorias=JPAFactoryDAO.getFactory().getCategoriaDAO().buscarCategoriaPorID(idT
     
   ///variables decombos categoria
 
-    public String[] getCategoriasID1() {
-        return categoriasID1;
+    public String[] getCategoriasID() {
+        return categoriasID;
     }
 
-    public void setCategoriasID1(String[] categoriasID1) {
-        this.categoriasID1 = categoriasID1;
+    public void setCategoriasID(String[] categoriasID1) {
+        this.categoriasID = categoriasID1;
     }
 
     public String[] getCategoriasID2() {
