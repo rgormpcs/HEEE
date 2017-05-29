@@ -24,7 +24,7 @@ public class CodigoBarrasListar implements Serializable{
     /**
      * Creates a new instance of CodigoBarrasListar
      */
-    
+    private String codigo;
     private String nombreEstudio;
     private String anioDigitos;
     private Date fecha; 
@@ -61,14 +61,27 @@ public class CodigoBarrasListar implements Serializable{
         
         EstudiosPorIdTipo=JPAFactoryDAO.getFactory().getContadoresTipoEstudioAnioDAO().find();
         
-        for (Contadorestipoestudioanio  obj : EstudiosPorIdTipo){
+        for (Contadorestipoestudioanio  obj : EstudiosPorIdTipo){   
             if(obj.getIdte().getIdte()==idTipoEstudio){
             numeroEstudios+=1;
             }
         }
 //        para sacar el numero del estudio que se esta ingresando en este momento
         numeroEstudios+=1;
-        String codigo=nombreEstudio.charAt(0)+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
+        
+        switch(nombreEstudio){
+            case "AMPUTACION": codigo=nombreEstudio="AMP"+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
+                    break;
+            case "BIOLOGIA MOLECULAR": codigo=nombreEstudio="BM"+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
+                    break;
+            case "INMUNO HISTOQUIMICA": codigo=nombreEstudio="IHQ"+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
+                    break;
+            default: codigo=nombreEstudio.charAt(0)+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
+                    break;
+                    
+        }
+        
+        
         
         return codigo;
         

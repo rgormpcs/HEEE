@@ -15,9 +15,9 @@
                 <h:form id="contenido">
 
                     <h1 style="color: #045491;text-align: center">Registro de Estudio Citológico</h1>
-                    
+
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
-                    
+
                     <!--tipo de estudio para codigo de barras-->
                     <p:inputText id="txtTipoDeEstudio" type="hidden" value="#{codigoBarrasListar.nombreEstudio='CITOLOGICO'}" />
 
@@ -228,87 +228,142 @@
                         <h:panelGrid id="pgOrganos">
                             <p:accordionPanel>
                                 <p:tab title="Cérvico Vaginales">
-                                    <h:panelGrid>
-<!--                                        lista automaticamente todos los Checkbox definidos en base-->
-                                        <ui:repeat value="#{citologicoListar.listarCategoria('1')}" var="categorias">
-<!--                                            <h2>#{categorias.idcategoria}</h2>-->
-                                            <h3>#{categorias.descripcionmarcadorcategoria}</h3>
-                                         
-                                         <p:selectManyCheckbox id="grid" value="#{citologicoListar.categoriasID2}" layout="grid" columns="3">
-                                             <f:selectItems value="#{citologicoListar.listarSubcategoria(categorias.idcategoria)}" var="subcategorias" itemLabel="#{subcategorias.nombresubcategoria}" itemValue="#{subcategorias.idsubcategoria}" />
+                                    <h:panelGrid columns="2" cellpadding="20">
+
+                                        <h:panelGrid columns="1">
+                                            <h3>Material:</h3>
+                                            <p:selectManyCheckbox id="gridMaterial" value="#{citologicoListar.subcategoriaMaterial}" layout="grid" columns="1">
+                                                <f:selectItems value="#{citologicoListar.listarSubcategoria('1')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
+                                            </p:selectManyCheckbox>  
+                                            <p:inputTextarea id="txtOtroMaterial"  rows="1" cols="30"/>
+                                        </h:panelGrid>
+
+                                        <h:panelGrid columns="1">
+                                            <h3>Anticoncepción:</h3>
+                                            <p:selectManyCheckbox id="gridAnticoncepcion" value="#{citologicoListar.subcategoriaAnticoncepcion}" layout="grid" columns="1">
+                                                <f:selectItems value="#{citologicoListar.listarSubcategoria('4')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
+                                            </p:selectManyCheckbox>  
+                                            <p:inputTextarea id="txtOtroAnticoncepcion"  rows="1" cols="30"/>
+                                        </h:panelGrid>
+
+                                        
+                                        <h:panelGrid columns="1">
+                                            <h3>Edades de:</h3>
+                                            <p:selectManyCheckbox id="gridEdades" value="#{citologicoListar.subcategoriaEdades}" layout="grid" columns="1">
+                                                <f:selectItems value="#{citologicoListar.listarSubcategoria('2')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
+                                            </p:selectManyCheckbox>  
+                                        </h:panelGrid>
+
+
+                                        <h:panelGrid columns="1">
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <p:spinner id="txtOtroEdadMenarquia" value="" min="5" stepFactor="5" />
+                                            <p:watermark for="txtOtroEdadMenarquia" value="Edad menarquia" />
+                                            <p:spinner id="txtOtroEdadMenopausia" value="" min="5" stepFactor="5" />
+                                            <p:watermark for="txtOtroEdadMenopausia" value="Edad menopausia" />
+                                            <p:spinner id="txtOtroEdadInicioRelacionesSexuales"  min="5" value="" stepFactor="5" />
+                                            <p:watermark for="txtOtroEdadInicioRelacionesSexuales" value="Edad relaciones sexuales" />
+                                        </h:panelGrid>
+
+                                        <h:panelGrid columns="1">
+                                            <h3>Fechas:</h3>
+                                            <p:selectManyCheckbox id="gridFechas" value="#{citologicoListar.subcategoriaFechas}" layout="grid" columns="1">
+                                                <f:selectItems value="#{citologicoListar.listarSubcategoria('6')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
                                             </p:selectManyCheckbox>
-<!--                                            material-->
+                                        </h:panelGrid>
 
-                                            <h:outputLabel for="txtOtroMaterial" value="Otro: " rendered="#{categorias.idcategoria==1}"  />
-                                            <p:inputTextarea id="txtOtroMaterial"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==1}"/>
-                                            
-                                            <!--anticoncepción-->
-                                            <h:outputLabel for="txtOtroAnticoncepcion" value="Otro: " rendered="#{categorias.idcategoria==4}"  />
-                                            <p:inputTextarea id="txtOtroAnticoncepcion"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==4}"/>
-                                            
-                                            
-                                            <!--edades de--> 
-                                            <h:outputLabel for="txtUltimaCitologia" value="Años inicion relaciones sexuales: " rendered="#{categorias.idcategoria==2}"  />
-                                            <p:inputTextarea id="txtCitologico1"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==2}"/>
-                                            <h:outputLabel for="txtUltimaCitologia" value="Años menopausia: " rendered="#{categorias.idcategoria==2}"  />
-                                            <p:inputTextarea id="txtCitologico2"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==2}"/>
-                                            <h:outputLabel for="txtUltimaCitologia" value="Años menarquia: " rendered="#{categorias.idcategoria==2}"  />
-                                            <p:inputTextarea id="txtCitologico3"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==2}"/>
-                                            
-                                            <h:panelGrid columns="8" id="pgDatosFechas">
-                                                
+                                        <h:panelGrid columns="1">
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <p:calendar id="txtFechaUltimaMenstruacion" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
+                                            <p:watermark for="txtFechaUltimaMenstruacion" value="dd-mm-aaaa" />
+                                            <p:calendar id="txtFechaUltimoParto" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
+                                            <p:watermark for="txtFechaUltimoParto" value="dd-mm-aaaa" />
+                                            <p:calendar id="txtFechaUltimaCitologia" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
+                                            <p:watermark for="txtFechaUltimaCitologia" value="dd-mm-aaaa" /> 
+                                        </h:panelGrid>
 
-                                             <h:outputLabel for="txtUltimaMenstruacion" value="Fecha ultima menstruación: " rendered="#{categorias.idcategoria==6}"  />
-                                             <p:calendar id="txtUltimaMenstruacion" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" rendered="#{categorias.idcategoria==6}" />
-                                                <p:watermark for="txtUltimaMenstruacion" value="dd-mm-aaaa" />
-                                                <p:messages for="txtUltimaMenstruacion"/>
-                                                
-                                                <h:outputLabel for="txtUltimoParto" value="Fecha ultimo parto: " rendered="#{categorias.idcategoria==6}"  />
-                                             <p:calendar id="txtUltimoParto" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" rendered="#{categorias.idcategoria==6}" />
-                                                <p:watermark for="txtUltimoParto" value="dd-mm-aaaa" />
-                                                <p:messages for="txtUltimoParto"/>
-                                                
-                                                <h:outputLabel for="txtUltimaCitologia" value="Fecha ultima citología: " rendered="#{categorias.idcategoria==6}"  />
-                                             <p:calendar id="txtUltimaCitologia" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" rendered="#{categorias.idcategoria==6}" />
-                                                <p:watermark for="txtUltimaCitologia" value="dd-mm-aaaa" />
-                                                <p:messages for="txtUltimaCitologia"/>
-                                                
-                                            </h:panelGrid>
-                                          
-                                        </ui:repeat>
-           
-                                    </h:panelGrid>
+                                        <h:panelGrid columns="1">
+                                            <h3>Paridad:</h3>
+                                            <p:selectManyCheckbox id="gridParidad" value="#{citologicoListar.subcategoriaParidad}" layout="grid" columns="1">
+                                                <f:selectItems value="#{citologicoListar.listarSubcategoria('3')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
+                                            </p:selectManyCheckbox>
+                                        </h:panelGrid>
+                                        
+                                         <h:panelGrid columns="1">
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <p:spinner id="txtGestaciones" value="" min="1" stepFactor="1" />
+                                            <p:watermark for="txtGestaciones" value="Numero de gestaciones" />
+                                            <p:spinner id="txtPartos" value="" min="1" stepFactor="1" />
+                                            <p:watermark for="txtPartos" value="Numero de partos" />
+                                            <p:spinner id="txtAbortos"  min="1" value="" stepFactor="1" />
+                                            <p:watermark for="txtAbortos" value="Numero de abortos" />
+                                            <p:spinner id="txtCesareas"  min="1" value="" stepFactor="1" />
+                                            <p:watermark for="txtCesareas" value="Numero de cesareas" />
+                                        </h:panelGrid>
+                                        
+
+                                    </h:panelGrid> 
                                 </p:tab>
                                 <p:tab title="Citológico Especial">
                                     <h:panelGrid columns="2" cellpadding="10">
-<!--                                        lista automaticamente todos los Checkbox definidos en base-->
-                                        <ui:repeat value="#{citologicoListar.listarCategoria('2')}" var="categorias">
-<!--                                            <h2>#{categorias.idcategoria}</h2>-->
-                                            <h3>#{categorias.descripcionmarcadorcategoria}</h3>
-                                            <p:selectManyCheckbox id="grid" value="#{citologicoListar.categoriasID}" layout="grid" columns="3">
-                                             <f:selectItems value="#{citologicoListar.listarSubcategoria(categorias.idcategoria)}" var="subcategorias" itemLabel="#{subcategorias.nombresubcategoria}" itemValue="#{subcategorias.idsubcategoria}" />
+                                        
+                                        <h:panelGrid columns="1">
+                                            <h3>Liquidos:</h3>
+                                            <p:selectManyCheckbox id="gridLiquidos" value="#{citologicoListar.subcategoriaLiquidos}" layout="grid" columns="1">
+                                                <f:selectItems value="#{citologicoListar.listarSubcategoria('7')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
+                                            </p:selectManyCheckbox>  
+                                            <p:inputTextarea id="txtOtroLiquidos"  rows="1" cols="30"/>
+                                        </h:panelGrid>
+                                        
+                                        <h:panelGrid columns="1">
+                                            <h3>Lavado:</h3>
+                                            <p:selectManyCheckbox id="gridLavado" value="#{citologicoListar.subcategoriaLavado}" layout="grid" columns="1">
+                                                <f:selectItems value="#{citologicoListar.listarSubcategoria('8')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
                                             </p:selectManyCheckbox>
-<!--                                            liquidos-->
-                                            <h:outputLabel for="txtOtroLiquidos" value="Otro: " rendered="#{categorias.idcategoria==7}"  />
-                                            <p:inputTextarea id="txtOtroLiquidos"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==7}"/>
-<!--                                            PAAF-->
-                                            <h:outputLabel for="txtPAAF" value="PAAF: " rendered="#{categorias.idcategoria==10}"  />
-                                            <p:inputTextarea id="txtPAAF"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" rendered="#{categorias.idcategoria==10}"/>
-                                            
-                                        </ui:repeat>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                        </h:panelGrid>
+                                        
+                                        <h:panelGrid columns="1">
+                                            <h3>Cepillado:</h3>
+                                            <p:selectManyCheckbox id="gridCepillado" value="#{citologicoListar.subcategoriaCepillado}" layout="grid" columns="1">
+                                                <f:selectItems value="#{citologicoListar.listarSubcategoria('9')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
+                                            </p:selectManyCheckbox>  
+                                        </h:panelGrid>
+                                        
+                                        <h:panelGrid columns="1">
+                                            <h3>PAAF:</h3>
+                                            <p:selectManyCheckbox id="gridPAAF" value="#{citologicoListar.subcategoriaPaaf}" layout="grid" columns="1">
+                                                <f:selectItems value="#{citologicoListar.listarSubcategoria('10')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
+                                            </p:selectManyCheckbox>  
+                                            <p:inputTextarea id="txtOtroPAAF"  rows="1" cols="30"/>
+                                        </h:panelGrid>
                                     </h:panelGrid>
                                 </p:tab>
                                 <p:tab title="Tamizage de HPV">
                                     <h:panelGrid columns="2" cellpadding="10" id="descripcionCitologico">
-                                          <h:panelGrid >
-                                        <p:row>
-                                            <p style="font-style: oblique">Diagnostico Citologico:</p>
-                                        </p:row>
-                                        <p:row>
-                                            <p:inputTextarea id="txtCitologico"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
-                                            <p:messages for="txtCitologico"/>
-                                        </p:row>
-                                     </h:panelGrid>
+                                        <h:panelGrid >
+                                            <p:row>
+                                                <p style="font-style: oblique">Diagnostico Citologico:</p>
+                                            </p:row>
+                                            <p:row>
+                                                <p:inputTextarea id="txtCitologico"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
+                                                <p:messages for="txtCitologico"/>
+                                            </p:row>
+                                        </h:panelGrid>
                                     </h:panelGrid>
                                 </p:tab>
                             </p:accordionPanel>
@@ -326,7 +381,7 @@
                     <h:panelGrid columns="5" cellpadding="10" cellspacing="1" >
                         <p:commandLink id="agregar" styleClass="content" update="pgDatosHospital, pgDatosMuestra,pgDatosMedico" actionListener="#{registroEQController.registrarEstudioQuirugico()}" onclick="PF('dlgCodigoBarras').show();" >
                             <h:graphicImage value="/resources/images/agregar.PNG" styleClass="content" width="65px" />
-                            
+
                         </p:commandLink>
                         <p:tooltip id="toolTipFade1" for="agregar" value="Guardar" trackMouse="true"/>
 
@@ -340,39 +395,39 @@
                         </p:commandLink>
                         <p:tooltip id="toolTipFade3" for="rechazar" value="Guardar y Rechazar" trackMouse="true"/>
                     </h:panelGrid>
-                    
+
                     <!-- PopUP para codigo de barras-->
                     <p:dialog modal="true" header="Código de barras:" widgetVar="dlgCodigoBarras">
                         <h:form>
-                        <h:panelGrid columns="3" cellpadding="10" >
-                            <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
-                            <p:barcode id="codigoB" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
-                            <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
-                                <p:printer target="codigoB" />
-                            </p:commandButton>
-                        </h:panelGrid>
-
-                        <p:fieldset legend="Desea Ingresar otra solicitud de estudio amputaciones" style="width:90%">
-
-                            <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
-                                
-                                <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
-                                    <p:ajax update="contenido" listener="#{ubicacionListar.resetCombo()}"/>
-
+                            <h:panelGrid columns="3" cellpadding="10" >
+                                <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
+                                <p:barcode id="codigoB" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
+                                <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
+                                    <p:printer target="codigoB" />
                                 </p:commandButton>
- 
-                                <p:commandButton value="No" type="button" action="#{amputacionesListar.volver()}" >
-                                    
-                                </p:commandButton>
-
                             </h:panelGrid>
-                        </p:fieldset>
-                            </h:form>
+
+                            <p:fieldset legend="Desea Ingresar otra solicitud de estudio amputaciones" style="width:90%">
+
+                                <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
+
+                                    <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
+                                        <p:ajax update="contenido" listener="#{ubicacionListar.resetCombo()}"/>
+
+                                    </p:commandButton>
+
+                                    <p:commandButton value="No" type="button" action="#{amputacionesListar.volver()}" >
+
+                                    </p:commandButton>
+
+                                </h:panelGrid>
+                            </p:fieldset>
+                        </h:form>
                     </p:dialog> 
 
-                     <!--PopUp para motivo de rechazo--> 
+                    <!--PopUp para motivo de rechazo--> 
                     <p:dialog modal="true" header="Motivo de rechaso:" widgetVar="dlgMotivoRechazo">
-                        
+
                         <h:panelGrid columns="1" id="pgMotivoRechazo">
 
                             <p:row>
@@ -382,17 +437,17 @@
                                 <p:inputTextarea id="txtMotivoRechazo"  rows="2" cols="40"    queryDelay="750" minQueryLength="4" />
                                 <p:messages for="txtMotivoRechazo"/>
                             </p:row>
-                            
-                              
-                           </h:panelGrid>
+
+
+                        </h:panelGrid>
                         <h:panelGrid columns="2" id="pgMotivoRechazoBotones">
-                          <p:commandButton  value="Guardar"  type="button"  >
-                                </p:commandButton>
- 
-                                <p:commandButton value="Cancelar" type="button" >  
-                                </p:commandButton>
-                            </h:panelGrid>
-                        
+                            <p:commandButton  value="Guardar"  type="button"  >
+                            </p:commandButton>
+
+                            <p:commandButton value="Cancelar" type="button" >  
+                            </p:commandButton>
+                        </h:panelGrid>
+
                     </p:dialog>
                 </h:form>
 
