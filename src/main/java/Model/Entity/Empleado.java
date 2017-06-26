@@ -71,6 +71,9 @@ public class Empleado implements Serializable {
     @Size(max = 50)
     @Column(name = "especialidadempleado")
     private String especialidadempleado;
+    @Size(max = 50)
+    @Column(name = "cargoempleado")
+    private String cargoempleado;
 
     public Empleado() {
     }
@@ -149,6 +152,14 @@ public class Empleado implements Serializable {
 
     public void setEspecialidadempleado(String especialidadempleado) {
         this.especialidadempleado = especialidadempleado;
+    }
+
+    public String getCargoempleado() {
+        return cargoempleado;
+    }
+
+    public void setCargoempleado(String cargoempleado) {
+        this.cargoempleado = cargoempleado;
     }
 
     @Override
