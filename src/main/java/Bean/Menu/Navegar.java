@@ -1,8 +1,12 @@
 package Bean.Menu;
 
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+@ManagedBean(name = "navegar")
+@SessionScoped
 public class Navegar implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,4 +22,11 @@ public class Navegar implements Serializable {
         }
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+
+    
+    
 }

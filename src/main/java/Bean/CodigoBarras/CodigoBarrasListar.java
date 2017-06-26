@@ -5,7 +5,6 @@
  */
 package Bean.CodigoBarras;
 
-
 import Model.Entity.Contadorestipoestudioanio;
 import Model.Entity.Tipoestudio;
 import Model.JPA.JPAFactoryDAO;
@@ -16,10 +15,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-
 @ManagedBean(name = "codigoBarrasListar")
 
-public class CodigoBarrasListar implements Serializable{
+public class CodigoBarrasListar implements Serializable {
 
     /**
      * Creates a new instance of CodigoBarrasListar
@@ -27,64 +25,64 @@ public class CodigoBarrasListar implements Serializable{
     private String codigo;
     private String nombreEstudio;
     private String anioDigitos;
-    private Date fecha; 
+    private Date fecha;
     private int numeroEstudios;
     private int idTipoEstudio;
     private List<Contadorestipoestudioanio> EstudiosPorIdTipo;
     List<Tipoestudio> TiposEstudioporNombre;
-    
+
     public CodigoBarrasListar() {
-    numeroEstudios =0;
-    fecha = new Date(); 
-    anioDigitos= new SimpleDateFormat("yy").format(fecha); 
-    nombreEstudio="";
-    idTipoEstudio=0;
-    EstudiosPorIdTipo=null;
-    TiposEstudioporNombre= null;
-    
-        
-    
+        numeroEstudios = 0;
+        fecha = new Date();
+        anioDigitos = new SimpleDateFormat("yy").format(fecha);
+        nombreEstudio = "";
+        idTipoEstudio = 0;
+        EstudiosPorIdTipo = null;
+        TiposEstudioporNombre = null;
+
     }
-    
-    public void totalEstudios(){
-   
+
+    public void totalEstudios() {
+
     }
-    
-    public String codigoFormado(){
+
+    public String codigoFormado() {
 //         System.out.println("**********variable estudio:"+nombreEstudio);
-        String [] campoTipo={"nombrete"};
-        String [] valorCampoTipo={nombreEstudio};
-        TiposEstudioporNombre= JPAFactoryDAO.getFactory().getTipoEstudioDAO().find(campoTipo,valorCampoTipo);
+        String[] campoTipo = {"nombrete"};
+        String[] valorCampoTipo = {nombreEstudio};
+        TiposEstudioporNombre = JPAFactoryDAO.getFactory().getTipoEstudioDAO().find(campoTipo, valorCampoTipo);
 
         //sacar el id unicamente del estudio que esta en la coleccion anterior
-        idTipoEstudio=TiposEstudioporNombre.get(0).getIdte();
-        
-        EstudiosPorIdTipo=JPAFactoryDAO.getFactory().getContadoresTipoEstudioAnioDAO().find();
-        
-        for (Contadorestipoestudioanio  obj : EstudiosPorIdTipo){   
-            if(obj.getIdte().getIdte()==idTipoEstudio){
-            numeroEstudios+=1;
+        idTipoEstudio = TiposEstudioporNombre.get(0).getIdte();
+
+        EstudiosPorIdTipo = JPAFactoryDAO.getFactory().getContadoresTipoEstudioAnioDAO().find();
+
+        for (Contadorestipoestudioanio obj : EstudiosPorIdTipo) {
+            if (obj.getIdte().getIdte() == idTipoEstudio) {
+                numeroEstudios += 1;
             }
         }
 //        para sacar el numero del estudio que se esta ingresando en este momento
-        numeroEstudios+=1;
-        
-        switch(nombreEstudio){
-            case "AMPUTACION": codigo=nombreEstudio="AMP"+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
-                    break;
-            case "BIOLOGIA MOLECULAR": codigo=nombreEstudio="BM"+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
-                    break;
-            case "INMUNO HISTOQUIMICA": codigo=nombreEstudio="IHQ"+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
-                    break;
-            default: codigo=nombreEstudio.charAt(0)+"-"+anioDigitos+"-"+String.valueOf(numeroEstudios);
-                    break;
-                    
+        numeroEstudios += 1;
+
+        switch (nombreEstudio) {
+            case "AMPUTACION":
+                codigo = nombreEstudio = "AMP" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+                break;
+            case "BIOLOGIA MOLECULAR":
+                codigo = nombreEstudio = "BM" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+                break;
+            case "INMUNO HISTOQUIMICA":
+                codigo = nombreEstudio = "IHQ" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+                break;
+            default:
+                codigo = nombreEstudio.charAt(0) + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+                break;
+
         }
-        
-        
-        
+
         return codigo;
-        
+
     }
     //getter and setter
 
@@ -103,7 +101,6 @@ public class CodigoBarrasListar implements Serializable{
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
 
     public String getEstudioInicial() {
         return nombreEstudio;
@@ -128,7 +125,5 @@ public class CodigoBarrasListar implements Serializable{
     public void setOrdinal(int ordinal) {
         this.numeroEstudios = ordinal;
     }
-    
-    
-    
+
 }

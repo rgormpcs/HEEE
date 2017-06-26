@@ -40,12 +40,13 @@ public class Ingresar implements Serializable {
      */
     public Ingresar() {
         this.faceContext = FacesContext.getCurrentInstance();
+        
         this.httpServletRequest = ((HttpServletRequest)this.faceContext.getExternalContext().getRequest());
         
     }
     //
     public String validarIngreso(){
-        
+      System.out.println("instancia de faces:"+faceContext.getCurrentInstance().toString());  
     String redireccion = null;
     System.out.println("Ingreso validacion");
     System.out.println("Nombre:"+nombreUsuario);
@@ -58,18 +59,19 @@ public class Ingresar implements Serializable {
             if (usuarioLista.isEmpty()){
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario no existe"));
             }else{
-                for (int i=0; i<usuarioLista.size(); i++){
-                System.out.println("informacion de usuario:"+usuarioLista.get(i).getUsuariousuario());
-                if (usuarioLista.get(i).getClaveusuario().equals(contrasenia)){
+//                for (int i=0; i<usuarioLista.size(); i++){
+                System.out.println("informacion de usuario:"+usuarioLista.get(0).getUsuariousuario());
+                if (usuarioLista.get(0).getClaveusuario().equals(contrasenia)){
                 System.out.println("correcto entro");
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuarioLista.get(i));
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuarioLista.get(0));
+                System.out.println("usuario del faces:"+FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"));
                 redireccion = "/principal/bienvenida?faces-redirect=true";  
 
                 }else{
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Datos Erróneos"));
                 System.out.println("dato incorrecto");
                 }
-            }
+//            }
             
             }
        

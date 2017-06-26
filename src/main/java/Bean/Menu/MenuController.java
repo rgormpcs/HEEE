@@ -35,9 +35,10 @@ public class MenuController implements Serializable {
         try {
             
                lista = JPAFactoryDAO.getFactory().getMenuDAO().find();
-               for(Menu l : lista){
-                   System.out.println(l.getNombremenu());
-               }
+//               impresion de items del menu
+//               for(Menu l : lista){
+//                   System.out.println(l.getNombremenu());
+//               }
             System.out.println("SI entro a la lista de menu");
         } catch (Exception e) {
             //mensaje de JSF
@@ -55,7 +56,7 @@ public class MenuController implements Serializable {
     }
     /*Metodo para obtener las opciones de un menú dinámico, de acuerdo al usuario logueado*/
     public void establecerPermisos() {
-        System.out.println("entroa establecer permisos");
+        System.out.println("entroa establecer permisos en menu controller");
         //captura del tipo de usuario que ha iniciado sesión
         Usuario us = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         

@@ -5,17 +5,22 @@
  */
 package Bean.Amputaciones;
 
+import Bean.Menu.Navegar;
 import Bean.Ubicacion.UbicacionListar;
 import Model.Entity.Extremidades;
 import Model.Entity.Partes;
+import Model.Entity.Usuario;
 import Model.JPA.JPAFactoryDAO;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import org.primefaces.model.menu.DefaultMenuItem;
 
 /**
@@ -23,8 +28,8 @@ import org.primefaces.model.menu.DefaultMenuItem;
  * @author mpcs
  */
 @ManagedBean(name = "amputacionesListar")
-@SessionScoped
-
+//@ViewScoped
+@RequestScoped
 public class AmputacionesListar implements Serializable {
 
     private UbicacionListar ubicacionListar = new UbicacionListar();
@@ -59,13 +64,29 @@ public class AmputacionesListar implements Serializable {
         partesID = "";
         listaExtremidades = null;
         listaExtremidades = null;
-        listarExtremidades();
+        
+        
     }
     
     public void volver(){
-    String redireccion = "/principal/bienvenida.HeeSiap";  
-    DefaultMenuItem item = new DefaultMenuItem();
-    item.setUrl(redireccion);
+//        System.out.println("usuario del faces:"+FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"));
+//        String redireccion = "/principal/bienvenida.HeeSiap";  
+//        System.out.println("redireccion:"+redireccion);
+        
+//    
+//    DefaultMenuItem item = new DefaultMenuItem();
+//    item.setUrl(redireccion);
+System.out.println("*******************dlkfjal");
+
+// try {
+//            System.out.println("LOGRO REDIRECCIONAR A UN NUEVO FORMULARIO");
+//            FacesContext.getCurrentInstance().getExternalContext().redirect("../Inicio/paginaInicial.xhtml");
+//        } catch (Exception e) {
+//            System.out.println("FALLO LA REDIRECCION A UN NUEVO FORMULARIO");
+//            e.printStackTrace();
+//        }
+
+//    Navegar.direccionarInicio();
     }
     //getter and setter
 

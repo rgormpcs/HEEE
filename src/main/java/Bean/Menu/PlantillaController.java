@@ -14,7 +14,7 @@ public class PlantillaController implements Serializable{
     public void verificarSesion(){
         try {
             
-            System.out.println("entro en comprovacion");
+            System.out.println("entro en comprovacion plantilla controller");
             //Inicialización de la variable
             FacesContext context = FacesContext.getCurrentInstance();
             //Acceso a la variable que se almacena en sesión.

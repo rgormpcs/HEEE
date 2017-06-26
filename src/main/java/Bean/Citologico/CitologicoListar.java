@@ -14,7 +14,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 
 import javax.faces.model.SelectItem;
@@ -46,13 +48,20 @@ public class CitologicoListar {
             
     private List<Categoria> categorias;
     private List<Subcategoria> subcategorias;
-    private String[] selectedCars;
+    
     /**
      * Creates a new instance of NewJSFManagedBean
      */
     public CitologicoListar() {
         
         categorias=null;
+        
+        
+    }
+        public void resetCombo() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Ingrese los datos del nuevo estudio."));
+        categorias=null;
+        subcategorias=null;
         
         
     }
@@ -68,9 +77,7 @@ public class CitologicoListar {
     }
    
     
-    public String[] getSelectedCars() {
-        return selectedCars;
-    }
+   
 
     public String[] getSubcategoriaCepillado() {
         return subcategoriaCepillado;

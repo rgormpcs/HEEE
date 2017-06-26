@@ -14,7 +14,8 @@
                 <h:form id="contenido">
 
                     <h1 style="color: #045491;text-align: center">Registro de Estudio Quirúrgico</h1>
-                      <p:inputText id="txtTipoDeEstudio" type="hidden" value="#{codigoBarrasListar.nombreEstudio='QUIRURGICO'}" />
+                    <!--tipo de estudio para codigo de barras-->
+                    <h1 style="display:none;" >#{codigoBarrasListar.nombreEstudio='QUIRURGICO'}</h1>
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
 
                     <p:fieldset legend="Datos del Hospital" style="width:80%" >
@@ -42,9 +43,9 @@
                             <p:selectOneMenu id="cboCanton" value="#{ubicacionListar.cantonID}"  filter="true" filterMatchMode="startsWith" required="false" requiredMessage="Seleccione el Cantón">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{ubicacionListar.cantones}" var="cantones" itemLabel="#{cantones.nombrecanton}" itemValue="#{cantones.idcanton}"/>
-                            <p:ajax update="cboParroquia"/>
+                                <p:ajax update="cboParroquia"/>
                             </p:selectOneMenu>
-                            
+
                             <p:messages for="cboCanton"/>
 
                             <p:outputLabel for="txtCodUO" value="Cod. UO: " />
@@ -223,7 +224,7 @@
                             <p:selectOneMenu id="cboSubtipo" value="#{quirurgicoListar.subtipoID}" required="true" requiredMessage="Seleccione un Subtipo">
                                 <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
                                 <f:selectItems value="#{quirurgicoListar.subtipo}" var="subtipo" itemLabel="#{subtipo.descripcionmarcadorsubtipo}" itemValue="#{subtipo.idsubtipo}" />                                
-                                
+
                             </p:selectOneMenu>
                             <p:messages for="cboSubtipo"/>
                             <p:column/>
@@ -255,39 +256,39 @@
                         </p:commandLink>
                         <p:tooltip id="toolTipFade3" for="rechazar" value="Guardar y Rechazar" trackMouse="true"/>
                     </h:panelGrid>
-                       
+
                     <!-- PopUP para codigo de barras-->
                     <p:dialog modal="true" header="Código de barras:" widgetVar="dlgCodigoBarras">
                         <h:form>
-                        <h:panelGrid columns="3" cellpadding="10" >
-                            <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
-                            <p:barcode id="codigoB" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
-                            <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
-                                <p:printer target="codigoB" />
-                            </p:commandButton>
-                        </h:panelGrid>
-
-                        <p:fieldset legend="Desea Ingresar otra solicitud de estudio amputaciones" style="width:90%">
-
-                            <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
-                                
-                                <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
-                                    <p:ajax update="contenido" listener="#{ubicacionListar.resetCombo()}"/>
-
+                            <h:panelGrid columns="3" cellpadding="10" >
+                                <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
+                                <p:barcode id="codigoB" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
+                                <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
+                                    <p:printer target="codigoB" />
                                 </p:commandButton>
- 
-                                <p:commandButton value="No" type="button" action="#{amputacionesListar.volver()}" >
-                                    
-                                </p:commandButton>
-
                             </h:panelGrid>
-                        </p:fieldset>
-                            </h:form>
+
+                            <p:fieldset legend="Desea Ingresar otra solicitud de estudio amputaciones" style="width:90%">
+
+                                <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
+
+                                    <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
+                                        <p:ajax update="contenido" listener="#{ubicacionListar.resetCombo()}"/>
+
+                                    </p:commandButton>
+
+                                    <p:commandButton value="No" type="button" action="#{amputacionesListar.volver()}" >
+
+                                    </p:commandButton>
+
+                                </h:panelGrid>
+                            </p:fieldset>
+                        </h:form>
                     </p:dialog> 
-                    
-                     <!--PopUp para motivo de rechazo--> 
+
+                    <!--PopUp para motivo de rechazo--> 
                     <p:dialog modal="true" header="Motivo de rechaso:" widgetVar="dlgMotivoRechazo">
-                        
+
                         <h:panelGrid columns="1" id="pgMotivoRechazo">
 
                             <p:row>
@@ -297,19 +298,19 @@
                                 <p:inputTextarea id="txtMotivoRechazo"  rows="2" cols="40"    queryDelay="750" minQueryLength="4" />
                                 <p:messages for="txtMotivoRechazo"/>
                             </p:row>
-                            
-                              
-                           </h:panelGrid>
+
+
+                        </h:panelGrid>
                         <h:panelGrid columns="2" id="pgMotivoRechazoBotones">
-                          <p:commandButton  value="Guardar"  type="button"  >
-                                </p:commandButton>
- 
-                                <p:commandButton value="Cancelar" type="button" >  
-                                </p:commandButton>
-                            </h:panelGrid>
-                        
+                            <p:commandButton  value="Guardar"  type="button"  >
+                            </p:commandButton>
+
+                            <p:commandButton value="Cancelar" type="button" >  
+                            </p:commandButton>
+                        </h:panelGrid>
+
                     </p:dialog>
-                    
+
                 </h:form>
 
                 <!-- Script para usar el calendario en español-->

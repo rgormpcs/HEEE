@@ -15,11 +15,12 @@
                 <h:form id="contenido">
 
                     <h1 style="color: #045491;text-align: center">Registro de Estudio Citológico</h1>
+                    <!--tipo de estudio para codigo de barras-->
+                    <h1 style="display:none;" >#{codigoBarrasListar.nombreEstudio='CITOLOGICO'}</h1>
 
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
 
-                    <!--tipo de estudio para codigo de barras-->
-                    <p:inputText id="txtTipoDeEstudio" type="hidden" value="#{codigoBarrasListar.nombreEstudio='CITOLOGICO'}" />
+
 
                     <p:fieldset legend="Datos del Hospital" style="width:80%" >
                         <h:panelGrid columns="7" id="pgDatosHospital">
@@ -215,10 +216,7 @@
                             <p:row>
                                 <p style="font-style: oblique">Describir el procedimiento, origen, número y zona.</p>
                             </p:row>
-                            <p:row>
-                                <p:inputTextarea id="txtMuestra"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
-                                <p:messages for="txtMuestra"/>
-                            </p:row>
+
                         </h:panelGrid>
                     </p:fieldset>
                     <a href="../../../java/Model/DAO/CantonDAO.java"></a>
@@ -246,7 +244,7 @@
                                             <p:inputTextarea id="txtOtroAnticoncepcion"  rows="1" cols="30"/>
                                         </h:panelGrid>
 
-                                        
+
                                         <h:panelGrid columns="1">
                                             <h3>Edades de:</h3>
                                             <p:selectManyCheckbox id="gridEdades" value="#{citologicoListar.subcategoriaEdades}" layout="grid" columns="1">
@@ -292,8 +290,8 @@
                                                 <f:selectItems value="#{citologicoListar.listarSubcategoria('3')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
                                             </p:selectManyCheckbox>
                                         </h:panelGrid>
-                                        
-                                         <h:panelGrid columns="1">
+
+                                        <h:panelGrid columns="1">
                                             <br></br>
                                             <br></br>
                                             <br></br>
@@ -306,13 +304,13 @@
                                             <p:spinner id="txtCesareas"  min="1" value="" stepFactor="1" />
                                             <p:watermark for="txtCesareas" value="Numero de cesareas" />
                                         </h:panelGrid>
-                                        
+
 
                                     </h:panelGrid> 
                                 </p:tab>
                                 <p:tab title="Citológico Especial">
                                     <h:panelGrid columns="2" cellpadding="10">
-                                        
+
                                         <h:panelGrid columns="1">
                                             <h3>Liquidos:</h3>
                                             <p:selectManyCheckbox id="gridLiquidos" value="#{citologicoListar.subcategoriaLiquidos}" layout="grid" columns="1">
@@ -320,7 +318,7 @@
                                             </p:selectManyCheckbox>  
                                             <p:inputTextarea id="txtOtroLiquidos"  rows="1" cols="30"/>
                                         </h:panelGrid>
-                                        
+
                                         <h:panelGrid columns="1">
                                             <h3>Lavado:</h3>
                                             <p:selectManyCheckbox id="gridLavado" value="#{citologicoListar.subcategoriaLavado}" layout="grid" columns="1">
@@ -336,14 +334,14 @@
                                             <br></br>
                                             <br></br>
                                         </h:panelGrid>
-                                        
+
                                         <h:panelGrid columns="1">
                                             <h3>Cepillado:</h3>
                                             <p:selectManyCheckbox id="gridCepillado" value="#{citologicoListar.subcategoriaCepillado}" layout="grid" columns="1">
                                                 <f:selectItems value="#{citologicoListar.listarSubcategoria('9')}" var="subcategoria" itemLabel="#{subcategoria.nombresubcategoria}" itemValue="#{subcategoria.idsubcategoria}" />
                                             </p:selectManyCheckbox>  
                                         </h:panelGrid>
-                                        
+
                                         <h:panelGrid columns="1">
                                             <h3>PAAF:</h3>
                                             <p:selectManyCheckbox id="gridPAAF" value="#{citologicoListar.subcategoriaPaaf}" layout="grid" columns="1">
@@ -379,7 +377,7 @@
                     <br/>
 
                     <h:panelGrid columns="5" cellpadding="10" cellspacing="1" >
-                        <p:commandLink id="agregar" styleClass="content" update="pgDatosHospital, pgDatosMuestra,pgDatosMedico" actionListener="#{registroEQController.registrarEstudioQuirugico()}" onclick="PF('dlgCodigoBarras').show();" >
+                        <p:commandLink id="agregar" styleClass="content" update="pgDatosHospital, pgDatosMuestra,pgDatosMedico"  onclick="PF('dlgCodigoBarras').show();" >
                             <h:graphicImage value="/resources/images/agregar.PNG" styleClass="content" width="65px" />
 
                         </p:commandLink>
@@ -411,7 +409,7 @@
 
                                 <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
 
-                                    <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
+                                    <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{citologicoListar.resetCombo()}" >
                                         <p:ajax update="contenido" listener="#{ubicacionListar.resetCombo()}"/>
 
                                     </p:commandButton>

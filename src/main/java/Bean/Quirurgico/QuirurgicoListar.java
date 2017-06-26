@@ -35,6 +35,8 @@ public class QuirurgicoListar implements Serializable{
        ListarSubtipo();
     }
     
+    
+    
     public void ListarOrganosSistemas(){
     organosSistemas=JPAFactoryDAO.getFactory().getOrganosSistemasDAO().find();
     System.out.println("entron a lista con el id:"+organosSistemasID);
