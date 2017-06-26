@@ -13,7 +13,8 @@
             <ui:define name="content">
                 <h:form id="contenido">
                     <h1 style="color: #045491;text-align: center">Registro de Estudio Amputacion</h1>
-                    <p:inputText id="txtTipoDeEstudio" type="hidden" value="#{codigoBarrasListar.nombreEstudio='AMPUTACION'}" />
+                    <p:inputText id="txtTipoDeEstudio" type="hidden" value="#{codigoBarrasListar.nombreEstudio='AMPUTACION'}" /> 
+
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
                     
                   
@@ -233,7 +234,7 @@
                     <br/>
 
                     <h:panelGrid columns="5" cellpadding="10" cellspacing="1" >
-                        <p:commandLink id="agregar" styleClass="content" update="pgDatosHospital, pgDatosMuestra,pgDatosMedico" actionListener="#{registroEQController.registrarEstudioQuirugico()}" onclick="PF('dlg1').show();">
+                        <p:commandLink id="agregar" styleClass="content" update="pgDatosHospital, pgDatosMuestra,pgDatosMedico" actionListener="#{registroEQController.registrarEstudioQuirugico()}" onclick="PF('dlgCodigoBarras').show();">
                             <h:graphicImage value="/resources/images/agregar.PNG" styleClass="content" width="65px" />
                         </p:commandLink>
                         <p:tooltip id="toolTipFade1" for="agregar" value="Guardar" trackMouse="true"/>
@@ -243,14 +244,14 @@
                         </p:commandLink>
                         <p:tooltip id="toolTipFade2" for="cancelar" value="Cancelar" trackMouse="true"/>
 
-                        <p:commandLink id="rechazar" styleClass="content">
+                        <p:commandLink id="rechazar" styleClass="content" onclick="PF('dlgMotivoRechazo').show();" >
                             <h:graphicImage value="/resources/images/rechazar.PNG" styleClass="content" width="65px"/>
                         </p:commandLink>
-                        <p:tooltip id="toolTipFade3" for="rechazar" value="Guardar y Rechazar" trackMouse="true"/>
+                        <p:tooltip id="toolTipFade3" for="rechazar" value="Guardar y Rechazar" trackMouse="true"  />
                     </h:panelGrid>
 
                     <!-- PopUP para codigo de barras-->
-                    <p:dialog header="Código de barras:" widgetVar="dlg1">
+                    <p:dialog modal="true" header="Código de barras:" widgetVar="dlgCodigoBarras">
                         <h:form>
                         <h:panelGrid columns="3" cellpadding="10" >
                             <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
@@ -276,8 +277,32 @@
                             </h:panelGrid>
                         </p:fieldset>
                             </h:form>
-                    </p:dialog> 
+                    </p:dialog>
+                    
+                    <!--PopUp para motivo de rechazo--> 
+                    <p:dialog modal="true" header="Motivo de rechaso:" widgetVar="dlgMotivoRechazo">
+                        
+                        <h:panelGrid columns="1" id="pgMotivoRechazo">
 
+                            <p:row>
+                                <p style="font-style: oblique">Por favor indique el motivo de rechazo:</p>
+                            </p:row>
+                            <p:row>
+                                <p:inputTextarea id="txtMotivoRechazo"  rows="2" cols="40"    queryDelay="750" minQueryLength="4" />
+                                <p:messages for="txtMotivoRechazo"/>
+                            </p:row>
+                            
+                              
+                           </h:panelGrid>
+                        <h:panelGrid columns="2" id="pgMotivoRechazoBotones">
+                          <p:commandButton  value="Guardar"  type="button"  >
+                                </p:commandButton>
+ 
+                                <p:commandButton value="Cancelar" type="button" >  
+                                </p:commandButton>
+                            </h:panelGrid>
+                        
+                    </p:dialog>
                 </h:form>
 
                 <!-- Script para usar el calendario en español-->

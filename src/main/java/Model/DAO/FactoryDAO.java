@@ -43,5 +43,11 @@ public abstract class FactoryDAO {
     public abstract SubtipoDAO getSubtipoDAO();
     public abstract OrganosSistemasDAO getOrganosSistemasDAO();
     
+    
+    //Citologico
+    public abstract CategoriaDAO getCategoriaDAO();
+    public abstract SubcategoriaDAO getSubcategoriaDAO();
+
+    
 
 }

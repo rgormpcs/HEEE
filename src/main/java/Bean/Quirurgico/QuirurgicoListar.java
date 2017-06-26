@@ -32,7 +32,7 @@ public class QuirurgicoListar implements Serializable{
         organosSistemas=null;
         subtipo=null;
        ListarOrganosSistemas();
-      ListarSubtipo();
+       ListarSubtipo();
     }
     
     public void ListarOrganosSistemas(){
