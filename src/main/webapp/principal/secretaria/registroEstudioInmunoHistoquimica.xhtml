@@ -22,7 +22,7 @@
                         <h:panelGrid columns="7" id="pgDatosHospital">
 
                             <p:outputLabel for="txtInstSistema" value="Institución del Sistema: " />
-                            <p:inputText id="txtInstSistema" value="#{QxCrearController.hospital.instituciondelsistema}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtInstSistema" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtInstSistema" value="MSP" />
                             <p:messages for="txtInstSistema"/>
 
@@ -35,7 +35,7 @@
                             <p:messages for="cboProvincia"/>
 
                             <p:outputLabel for="txtUniOperat" value="Unidad Operativa: " />
-                            <p:inputText id="txtUniOperat" value="#{QxCrearController.hospital.unidadoperativa}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtUniOperat" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtUniOperat" value="HEEE" />
                             <p:messages for="txtUniOperat"/>
 
@@ -49,7 +49,7 @@
                             <p:messages for="cboCanton"/>
 
                             <p:outputLabel for="txtCodUO" value="Cod. UO: " />
-                            <p:inputText id="txtCodUO" value="#{QxCrearController.hospital.codigouo}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtCodUO"  style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtCodUO" value="0001" />
                             <p:messages for="txtCodUO"/>
 
@@ -67,12 +67,12 @@
                         <h:panelGrid columns="6" id="pgDatosMuestra">
 
                             <h:outputLabel for="txtFechaTomaMuestra" value="Fecha de toma de la muestra: " />
-                            <p:calendar id="txtFechaTomaMuestra" value="#{QxCrearController.cabeceraEstudio.fechatomamuestracrm}" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
+                            <p:calendar id="txtFechaTomaMuestra"  locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
                             <p:watermark for="txtFechaTomaMuestra" value="dd-mm-aaaa" />
                             <p:messages for="txtFechaTomaMuestra"/>
 
                             <h:outputLabel for="txtHoraTomaMuestra" value="Hora de toma de la muestra: " />
-                            <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true"  value="#{QxCrearController.cabeceraEstudio.horatomamuestracrm}" />
+                            <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true"   />
                             <p:watermark for="txtHoraTomaMuestra" value="hh:mm" />
                             <p:messages for="txtHoraTomaMuestra"/>
 

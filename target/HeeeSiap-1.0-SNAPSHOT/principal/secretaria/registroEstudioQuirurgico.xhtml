@@ -63,16 +63,15 @@
                         </h:panelGrid>
 
                         <p:separator />
-
-                        <h:panelGrid columns="6" id="pgDatosMuestra">
+   <h:panelGrid columns="6" id="pgDatosMuestra">
 
                             <h:outputLabel for="txtFechaTomaMuestra" value="Fecha de toma de la muestra: " />
-                            <p:calendar id="txtFechaTomaMuestra" value="" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
+                            <p:calendar id="txtFechaTomaMuestra"  locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" />
                             <p:watermark for="txtFechaTomaMuestra" value="dd-mm-aaaa" />
                             <p:messages for="txtFechaTomaMuestra"/>
 
                             <h:outputLabel for="txtHoraTomaMuestra" value="Hora de toma de la muestra: " />
-                            <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true"  value="" />
+                            <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true"   />
                             <p:watermark for="txtHoraTomaMuestra" value="hh:mm" />
                             <p:messages for="txtHoraTomaMuestra"/>
 
