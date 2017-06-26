@@ -18,8 +18,12 @@
 
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
 
-                    <p:fieldset legend="Datos Personales" style="width:80%">
+                    <p:fieldset legend="Datos Personales" style="width:80%" id="dp">
                         <h:panelGrid columns="3" id="pgDatosPersonales" >
+                            
+                            <p:outputLabel for="txtCedIden" value="Cédula de Identidad: " />
+                            <p:inputText id="txtCedIden" value="#{empleadoController.empleado.ceduidenempleado}" required="true" requiredMessage="El campo Cédula de Identidad es requerido"/>
+                            <p:messages for="txtCedIden"/>
 
                             <p:outputLabel for="txtNombres" value="Nombres: " />
                             <p:inputText id="txtNombres" value="#{empleadoController.empleado.nombresempleado}" required="true" requiredMessage="El campo Nombres es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
@@ -41,10 +45,6 @@
                                         mask="true" required="true" value="#{empleadoController.empleado.fechanacimiento}" requiredMessage="Seleccione la Fecha de Nacimiento" />
                             <p:messages for="txtFechaNac"/>
 
-                            <p:outputLabel for="txtCedIden" value="Cédula de Identidad: " />
-                            <p:inputText id="txtCedIden" value="#{empleadoController.empleado.ceduidenempleado}" required="true" requiredMessage="El campo Cédula de Identidad es requerido"/>
-                            <p:messages for="txtCedIden"/>
-
                             <p:outputLabel for="txtDireccion" value="Dirección: " />
                             <p:inputText id="txtDireccion" value="#{empleadoController.empleado.direccionempleado}" required="true" requiredMessage="El campo Dirección es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();"/>
                             <p:messages for="txtDireccion"/>
@@ -56,9 +56,13 @@
                             <p:outputLabel for="txtEspecialidad" value="Especialidad: " />
                             <p:inputText id="txtEspecialidad" value="#{empleadoController.empleado.especialidadempleado}" required="true" requiredMessage="El campo Especialidad es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:messages for="txtEspecialidad"/>
+                            
+                            <p:outputLabel for="txtCargo" value="Cargo: " />
+                            <p:inputText id="txtCargo" value="#{empleadoController.empleado.cargoempleado}" required="true" requiredMessage="El campo Cargo es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:messages for="txtCargo"/>
 
                         </h:panelGrid>
-                        <p:commandButton icon="ui-icon-disk" value="Registrar" update="pgDatosPersonales, mensaje" actionListener="#{empleadoController.registrarEmpleado()}">
+                        <p:commandButton icon="ui-icon-disk" value="Registrar" update=":contenido:pgDatosPersonales, mensaje" actionListener="#{empleadoController.registrarEmpleado()}">
                             <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
                         </p:commandButton>
                         <p:commandButton icon="ui-icon-cancel" value="Cancelar" >

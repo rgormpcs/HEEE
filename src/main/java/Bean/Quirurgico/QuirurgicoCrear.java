@@ -16,75 +16,34 @@ public class QuirurgicoCrear implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
-    private Hospital hospital;
     private Doctor doctor;
-    private Paciente paciente;
-    private Cabecerarecepcionmuestra cabeceraEstudio; 
     
     SessionBean sesion = new SessionBean();
-    String usuario ="";
     
     /*Método Constructor*/
     public QuirurgicoCrear(){
-        System.out.println("ENTRO QX : ");
-        this.hospital = new Hospital();        
         this.doctor = new Doctor();
-        this.paciente = new Paciente();
-        this.cabeceraEstudio = new Cabecerarecepcionmuestra();
-        registrarExamenQX();
+        
     }
     
     /*Método para hacer el registro del examen Qx en el módulo de la Secretaria*/
     public void registrarExamenQX(){
         
-        System.out.println("ENTRO al metodo registrarExamenQX : ");
-        try {  
-            System.out.println("INSTITUCION : "+hospital.getInstituciondelsistema());
-            System.out.println("UNIDAD OPERATIVA : "+hospital.getUnidadoperativa());
-            
-            JPAFactoryDAO.getFactory().getHospitalDAO().create(this.hospital);
-            
-            
-            
-        } catch (Exception e) {
-        }
+       JPAFactoryDAO.getFactory().getDoctorDAO().create(this.doctor);
+       
     }
     
     /*Getters & Setters*/
 
-    public Hospital getHospital() {
-        if(this.hospital == null){
-            this.hospital = new Hospital();
-        }
-        return hospital;
-    }
-
-    public void setHospital(Hospital hospital) {
-        this.hospital = hospital;
-    }
-
     public Doctor getDoctor() {
+        if(this.doctor == null) {
+            this.doctor = new Doctor();
+        }
         return doctor;
     }
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
-    }
-
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
-    public Cabecerarecepcionmuestra getCabeceraEstudio() {
-        return cabeceraEstudio;
-    }
-
-    public void setCabeceraEstudio(Cabecerarecepcionmuestra cabeceraEstudio) {
-        this.cabeceraEstudio = cabeceraEstudio;
     }
 
     public SessionBean getSesion() {
@@ -94,6 +53,7 @@ public class QuirurgicoCrear implements Serializable{
     public void setSesion(SessionBean sesion) {
         this.sesion = sesion;
     }
-    
+
+
     
 }
