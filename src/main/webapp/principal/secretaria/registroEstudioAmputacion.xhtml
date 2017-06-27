@@ -20,28 +20,7 @@
 
                     <!--tipo de estudio para codigo de barras-->
                     <h1 style="display:none;" >#{codigoBarrasListar.nombreEstudio='AMPUTACION'}</h1>
-                    <!--botones de confirmacion--> 
-                    <!--           <p:fieldset  style="text-align: right;width:80%; border: none">
-                                   <br></br>
-                                   
-                                   <p:commandButton icon="ui-icon-disk" value="Guardar" actionListener="#{amputacionesListar.resetCombo()}">
-                                                    <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
-                                                </p:commandButton>
-                                    <p:commandButton icon="ui-icon-disk" value="Cancelar"  actionListener="#{amputacionesListar.resetCombo()}">
-                                                    <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
-                                                </p:commandButton>
-                                    <p:commandButton icon="ui-icon-disk" value="Rechazar"  actionListener="#{amputacionesListar.resetCombo()}">
-                                                    <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
-                                                </p:commandButton>
-                    
-                                            </p:fieldset>-->
-                    <!--                    <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>-->
-
-
-
-                    <p:tabView style="padding-right: 10%; border: none;"  >
-
-                        <p:tab title="Hospital" >
+          
 
                             <p:fieldset legend="Datos del Hospital" style="width:80%" >
 
@@ -110,7 +89,7 @@
                             </p:fieldset>
 
                             <br/>
-                            <p:fieldset legend="Datos del Medico Solicitante" style="width:90%">
+                            <p:fieldset legend="Datos del Medico Solicitante" style="width:80%">
 
                                 <h:panelGrid columns="6" id="pgDatosMedico">
 
@@ -136,11 +115,8 @@
                             </p:fieldset>
                             <br/>
 
-
-                        </p:tab>
-                        <p:tab title="Paciente">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:fieldset legend="Datos del Paciente" style="width:80%">
+                              <h:panelGrid columns="2" cellpadding="10">
+                                <p:fieldset legend="Datos del Paciente" style="width:87%">
 
                                     <h:panelGrid columns="6" id="pgDatosPaciente">
 
@@ -194,22 +170,21 @@
 
                                     <h:panelGrid columns="3" id="pgTratamiento">
                                         <h:outputLabel for="txtTratamiento" value="Tratamiento que recibe: " />
-                                        <p:inputTextarea id="txtTratamiento" rows="3" cols="70"    queryDelay="750" minQueryLength="4" />
+                                        <p:inputTextarea id="txtTratamiento" rows="3" cols="70"    queryDelay="1000" minQueryLength="4" />
                                         <p:messages for="txtTratamiento"/>
                                     </h:panelGrid>
                                     <br/>    
                                 </p:fieldset>
 
                             </h:panelGrid>
-                        </p:tab>
-                        <p:tab title="Diagnostico y Resumen">
+
                             <h:panelGrid columns="1" cellpadding="10">
 
 
-                                <p:fieldset legend="Diagnostico presuntivo" style="width:80%">
+                                <p:fieldset legend="Diagnostico presuntivo" style="width:50%">
 
                                     <h:panelGrid id="pgDiagPresuntivo">
-                                        <p:inputTextarea id="txtDiagPresuntivo"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
+                                        <p:inputTextarea id="txtDiagPresuntivo"  rows="2" cols="81"    queryDelay="750" minQueryLength="4" />
                                         <p:messages for="txtDiagPresuntivo"/>
                                     </h:panelGrid>
 
@@ -217,7 +192,7 @@
                                 <p:fieldset legend="Resumen Clínico" style="width:80%">
 
                                     <h:panelGrid id="pgResumenCl">
-                                        <p:inputTextarea id="txtResumenCl"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
+                                        <p:inputTextarea id="txtResumenCl"  rows="2" cols="81"    queryDelay="750" minQueryLength="4" />
                                         <p:messages for="txtResumenCl"/>
                                     </h:panelGrid>
 
@@ -226,9 +201,8 @@
 
 
                             </h:panelGrid>
-                        </p:tab>
-                        <p:tab title="Muestra y Tipo">
-                            <p:fieldset legend="Muestra o Pieza" >
+                   
+                            <p:fieldset legend="Muestra o Pieza" style="width: 80%">
 
                                 <h:panelGrid id="pgMuestra">
                                     <p:row>
@@ -276,8 +250,8 @@
                                 <p:fieldset  style="text-align: center; padding-left: 5%;width:80%; border: none">
                                     <br></br>
 
-                                    <p:commandButton icon="fa fa-save" value="Guardar" actionListener="#{amputacionesListar.resetCombo()}" onclick="PF('dlgCodigoBarras').show();" >
-                                        <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
+                                    <p:commandButton icon="fa fa-save" value="Guardar" actionListener="#{amputacionesListar.resetCombo()}"  onclick="PF('dlgCodigoBarras').show();" >
+                                        
                                     </p:commandButton>
                                     <p:commandButton icon="fa fa-fw fa-remove" value="Cancelar"  actionListener="#{amputacionesListar.resetCombo()}">
                                         <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
@@ -344,8 +318,7 @@
                                 </h:panelGrid>
 
                             </p:dialog>
-                        </p:tab>
-                    </p:tabView>
+                
 
 
 

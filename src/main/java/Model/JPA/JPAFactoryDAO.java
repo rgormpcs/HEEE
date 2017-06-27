@@ -18,6 +18,7 @@ import Model.DAO.ProvinciaDAO;
 
 import Model.DAO.UsuarioDAO;
 import Model.DAO.ContadoresTipoEstudioAnioDAO;
+import Model.DAO.MarcadoresEIHQDAO;
 import Model.DAO.OrganosSistemasDAO;
 import Model.DAO.SubcategoriaDAO;
 
@@ -125,6 +126,11 @@ public class JPAFactoryDAO extends FactoryDAO {
     @Override
     public SubcategoriaDAO getSubcategoriaDAO() {
         return new JPASubcategoriaDAO();
+    }
+
+    @Override
+    public MarcadoresEIHQDAO getMarcadoresEIHQ() {
+        return new JPAMarcadoresEIHQDAO();
     }
 
   

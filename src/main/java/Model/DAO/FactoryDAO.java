@@ -47,7 +47,9 @@ public abstract class FactoryDAO {
     //Citologico
     public abstract CategoriaDAO getCategoriaDAO();
     public abstract SubcategoriaDAO getSubcategoriaDAO();
-
+    
+    //Inmunohistoquimica
+    public abstract MarcadoresEIHQDAO getMarcadoresEIHQ();
     
 
 }
