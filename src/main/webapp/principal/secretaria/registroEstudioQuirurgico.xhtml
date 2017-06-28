@@ -10,6 +10,7 @@
         <ui:composition template="./../../WEB-INF/plantillas/plantillaInicial.xhtml">
 
             <ui:define name="content">
+               
 
                 <h:form id="contenido">
 
@@ -255,6 +256,22 @@
                         </p:commandLink>
                         <p:tooltip id="toolTipFade3" for="rechazar" value="Guardar y Rechazar" trackMouse="true"/>
                     </h:panelGrid>
+                    
+                         <p:fieldset  style="text-align: center; padding-left: 5%;width:80%; border: none">
+                            <br></br>
+                            <div id="guardar"></div>
+<!--                            actionListener-->
+                            <p:commandButton icon="fa fa-save" type="button" value="Guardar" onclick="PF('dlgCodigoBarras').show();" >
+                                
+                            </p:commandButton>
+                            <p:commandButton icon="fa fa-fw fa-remove" value="Cancelar">
+                                <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:commandButton icon="fa fa-chain-broken" value="Guardar y Rechazar">
+                                <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
+                            </p:commandButton>
+
+                        </p:fieldset>
 
                     <!-- PopUP para codigo de barras-->
                     <p:dialog modal="true" header="Código de barras:" widgetVar="dlgCodigoBarras">
@@ -272,7 +289,7 @@
                                 <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
 
                                     <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
-                                        <p:ajax update="contenido" listener="#{ubicacionListar.resetCombo()}"/>
+                                        
 
                                     </p:commandButton>
 

@@ -59,11 +59,11 @@ public class Ingresar implements Serializable {
             if (usuarioLista.isEmpty()){
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario no existe"));
             }else{
-                
-                System.out.println("informacion de usuario:"+usuarioLista.get(0).getUsuariousuario());
+                for(int i=0; i<usuarioLista.size();i++){
+                System.out.println("informacion de usuario:"+usuarioLista.get(i).getUsuariousuario());
                 if (usuarioLista.get(0).getClaveusuario().equals(contrasenia)){
                 System.out.println("correcto entro");
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuarioLista.get(0));
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuarioLista.get(i));
                 System.out.println("usuario del faces:"+FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"));
                 redireccion = "/principal/bienvenida?faces-redirect=true";  
 
@@ -71,7 +71,7 @@ public class Ingresar implements Serializable {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Datos Erróneos"));
                 System.out.println("dato incorrecto");
                 }
-            
+                }
             
             }
        

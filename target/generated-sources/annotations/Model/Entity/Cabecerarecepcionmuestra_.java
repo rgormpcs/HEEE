@@ -10,7 +10,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2017-06-26T23:17:44")
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2017-06-27T18:44:59")
 @StaticMetamodel(Cabecerarecepcionmuestra.class)
 public class Cabecerarecepcionmuestra_ { 
 

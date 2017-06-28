@@ -5,30 +5,24 @@
  */
 package Bean.Amputaciones;
 
-import Bean.Menu.Navegar;
 import Bean.Ubicacion.UbicacionListar;
 import Model.Entity.Extremidades;
 import Model.Entity.Partes;
-import Model.Entity.Usuario;
 import Model.JPA.JPAFactoryDAO;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-import org.primefaces.model.menu.DefaultMenuItem;
 
 /**
  *
  * @author mpcs
  */
 @ManagedBean(name = "amputacionesListar")
-//@ViewScoped
+@ViewScoped
 @RequestScoped
 public class AmputacionesListar implements Serializable {
 
@@ -59,13 +53,17 @@ public class AmputacionesListar implements Serializable {
     }
 
     public void resetCombo() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Ingrese los datos del nuevo estudio."));
+//        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Ingrese los datos del nuevo estudio."));
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"laksdj", "Ingrese nuevos datos del estudio");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+
         extremidadesID = "";
         partesID = "";
-        listaExtremidades = null;
+        listarExtremidades();
         listaExtremidades = null;
         
-        
+        ubicacionListar.resetCombo();
+    
     }
     
     public void volver(){
