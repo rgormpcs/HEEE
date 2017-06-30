@@ -5,6 +5,7 @@
  */
 package Bean.Amputaciones;
 
+import Bean.Menu.Navegar;
 import Bean.Ubicacion.UbicacionListar;
 import Model.Entity.Extremidades;
 import Model.Entity.Partes;
@@ -23,11 +24,11 @@ import javax.faces.view.ViewScoped;
  */
 @ManagedBean(name = "amputacionesListar")
 @ViewScoped
-@RequestScoped
+//@RequestScoped
 public class AmputacionesListar implements Serializable {
 
-    private UbicacionListar ubicacionListar = new UbicacionListar();
-
+    private UbicacionListar ubicacionListar;
+    private Navegar navegar;
     String extremidadesID;
     String partesID;
 
@@ -38,12 +39,15 @@ public class AmputacionesListar implements Serializable {
      * Creates a new instance of AmputacionesListar
      */
     public AmputacionesListar() {
-
-        extremidadesID = "";
-        partesID = "";
+        ubicacionListar = new UbicacionListar();
+        navegar = new Navegar();
+        extremidadesID = "0";
+        partesID = "0";
         listaExtremidades = null;
         listaExtremidades = null;
         listarExtremidades();
+        
+        
     }
 
     public void listarExtremidades() {
@@ -52,40 +56,29 @@ public class AmputacionesListar implements Serializable {
 
     }
 
+
     public void resetCombo() {
 //        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Ingrese los datos del nuevo estudio."));
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"laksdj", "Ingrese nuevos datos del estudio");
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje:", "Ingrese los nuevos datos del estudio");
         FacesContext.getCurrentInstance().addMessage(null, message);
 
-        extremidadesID = "";
-        partesID = "";
-        listarExtremidades();
+        extremidadesID = "0";
+        partesID = "0";
         listaExtremidades = null;
+        listarExtremidades();
+        
         
         ubicacionListar.resetCombo();
     
     }
-    
     public void volver(){
-//        System.out.println("usuario del faces:"+FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"));
-//        String redireccion = "/principal/bienvenida.HeeSiap";  
-//        System.out.println("redireccion:"+redireccion);
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje:", "Hasta pronto");
+        FacesContext.getCurrentInstance().addMessage(null, message);
         
-//    
-//    DefaultMenuItem item = new DefaultMenuItem();
-//    item.setUrl(redireccion);
-System.out.println("*******************dlkfjal");
-
-// try {
-//            System.out.println("LOGRO REDIRECCIONAR A UN NUEVO FORMULARIO");
-//            FacesContext.getCurrentInstance().getExternalContext().redirect("../Inicio/paginaInicial.xhtml");
-//        } catch (Exception e) {
-//            System.out.println("FALLO LA REDIRECCION A UN NUEVO FORMULARIO");
-//            e.printStackTrace();
-//        }
-
-//    Navegar.direccionarInicio();
+        navegar.direccionarInicio();
+        System.out.println("paso del metodo de navegar");
     }
+
     //getter and setter
 
     public String getExtremidadesID() {
@@ -113,8 +106,9 @@ System.out.println("*******************dlkfjal");
     }
 
     public List<Partes> getListaPartes() {
-        System.out.println("informacion de extremidadID:" + extremidadesID);
         listaPartes = JPAFactoryDAO.getFactory().getParteDAO().buscarPartePorExtremidad(extremidadesID);
+        System.out.println("informacion de extremidadID:" + extremidadesID);
+        System.out.println("informacion de parteID:"+partesID);
         return listaPartes;
     }
 

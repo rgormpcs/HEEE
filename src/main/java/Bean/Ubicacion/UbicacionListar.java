@@ -32,9 +32,9 @@ public class UbicacionListar implements Serializable {
     List<Parroquia> parroquias;
 
     public UbicacionListar() {
-        provinciaID = "";
-        cantonID = "";
-        parroquiaID = "";
+        provinciaID = "0";
+        cantonID = "0";
+        parroquiaID = "0";
         provincias = null;
         cantones = null;
         parroquias = null;

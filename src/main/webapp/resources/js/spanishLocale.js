@@ -27,3 +27,6 @@ PrimeFaces.locales['es'] = {
 };
 
 
+function redirecionInicio(){
+    document.location.href("#contenido");
+}
