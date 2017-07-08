@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -24,7 +26,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  *
  * @author EPN
- */
+ 
+ * 
 @Entity
 @Table(name = "empleado")
 @XmlRootElement
@@ -40,6 +43,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Empleado.findByNumtelempleado", query = "SELECT e FROM Empleado e WHERE e.numtelempleado = :numtelempleado"),
     @NamedQuery(name = "Empleado.findByEspecialidadempleado", query = "SELECT e FROM Empleado e WHERE e.especialidadempleado = :especialidadempleado")})
 public class Empleado implements Serializable {
+
+    @JoinColumn(name = "idcargo", referencedColumnName = "idcargo")
+    @ManyToOne(optional = false)
+    private Cargo idcargo;
+    @JoinColumn(name = "idespecialidad", referencedColumnName = "idespecialidad")
+    @ManyToOne(optional = false)
+    private Especialidad idespecialidad;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -185,6 +195,22 @@ public class Empleado implements Serializable {
     @Override
     public String toString() {
         return "Model.Entity.Empleado[ idempleado=" + idempleado + " ]";
+    }
+
+    public Cargo getIdcargo() {
+        return idcargo;
+    }
+
+    public void setIdcargo(Cargo idcargo) {
+        this.idcargo = idcargo;
+    }
+
+    public Especialidad getIdespecialidad() {
+        return idespecialidad;
+    }
+
+    public void setIdespecialidad(Especialidad idespecialidad) {
+        this.idespecialidad = idespecialidad;
     }
     
 }
