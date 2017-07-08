@@ -46,7 +46,9 @@ public class EmpleadoCrear implements Serializable{
         }
     }
     
-    /*Método para validar los duplicados*/
+    public void listarCargo(){
+        
+    }
     
     
     /*Getters & Setters*/

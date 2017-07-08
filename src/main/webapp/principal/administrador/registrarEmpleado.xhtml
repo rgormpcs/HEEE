@@ -60,6 +60,15 @@
                             <p:outputLabel for="txtCargo" value="Cargo : " />
                             <p:inputText id="txtCargo" value="#{empleadoController.empleado.cargoempleado}" required="true" requiredMessage="El campo Cargo es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:messages for="txtCargo"/>
+                            
+                            
+                            <h:outputLabel value="Cargo: " />
+                            <p:selectOneMenu id="cboCargo" value="#{ubicacionListar.provinciaID}" filter="true" filterMatchMode="startsWith" >
+                                <f:selectItem itemLabel="- Seleccione -" itemValue="" />
+                                <f:selectItems value="#{ubicacionListar.provincias}" var="cargos" itemLabel="#{provincias.nombreprovincia}" itemValue="#{provincias.idprovincia}"/>
+                            </p:selectOneMenu>
+                            <p:messages for="cboCargo"/>
+                            
 
                         </h:panelGrid>
                         <p:commandButton icon="ui-icon-disk" value="Registrar" update=":contenido:pgDatosPersonales, mensaje" actionListener="#{empleadoController.registrarEmpleado()}">
