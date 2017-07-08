@@ -50,6 +50,7 @@ public class UbicacionListar implements Serializable {
 //    System.out.println("lista:"+provincias.get(i).getNombreprovincia());
 //    }
     }
+    
 
     public void resetCombo() {
         System.out.println("resetear ubicacion");
