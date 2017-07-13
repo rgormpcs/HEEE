@@ -205,7 +205,7 @@
                                     <h:panelGrid columns="3" cellpadding="10" id="descripcionCitologico" >
                                         <p:selectManyCheckbox id="gridmarcadores" value="#{inmunohistoquimicaListar.marcadores}" layout="grid" columns="1" >
                                             <f:selectItems value="#{inmunohistoquimicaListar.marcadores}" var="marcadores"  itemLabel="#{marcadores.detallemarcadorihq}" itemValue="#{marcadores.idmarcadorihq}" />
-                                            </p:selectManyCheckbox>  
+                                        </p:selectManyCheckbox>  
                                     </h:panelGrid>
                                 </p:tab>
 
@@ -218,45 +218,38 @@
                                 <p:messages for="txtObservaciones2"/>
                             </h:panelGrid>
                         </h:panelGrid>
-                     
- <p:row>
-                                <p style="font-style: oblique">Marcadores:</p>
-                            </p:row>
-<h:panelGrid columns="2" cellpadding="5">
-    
 
-  <h:outputLabel     />
-  <p:selectCheckboxMenu id="multiple" value="#{inmunohistoquimicaListar.marcadoresSeleccionados}" label="Elija Marcadores" filter="true" filterMatchMode="startsWith" panelStyle="width:800px">
-      
-      <f:selectItems value="#{inmunohistoquimicaListar.marcadores}" var="marcadores" itemLabel="#{marcadores.detallemarcadorihq}" itemValue="#{marcadores.idmarcadorihq}" />
-        </p:selectCheckboxMenu>
-    </h:panelGrid>
- <p:row>
-                                <p style="font-style: oblique">Observaciones:</p>
-                            </p:row>
-                            <h:panelGrid id="pgObservaciones">
-                                <p:inputTextarea id="txtObservaciones"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
-                                <p:messages for="txtObservaciones"/>
-                            </h:panelGrid>
+                        <p:row>
+                            <p style="font-style: oblique">Marcadores:</p>
+                        </p:row>
+                        <h:panelGrid columns="2" cellpadding="5">
+
+
+                            <h:outputLabel     />
+                            <p:selectCheckboxMenu id="multiple" value="#{inmunohistoquimicaListar.marcadoresSeleccionados}" label="Elija Marcadores" filter="true" filterMatchMode="startsWith" panelStyle="width:800px">
+
+                                <f:selectItems value="#{inmunohistoquimicaListar.marcadores}" var="marcadores" itemLabel="#{marcadores.detallemarcadorihq}" itemValue="#{marcadores.idmarcadorihq}" />
+                            </p:selectCheckboxMenu>
+                        </h:panelGrid>
+                        <p:row>
+                            <p style="font-style: oblique">Observaciones:</p>
+                        </p:row>
+                        <h:panelGrid id="pgObservaciones">
+                            <p:inputTextarea id="txtObservaciones"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
+                            <p:messages for="txtObservaciones"/>
+                        </h:panelGrid>
                     </p:fieldset>
                     <br/>
-                    <h:panelGrid columns="5" cellpadding="10" cellspacing="1" >
-                        <p:commandLink id="agregar" styleClass="content" action="#{QxCrearController.registrarExamenQX()}" onclick="PF('dlgCodigoBarras').show();" >
-                            <h:graphicImage value="/resources/images/agregar.PNG" styleClass="content" width="65px" />
-                        </p:commandLink>
-                        <p:tooltip id="toolTipFade1" for="agregar" value="Guardar" trackMouse="true"/>
+                    <p:fieldset  style="text-align: center; padding-left: 5%;width:80%; border: none">
+                        <br></br>
 
-                        <p:commandLink id="cancelar" styleClass="content" >
-                            <h:graphicImage value="/resources/images/cancelar.PNG" styleClass="content" width="65px"/>
-                        </p:commandLink>
-                        <p:tooltip id="toolTipFade2" for="cancelar" value="Cancelar" trackMouse="true"/>
+                        <p:commandButton icon="fa fa-save" type="button" value="Guardar" onclick="PF('dlgCodigoBarras').show();"  />
 
-                        <p:commandLink id="rechazar" styleClass="content" onclick="PF('dlgMotivoRechazo').show();">
-                            <h:graphicImage value="/resources/images/rechazar.PNG" styleClass="content" width="65px"/>  
-                        </p:commandLink>
-                        <p:tooltip id="toolTipFade3" for="rechazar" value="Guardar y Rechazar" trackMouse="true"/>
-                    </h:panelGrid>
+                        <p:commandButton  icon="fa fa-fw fa-remove" value="Cancelar" update="contenido" process="@this"  actionListener="#{navegar.direccionarInicio()}" />
 
+                        <p:commandButton icon="fa fa-chain-broken" value="Guardar y Rechazar"/>
+
+                    </p:fieldset>
                     <!-- PopUP para codigo de barras-->
                     <p:dialog modal="true" header="Código de barras:" widgetVar="dlgCodigoBarras">
                         <h:form>

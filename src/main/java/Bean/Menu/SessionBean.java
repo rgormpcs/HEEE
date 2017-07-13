@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class SessionBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    private Navegar navegar;
     private String usuario;
 
     private final HttpServletRequest httpServletRequest;
@@ -35,7 +35,7 @@ public class SessionBean implements Serializable {
         System.out.println("by");
         this.facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sesión cerrada correctamente", null);
         this.faceContext.addMessage(null, this.facesMessage);
-        Navegar.direccionarInicio();
+        navegar.direccionarInicio();
         return "bye";
     }
 }

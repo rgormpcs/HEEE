@@ -20,7 +20,7 @@
                     <h1 style="color: #045491;text-align: center">Registro de Estudio Amputacion</h1>
 
                     <!--tipo de estudio para codigo de barras-->
-<!--                        <h1 style="display:none;" >#{codigoBarrasListar.nombreEstudio='AMPUTACIÓN'}</h1>-->
+                    <h1 style="display:none;" >#{codigoBarrasListar.nombreEstudio='AMPUTACIÓN'}</h1>
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
 
                     <p:fieldset id="hospital" legend="Datos del Hospital" style="width:80%" >
@@ -253,11 +253,11 @@
 
                     <p:fieldset  style="text-align: center; padding-left: 5%;width:80%; border: none">
                         <br></br>
-                       
+
                         <p:commandButton icon="fa fa-save" type="button" value="Guardar" onclick="PF('dlgCodigoBarras').show();"  />
 
-                         <p:commandButton  icon="fa fa-fw fa-remove" value="Cancelar" update="contenido" process="@this"  actionListener="#{amputacionesListar.volver}" />
- 
+                        <p:commandButton  icon="fa fa-fw fa-remove" value="Cancelar" update="contenido" process="@this"  actionListener="#{navegar.direccionarInicio()}" />
+
                         <p:commandButton icon="fa fa-chain-broken" value="Guardar y Rechazar"/>
 
                     </p:fieldset>
@@ -279,11 +279,11 @@
                                 <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
 
                                     <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
-                                        
+
 
                                     </p:commandButton>
 
-                               
+
                                     <p:commandButton value="No" update="contenido" process="@this"   onclick="PF('dlgCodigoBarras').hide"  >
 
                                     </p:commandButton>

@@ -5,13 +5,16 @@
  */
 package Bean.Inmunohistoquimica;
 
+import Bean.Menu.Navegar;
 import Model.Entity.Marcadoreseihq;
 import Model.JPA.JPAFactoryDAO;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -23,18 +26,28 @@ public class InmunohistoquimicaListar {
 
     private List<Marcadoreseihq>  marcadores;
     private String[] marcadoresSeleccionados;
+    private Navegar navegar;
 
     
     public InmunohistoquimicaListar() {
         marcadores=null;
         marcadoresSeleccionados=null;
+        navegar = new Navegar();
     }
 
+    
     public List<Marcadoreseihq> getMarcadores() {
         marcadores=JPAFactoryDAO.getFactory().getMarcadoresEIHQ().find();
         return marcadores;
     }
 
+       public void volver(){
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje:", "Hasta pronto");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        
+        navegar.direccionarInicio();
+        System.out.println("paso del metodo de navegar");
+    }
     public void setMarcadores(List<Marcadoreseihq> marcadores) {
         this.marcadores = marcadores;
     }

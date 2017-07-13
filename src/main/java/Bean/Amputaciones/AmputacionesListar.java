@@ -71,13 +71,7 @@ public class AmputacionesListar implements Serializable {
         ubicacionListar.resetCombo();
     
     }
-    public void volver(){
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje:", "Hasta pronto");
-        FacesContext.getCurrentInstance().addMessage(null, message);
-        
-        navegar.direccionarInicio();
-        System.out.println("paso del metodo de navegar");
-    }
+
 
     //getter and setter
 
