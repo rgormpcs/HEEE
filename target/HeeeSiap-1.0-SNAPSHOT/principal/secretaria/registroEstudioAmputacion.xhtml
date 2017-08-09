@@ -27,7 +27,7 @@
 
                         <h:panelGrid columns="7" id="pgDatosHospital">
                             <p:outputLabel for="txtInstSistema" value="Institución del Sistema: " />
-                            <p:inputText id="txtInstSistema" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtInstSistema" value="#{amputacionesCrear.hospital.instituciondelsistema}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtInstSistema" value="MSP" />
                             <p:messages for="txtInstSistema"/>
 
@@ -41,7 +41,7 @@
 
 
                             <p:outputLabel for="txtUniOperat" value="Unidad Operativa: "  />
-                            <p:inputText id="txtUniOperat" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtUniOperat" value="#{amputacionesCrear.hospital.unidadoperativa}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtUniOperat" value="HEEE" />
                             <p:messages for="txtUniOperat"/>
 
@@ -54,15 +54,13 @@
                             </p:selectOneMenu>
                             <p:messages for="cboCanton"/>
 
-
-
                             <p:outputLabel for="txtCodUO" value="Cod. UO: " />
-                            <p:inputText id="txtCodUO" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtCodUO" value="#{amputacionesCrear.hospital.codigouo}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:watermark for="txtCodUO" value="0001" />
                             <p:messages for="txtCodUO"/>
 
                             <h:outputLabel value="Parroquia: " />
-                            <p:selectOneMenu id="cboParroquia" value="#{ubicacionListar.parroquiaID}" filter="true" filterMatchMode="startsWith" >
+                            <p:selectOneMenu id="cboParroquia" value="#{amputacionesCrear.parroquiaID}" filter="true" filterMatchMode="startsWith" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{ubicacionListar.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
                             </p:selectOneMenu>
@@ -97,19 +95,19 @@
                         <h:panelGrid columns="6" id="pgDatosMedico">
 
                             <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
-                            <p:inputText id="txtApellidosMS" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtApellidosMS" value="#{amputacionesCrear.doctor.apellidosdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:messages for="txtApellidosMS"/>
 
                             <p:outputLabel for="txtEmail" value="Email: " />
-                            <p:inputText id="txtEmail" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtEmail" value="#{amputacionesCrear.doctor.emaildoctor}" />
                             <p:messages for="txtEmail"/>
 
                             <p:outputLabel for="txtNombresMS" value="Nombres: " />
-                            <p:inputText id="txtNombresMS" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtNombresMS" value="#{amputacionesCrear.doctor.nombresdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:messages for="txtNombresMS"/>
 
                             <p:outputLabel for="txtTel" value="Teléfono: " />
-                            <p:inputText id="txtTel" value="" />
+                            <p:inputText id="txtTel"  value="#{amputacionesCrear.doctor.telefonodoctor}"/>
                             <p:messages for="txtTel"/>
 
                         </h:panelGrid>
@@ -124,46 +122,46 @@
                             <h:panelGrid columns="6" id="pgDatosPaciente">
 
                                 <h:outputLabel for="txtApellidos" value="Apellidos: " />
-                                <p:inputText id="txtApellidos" value=""/>
+                                <p:inputText id="txtApellidos" />
                                 <p:messages for="txtApellidos"/>
 
                                 <h:outputLabel for="txtNumHCl" value="No. Historia Cl.: " />
-                                <p:inputText id="txtNumHCl" value=""/>
+                                <p:inputText id="txtNumHCl" />
                                 <p:messages for="txtNumHCl"/>
 
                                 <h:outputLabel for="txtNombres" value="Nombres: " />
-                                <p:inputText id="txtNombres" value=""/>
+                                <p:inputText id="txtNombres" />
                                 <p:messages for="txtNombres"/>
 
                                 <h:outputLabel for="txtServicio" value="Servicio: " />
-                                <p:inputText id="txtServicio" value=""/>
+                                <p:inputText id="txtServicio" />
                                 <p:messages for="txtServicio"/>
 
                                 <h:outputLabel for="txtEdad" value="Edad: " />
-                                <p:inputText id="txtEdad" value=""/>
+                                <p:inputText id="txtEdad" />
                                 <p:messages for="txtEdad"/>
 
                                 <h:outputLabel for="txtSala" value="Sala: " />
-                                <p:inputText id="txtSala" value=""/>
+                                <p:inputText id="txtSala" />
                                 <p:messages for="txtSala"/>
 
                                 <h:outputLabel for="txtCI" value="C.I.: " />
-                                <p:inputText id="txtCI" value=""/>
+                                <p:inputText id="txtCI" />
                                 <p:messages for="txtCI"/>
 
                                 <h:outputLabel for="txtCama" value="Cama: " />
-                                <p:inputText id="txtCama" value=""/>
+                                <p:inputText id="txtCama" />
                                 <p:messages for="txtCama"/>
 
                                 <h:outputLabel for="rdbGenero" value="Género: " />
-                                <p:selectOneRadio id="rdbGenero" value="" >
+                                <p:selectOneRadio id="rdbGenero"  >
                                     <f:selectItem itemValue="M" itemLabel="Masculino" />
                                     <f:selectItem itemValue="F" itemLabel="Femenino" />
                                 </p:selectOneRadio>
                                 <p:messages for="rdbGenero"/>
 
                                 <h:outputLabel for="rdbPrioridad" value="Prioridad: " />
-                                <p:selectOneRadio id="rdbPrioridad" value="" >
+                                <p:selectOneRadio id="rdbPrioridad" >
                                     <f:selectItem itemValue="U" itemLabel="Urgente" />
                                     <f:selectItem itemValue="R" itemLabel="Rutina" />
                                     <f:selectItem itemValue="C" itemLabel="Control" />
@@ -254,7 +252,8 @@
                     <p:fieldset  style="text-align: center; padding-left: 5%;width:80%; border: none">
                         <br></br>
 
-                        <p:commandButton icon="fa fa-save" type="button" value="Guardar" onclick="PF('dlgCodigoBarras').show();"  />
+                        <p:commandButton icon="fa fa-save" value="Guardar" action="#{amputacionesCrear.guardar()}"/>
+                        
 
                         <p:commandButton  icon="fa fa-fw fa-remove" value="Cancelar" update="contenido" process="@this"  actionListener="#{navegar.direccionarInicio()}" />
 
