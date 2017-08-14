@@ -43,13 +43,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Empleado.findByEspecialidadempleado", query = "SELECT e FROM Empleado e WHERE e.especialidadempleado = :especialidadempleado")})
 public class Empleado implements Serializable {
 
-    @JoinColumn(name = "idcargo", referencedColumnName = "idcargo")
-    @ManyToOne(optional = false)
-    private Cargo idcargo;
-    @JoinColumn(name = "idespecialidad", referencedColumnName = "idespecialidad")
-    @ManyToOne(optional = false)
-    private Especialidad idespecialidad;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,6 +76,13 @@ public class Empleado implements Serializable {
     @Size(max = 50)
     @Column(name = "cargoempleado")
     private String cargoempleado;
+
+    @JoinColumn(name = "idcargo", referencedColumnName = "idcargo")
+    @ManyToOne(optional = false)
+    private Cargo idcargo;
+    @JoinColumn(name = "idespecialidad", referencedColumnName = "idespecialidad")
+    @ManyToOne(optional = false)
+    private Especialidad idespecialidad;
 
     public Empleado() {
     }
@@ -211,5 +211,5 @@ public class Empleado implements Serializable {
     public void setIdespecialidad(Especialidad idespecialidad) {
         this.idespecialidad = idespecialidad;
     }
-    
+
 }

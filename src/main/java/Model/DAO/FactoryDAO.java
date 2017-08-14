@@ -17,6 +17,8 @@ public abstract class FactoryDAO {
     public abstract EmpleadoDAO getEmpleadoDAO();
     public abstract UsuarioDAO getUsuarioDAO();
     public abstract MenuDAO getMenuDAO();
+    public abstract CargoDAO getCargoDAO();
+    public abstract EspecialidadDAO getEspecialidadDAO();
     
     //cabecera del estudio
     public abstract HospitalDAO getHospitalDAO();

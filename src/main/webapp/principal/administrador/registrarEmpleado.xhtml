@@ -13,25 +13,35 @@
             <ui:define name="content">
 
                 <h:form id="contenido">
-                    
+
                     <h1 style="color: #045491;text-align: center">Registro de Empleado</h1>
 
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
 
                     <p:fieldset legend="Datos Personales" style="width:80%" id="dp">
-                        <h:panelGrid columns="3" id="pgDatosPersonales" >
-                            
+                        <h:panelGrid columns="1" id="pgDatosPersonales" >
+
                             <p:outputLabel for="txtCedIden" value="Cédula de Identidad: " />
-                            <p:inputText id="txtCedIden" value="#{empleadoController.empleado.ceduidenempleado}" required="true" requiredMessage="El campo Cédula de Identidad es requerido"/>
+                            <p:inputText id="txtCedIden" type="number" value="#{empleadoController.empleado.ceduidenempleado}" required="true" requiredMessage="El campo Cédula de Identidad es requerido" style="width: 98%;"
+                                         title="Número de Cédula. Ej: 1712345678">
+                                <f:validateLength maximum="10"></f:validateLength>
+                                <p:ajax event="keyup" update="out1" />
+                            </p:inputText>
                             <p:messages for="txtCedIden"/>
+                            <p:tooltip id="toolTipFade1" for="txtCedIden" value="Ej. 1712345678" position="right"/>
+
 
                             <p:outputLabel for="txtNombres" value="Nombres: " />
-                            <p:inputText id="txtNombres" value="#{empleadoController.empleado.nombresempleado}" required="true" requiredMessage="El campo Nombres es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtNombres" value="#{empleadoController.empleado.nombresempleado}" required="true" requiredMessage="El campo Nombres es requerido" style="text-transform:uppercase; width: 98%;" onkeyup="javascript:this.value = this.value.toUpperCase();" 
+                                         title="Nombres. Ej: JUAN JOSE" />
                             <p:messages for="txtNombres"/>
+                            <p:tooltip id="toolTipFade2" for="txtNombres" value="Ej. JUAN JOSE" position="right"/>
 
                             <p:outputLabel for="txtApellidos" value="Apellidos: " />
-                            <p:inputText id="txtApellidos" value="#{empleadoController.empleado.apellidosempleado}" required="true" requiredMessage="El campo Apellidos es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtApellidos" value="#{empleadoController.empleado.apellidosempleado}" required="true" requiredMessage="El campo Apellidos es requerido" style="text-transform:uppercase; width: 98%;" onkeyup="javascript:this.value = this.value.toUpperCase();" 
+                                         title="Apellidos. Ej: JACOME GARCIA"/>
                             <p:messages for="txtApellidos"/>
+                            <p:tooltip id="toolTipFade3" for="txtApellidos" value="Ej. GARCIA VELEZ" position="right"/>
 
                             <h:outputLabel for="rdbGenero" value="Género: " />
                             <p:selectOneRadio id="rdbGenero" value="#{empleadoController.empleado.generoempleado}" required="true" requiredMessage="Seleccionar el Género">
@@ -39,52 +49,66 @@
                                 <f:selectItem itemValue="F" itemLabel="Femenino" />
                             </p:selectOneRadio>
                             <p:messages for="rdbGenero"/>
+                            <p:tooltip id="toolTipFade4" for="rdbGenero" value="Seleccione el Género" position="right"/>
 
                             <h:outputLabel for="txtFechaNac" value="Fecha de Nacimiento: " />
                             <p:calendar id="txtFechaNac" locale="es" pattern="dd-MM-yyyy" navigator="true"
-                                        mask="true" required="true" value="#{empleadoController.empleado.fechanacimiento}" requiredMessage="Seleccione la Fecha de Nacimiento" />
+                                        mask="true" required="true" value="#{empleadoController.empleado.fechanacimiento}" requiredMessage="Seleccione la Fecha de Nacimiento" style="width: 98%"/>
                             <p:messages for="txtFechaNac"/>
+                            <p:tooltip id="toolTipFade5" for="txtFechaNac" value="Ej. dd-mm-aaaa" position="right"/>
 
                             <p:outputLabel for="txtDireccion" value="Dirección: " />
-                            <p:inputText id="txtDireccion" value="#{empleadoController.empleado.direccionempleado}" required="true" requiredMessage="El campo Dirección es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();"/>
+                            <p:inputText id="txtDireccion" value="#{empleadoController.empleado.direccionempleado}" required="true" requiredMessage="El campo Dirección es requerido" style="text-transform:uppercase; width: 98%;" onkeyup="javascript:this.value = this.value.toUpperCase();"/>
                             <p:messages for="txtDireccion"/>
+                            <p:tooltip id="toolTipFade6" for="txtDireccion" value="Ej. AV. 12 DE OCTUBRE" position="right"/>
 
                             <p:outputLabel for="txtTelefono" value="Teléfono: " />
-                            <p:inputText id="txtTelefono" value="#{empleadoController.empleado.numtelempleado}" required="true" requiredMessage="El campo Teléfono es requerido"/>
-                            <p:messages for="txtTelefono"/>
+                            <p:inputMask id="txtTelefono" value="#{empleadoController.empleado.numtelempleado}" required="true" requiredMessage="El campo Teléfono es requerido" style="width: 98%;" mask="(99) 999-9999? x9999"/>
+                            <p:messages for="txtTelefono"/>   
+                            <p:tooltip id="toolTipFade7" for="txtTelefono" value="Ej. (02)212-3456x0001" position="right"/>
 
-                            <p:outputLabel for="txtEspecialidad" value="Especialidad: " />
-                            <p:inputText id="txtEspecialidad" value="#{empleadoController.empleado.especialidadempleado}" required="true" requiredMessage="El campo Especialidad es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
-                            <p:messages for="txtEspecialidad"/>
-                            
-                            <p:outputLabel for="txtCargo" value="Cargo : " />
-                            <p:inputText id="txtCargo" value="#{empleadoController.empleado.cargoempleado}" required="true" requiredMessage="El campo Cargo es requerido" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
-                            <p:messages for="txtCargo"/>
-                            
-                            
                             <h:outputLabel value="Cargo: " />
-                            <p:selectOneMenu id="cboCargo" value="#{ubicacionListar.provinciaID}" filter="true" filterMatchMode="startsWith" >
+                            <p:selectOneMenu id="cboCargo" value="#{empleadoController.cargoID}" filter="true" filterMatchMode="startsWith" style="width: 98%;">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
-                                <f:selectItems value="#{ubicacionListar.provincias}" var="cargos" itemLabel="#{provincias.nombreprovincia}" itemValue="#{provincias.idprovincia}"/>
+                                <f:selectItems value="#{empleadoController.cargos}" var="cargos" itemLabel="#{cargos.nombrecargo}" itemValue="#{cargos.idcargo}"/>
                             </p:selectOneMenu>
                             <p:messages for="cboCargo"/>
-                            
+                            <p:tooltip id="toolTipFade8" for="cboCargo" value="Ej. Seleccione el cargo que desempeñará el Empleado" position="right"/>
 
+                            <h:outputLabel value="Especialidad: " />
+                            <p:selectOneMenu id="cboEspecialidad" value="#{empleadoController.especialidadID}" filter="true" filterMatchMode="startsWith" style="width: 98%;">
+                                <f:selectItem itemLabel="- Seleccione -" itemValue="" />
+                                <f:selectItems value="#{empleadoController.especialidades}" var="especialidades" itemLabel="#{especialidades.nombreespecialidad}" itemValue="#{especialidades.idespecialidad}" />
+                            </p:selectOneMenu>
+                            <p:messages for="cboEspecialidad"/>
+                            <p:tooltip id="toolTipFade9" for="cboEspecialidad" value="Ej. Seleccione la especialidad profesional del Empleado" position="right"/>
                         </h:panelGrid>
-                        <p:commandButton icon="ui-icon-disk" value="Registrar" update=":contenido:pgDatosPersonales, mensaje" actionListener="#{empleadoController.registrarEmpleado()}">
-                            <p:confirm header="Confirmación" message="Desea registrar el nuevo empleado" icon="ui-icon-alert" />
-                        </p:commandButton>
-                        <p:commandButton icon="ui-icon-cancel" value="Cancelar" >
-                            <p:confirm header="Confirmación" message="Desea cancelar el nuevo empleado" icon="ui-icon-alert" />
-                        </p:commandButton>
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                        </p:confirmDialog>
                     </p:fieldset>
 
                     <br/>
 
+                    <p:fieldset legend="Datos de Usuario" style="width:80%" id="dpUsuario">
+                        <h:panelGrid columns="1" id="pgDatosUsuario" >
+                            <h:outputText value="Usuario: " />
+                            <h:outputText id="out1" value="#{empleadoController.empleado.ceduidenempleado}" />
+
+                        </h:panelGrid>
+                    </p:fieldset>
+
+                    <p:toolbar style="width: 83%">
+                        <f:facet name="right">
+                            <p:commandButton icon="ui-icon-disk" id="btnGuardar" value="Guardar" actionListener="#{empleadoController.registrarEmpleado()}" update="contenido,mensaje" process="@this">
+                                <p:confirm header="Confirmación" message="Desea registrar el empleado" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:commandButton icon="ui-icon-cancel" value="Cancelar" >
+                                <p:confirm header="Confirmación" message="Desea cancelar el nuevo empleado" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </f:facet>
+                    </p:toolbar>
 
                 </h:form>
                 <!-- Scrip para usar el calendario en español-->

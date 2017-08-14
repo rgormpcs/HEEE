@@ -2,6 +2,7 @@ package Model.JPA;
 
 import Model.DAO.CabecerarecepcionmuestraDAO;
 import Model.DAO.CantonDAO;
+import Model.DAO.CargoDAO;
 import Model.DAO.CategoriaDAO;
 import Model.DAO.DoctorDAO;
 import Model.DAO.EmpleadoDAO;
@@ -18,6 +19,7 @@ import Model.DAO.ProvinciaDAO;
 
 import Model.DAO.UsuarioDAO;
 import Model.DAO.ContadoresTipoEstudioAnioDAO;
+import Model.DAO.EspecialidadDAO;
 import Model.DAO.MarcadoresEIHQDAO;
 import Model.DAO.OrganosSistemasDAO;
 import Model.DAO.SubcategoriaDAO;
@@ -57,6 +59,16 @@ public class JPAFactoryDAO extends FactoryDAO {
     @Override
     public ParroquiaDAO getParroquiaDAO() {
         return new JPAParroquiaDAO();
+    }
+    
+    @Override
+    public CargoDAO getCargoDAO() {
+        return new JPACargoDAO();
+    }
+    
+    @Override
+    public EspecialidadDAO getEspecialidadDAO() {
+        return new JPAEspecialidadDAO();
     }
 
     @Override
