@@ -1,86 +1,86 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Bean.Empleado;
 
-import Bean.Menu.SessionBean;
 import Model.Entity.Cargo;
 import Model.Entity.Empleado;
 import Model.Entity.Especialidad;
 import Model.Entity.Usuario;
-import Model.JPA.JPAFactoryDAO;
 import java.io.Serializable;
-import java.util.List;
+import Model.JPA.JPAFactoryDAO;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
-@ManagedBean(name = "empleadoController")
-@ViewScoped
-public class EmpleadoCrear implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+@ManagedBean(name = "empleadoCrear")
+@ViewScoped
+@RequestScoped
+public class EmpleadoCrear implements Serializable{
 
     private Empleado empleado;
     private Usuario usuario;
-    private List<Cargo> cargos;
-    private List<Especialidad> especialidades;
     private Cargo cargo;
     private Especialidad especialidad;
-
     private int CargoID;
     private int EspecialidadID;
 
-    SessionBean sesion = new SessionBean();
-
-    private List<Empleado> verificarExistenciaVector;
-
-    /*Método Constructor*/
     public EmpleadoCrear() {
-        this.empleado = new Empleado(); //Inicialización de la variable 
-        this.usuario = new Usuario();
-        cargos = null;
-        this.CargoID = 0;
-        especialidades = null;
-        this.EspecialidadID = 0;
+        this.empleado = new Empleado();
         this.cargo = new Cargo();
         this.especialidad = new Especialidad();
-
-        listarCargo();
-        listarEspecialidad();
+        this.usuario = new Usuario();
+        this.EspecialidadID = 0;
+        this.CargoID = 0;
     }
-
-    /*MÉTODO PARA HACER EL REGISTRO DE UN EMPLEADO*/
-    public void registrarEmpleado() {
-        try {
+    
+    public void  registrarEmpleado(){
+        System.out.println("entro a registrar Empleado");
+            try {
             //this.usuario.setIdUsuario(empleado);
+            
             this.cargo.setIdcargo(this.CargoID);
-            System.out.println("CARGO ID" + CargoID);
+            this.empleado.setIdcargo(cargo);
             this.especialidad.setIdespecialidad(this.EspecialidadID);
-            System.out.println("ESPECIALIDAD ID" + EspecialidadID);
+            this.empleado.setIdespecialidad(especialidad);
+            
             JPAFactoryDAO.getFactory().getEmpleadoDAO().create(empleado);
-            //usuarioEJB.create(usuario);
-            //mensaje
+        
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Registro de Empleado con éxito"));
         } catch (Exception e) {
             //mensaje
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Registro de Empleado fallido !!!"));
         }
     }
-
-    /*Método para listar los cargos que tiene el Empleado*/
-    public void listarCargo() {
-        cargos = JPAFactoryDAO.getFactory().getCargoDAO().find();
+    
+  
+    
+    //getters and setters
+    
+    public Cargo getCargo() {
+        return cargo;
     }
 
-    /*Método para listar las especialidades que tiene el Empleado*/
-    public void listarEspecialidad() {
-        especialidades = JPAFactoryDAO.getFactory().getEspecialidadDAO().find();
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
     }
 
-    /*Getters & Setters*/
+    public Especialidad getEspecialidad() {
+        return especialidad;
+    }
+
+    //getters and setter
+    public void setEspecialidad(Especialidad especialidad) {    
+        this.especialidad = especialidad;
+    }
+
     public Empleado getEmpleado() {
-        if (this.empleado == null) {
-            this.empleado = new Empleado();
-        }
         return empleado;
     }
 
@@ -96,55 +96,8 @@ public class EmpleadoCrear implements Serializable {
         this.usuario = usuario;
     }
 
-    public SessionBean getSesion() {
-        return sesion;
-    }
-
-    public void setSesion(SessionBean sesion) {
-        this.sesion = sesion;
-    }
-
-    public List<Empleado> getVerificarExistenciaVector() {
-        return verificarExistenciaVector;
-    }
-
-    public void setVerificarExistenciaVector(List<Empleado> verificarExistenciaVector) {
-        this.verificarExistenciaVector = verificarExistenciaVector;
-    }
-
-    public List<Cargo> getCargos() {
-        return cargos;
-    }
-
-    public void setCargos(List<Cargo> cargos) {
-        this.cargos = cargos;
-    }
-
-    public List<Especialidad> getEspecialidades() {
-        return especialidades;
-    }
-
-    public void setEspecialidades(List<Especialidad> especialidades) {
-        this.especialidades = especialidades;
-    }
-
-    public Cargo getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
-    }
-
-    public Especialidad getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(Especialidad especialidad) {
-        this.especialidad = especialidad;
-    }
-
     public int getCargoID() {
+        System.out.println("cargoid:"+CargoID);
         return CargoID;
     }
 
@@ -153,11 +106,14 @@ public class EmpleadoCrear implements Serializable {
     }
 
     public int getEspecialidadID() {
+        System.out.println("Especialidadid:"+EspecialidadID);
         return EspecialidadID;
     }
 
     public void setEspecialidadID(int EspecialidadID) {
         this.EspecialidadID = EspecialidadID;
     }
-
+    
+    
+            
 }

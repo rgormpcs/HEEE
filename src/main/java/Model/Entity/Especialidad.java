@@ -23,15 +23,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author EPN
+ * @author mpcs
  */
 @Entity
-@Table(name = "especialidad", catalog = "siap", schema = "public")
+@Table(name = "especialidad")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Especialidad.findAll", query = "SELECT e FROM Especialidad e"),
-    @NamedQuery(name = "Especialidad.findByIdespecialidad", query = "SELECT e FROM Especialidad e WHERE e.idespecialidad = :idespecialidad"),
-    @NamedQuery(name = "Especialidad.findByNombreespecialidad", query = "SELECT e FROM Especialidad e WHERE e.nombreespecialidad = :nombreespecialidad")})
+    @NamedQuery(name = "Especialidad.findAll", query = "SELECT e FROM Especialidad e")
+    , @NamedQuery(name = "Especialidad.findByIdespecialidad", query = "SELECT e FROM Especialidad e WHERE e.idespecialidad = :idespecialidad")
+    , @NamedQuery(name = "Especialidad.findByNombreespecialidad", query = "SELECT e FROM Especialidad e WHERE e.nombreespecialidad = :nombreespecialidad")})
 public class Especialidad implements Serializable {
 
     private static final long serialVersionUID = 1L;

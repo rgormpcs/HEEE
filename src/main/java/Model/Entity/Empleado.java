@@ -25,22 +25,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author EPN
+ * @author mpcs
  */
 @Entity
 @Table(name = "empleado")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e"),
-    @NamedQuery(name = "Empleado.findByIdempleado", query = "SELECT e FROM Empleado e WHERE e.idempleado = :idempleado"),
-    @NamedQuery(name = "Empleado.findByNombresempleado", query = "SELECT e FROM Empleado e WHERE e.nombresempleado = :nombresempleado"),
-    @NamedQuery(name = "Empleado.findByApellidosempleado", query = "SELECT e FROM Empleado e WHERE e.apellidosempleado = :apellidosempleado"),
-    @NamedQuery(name = "Empleado.findByGeneroempleado", query = "SELECT e FROM Empleado e WHERE e.generoempleado = :generoempleado"),
-    @NamedQuery(name = "Empleado.findByFechanacimiento", query = "SELECT e FROM Empleado e WHERE e.fechanacimiento = :fechanacimiento"),
-    @NamedQuery(name = "Empleado.findByCeduidenempleado", query = "SELECT e FROM Empleado e WHERE e.ceduidenempleado = :ceduidenempleado"),
-    @NamedQuery(name = "Empleado.findByDireccionempleado", query = "SELECT e FROM Empleado e WHERE e.direccionempleado = :direccionempleado"),
-    @NamedQuery(name = "Empleado.findByNumtelempleado", query = "SELECT e FROM Empleado e WHERE e.numtelempleado = :numtelempleado"),
-    @NamedQuery(name = "Empleado.findByEspecialidadempleado", query = "SELECT e FROM Empleado e WHERE e.especialidadempleado = :especialidadempleado")})
+    @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e")
+    , @NamedQuery(name = "Empleado.findByIdempleado", query = "SELECT e FROM Empleado e WHERE e.idempleado = :idempleado")
+    , @NamedQuery(name = "Empleado.findByNombresempleado", query = "SELECT e FROM Empleado e WHERE e.nombresempleado = :nombresempleado")
+    , @NamedQuery(name = "Empleado.findByApellidosempleado", query = "SELECT e FROM Empleado e WHERE e.apellidosempleado = :apellidosempleado")
+    , @NamedQuery(name = "Empleado.findByGeneroempleado", query = "SELECT e FROM Empleado e WHERE e.generoempleado = :generoempleado")
+    , @NamedQuery(name = "Empleado.findByFechanacimiento", query = "SELECT e FROM Empleado e WHERE e.fechanacimiento = :fechanacimiento")
+    , @NamedQuery(name = "Empleado.findByCeduidenempleado", query = "SELECT e FROM Empleado e WHERE e.ceduidenempleado = :ceduidenempleado")
+    , @NamedQuery(name = "Empleado.findByDireccionempleado", query = "SELECT e FROM Empleado e WHERE e.direccionempleado = :direccionempleado")
+    , @NamedQuery(name = "Empleado.findByNumtelempleado", query = "SELECT e FROM Empleado e WHERE e.numtelempleado = :numtelempleado")})
 public class Empleado implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -70,13 +69,6 @@ public class Empleado implements Serializable {
     @Size(max = 10)
     @Column(name = "numtelempleado")
     private String numtelempleado;
-    @Size(max = 50)
-    @Column(name = "especialidadempleado")
-    private String especialidadempleado;
-    @Size(max = 50)
-    @Column(name = "cargoempleado")
-    private String cargoempleado;
-
     @JoinColumn(name = "idcargo", referencedColumnName = "idcargo")
     @ManyToOne(optional = false)
     private Cargo idcargo;
@@ -155,20 +147,20 @@ public class Empleado implements Serializable {
         this.numtelempleado = numtelempleado;
     }
 
-    public String getEspecialidadempleado() {
-        return especialidadempleado;
+    public Cargo getIdcargo() {
+        return idcargo;
     }
 
-    public void setEspecialidadempleado(String especialidadempleado) {
-        this.especialidadempleado = especialidadempleado;
+    public void setIdcargo(Cargo idcargo) {
+        this.idcargo = idcargo;
     }
 
-    public String getCargoempleado() {
-        return cargoempleado;
+    public Especialidad getIdespecialidad() {
+        return idespecialidad;
     }
 
-    public void setCargoempleado(String cargoempleado) {
-        this.cargoempleado = cargoempleado;
+    public void setIdespecialidad(Especialidad idespecialidad) {
+        this.idespecialidad = idespecialidad;
     }
 
     @Override
@@ -195,21 +187,5 @@ public class Empleado implements Serializable {
     public String toString() {
         return "Model.Entity.Empleado[ idempleado=" + idempleado + " ]";
     }
-
-    public Cargo getIdcargo() {
-        return idcargo;
-    }
-
-    public void setIdcargo(Cargo idcargo) {
-        this.idcargo = idcargo;
-    }
-
-    public Especialidad getIdespecialidad() {
-        return idespecialidad;
-    }
-
-    public void setIdespecialidad(Especialidad idespecialidad) {
-        this.idespecialidad = idespecialidad;
-    }
-
+    
 }
