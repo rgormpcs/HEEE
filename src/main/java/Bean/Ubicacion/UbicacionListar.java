@@ -108,6 +108,7 @@ public class UbicacionListar implements Serializable {
     public List<Parroquia> getParroquias() {
 
         System.out.println("informacion de canton:" + cantonID);
+        System.out.println("informacion de parrroquia:" + parroquiaID);
         parroquias = JPAFactoryDAO.getFactory().getParroquiaDAO().buscarParroquiaPorCanton(cantonID);
         return parroquias;
     }

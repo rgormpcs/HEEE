@@ -35,6 +35,7 @@ public abstract class FactoryDAO {
     public abstract ParroquiaDAO getParroquiaDAO();
     public abstract ExtremidadDAO getExtremidadDAO();
     public abstract ParteDAO getParteDAO();
+    public abstract EstudiosAmputacionesDAO getEstudiosAmputacionesDAO();
     
     
     //codigo de barras

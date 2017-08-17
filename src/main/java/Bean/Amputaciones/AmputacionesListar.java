@@ -15,6 +15,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
@@ -24,13 +25,13 @@ import javax.faces.view.ViewScoped;
  */
 @ManagedBean(name = "amputacionesListar")
 @ViewScoped
-//@RequestScoped
+@SessionScoped
 public class AmputacionesListar implements Serializable {
 
     private UbicacionListar ubicacionListar;
     private Navegar navegar;
-    String extremidadesID;
-    String partesID;
+    private String extremidadesID;
+    private String parteID;
 
     List<Extremidades> listaExtremidades;
     List<Partes> listaPartes;
@@ -42,12 +43,10 @@ public class AmputacionesListar implements Serializable {
         ubicacionListar = new UbicacionListar();
         navegar = new Navegar();
         extremidadesID = "0";
-        partesID = "0";
+        parteID= "0";
         listaExtremidades = null;
         listaExtremidades = null;
         listarExtremidades();
-        
-        
     }
 
     public void listarExtremidades() {
@@ -63,7 +62,7 @@ public class AmputacionesListar implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, message);
 
         extremidadesID = "0";
-        partesID = "0";
+        parteID="0";
         listaExtremidades = null;
         listarExtremidades();
         
@@ -72,8 +71,14 @@ public class AmputacionesListar implements Serializable {
     
     }
 
+    public String getParteID() {
+        return parteID;
+    }
 
     //getter and setter
+    public void setParteID(String parteID) {
+        this.parteID = parteID;
+    }
 
     public String getExtremidadesID() {
         return extremidadesID;
@@ -81,14 +86,6 @@ public class AmputacionesListar implements Serializable {
 
     public void setExtremidadesID(String extremidadesID) {
         this.extremidadesID = extremidadesID;
-    }
-
-    public String getPartesID() {
-        return partesID;
-    }
-
-    public void setPartesID(String partesID) {
-        this.partesID = partesID;
     }
 
     public List<Extremidades> getListaExtremidades() {
@@ -102,7 +99,7 @@ public class AmputacionesListar implements Serializable {
     public List<Partes> getListaPartes() {
         listaPartes = JPAFactoryDAO.getFactory().getParteDAO().buscarPartePorExtremidad(extremidadesID);
         System.out.println("informacion de extremidadID:" + extremidadesID);
-        System.out.println("informacion de parteID:"+partesID);
+      
         return listaPartes;
     }
 

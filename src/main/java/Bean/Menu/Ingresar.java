@@ -8,21 +8,16 @@ package Bean.Menu;
 import Model.Entity.Empleado;
 import Model.Entity.Usuario;
 import Model.JPA.JPAFactoryDAO;
-//import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-//import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpServletRequest;
 
-/**
- *
- * @author mpcs
- */
+
 @ManagedBean(name = "ingresar")
 @RequestScoped
 //@SessionScoped
@@ -57,7 +52,7 @@ public class Ingresar implements Serializable {
         List<Usuario> usuarioLista=JPAFactoryDAO.getFactory().getUsuarioDAO().find(usuarioNombreCampo, usuarioNombreValor);
        
             if (usuarioLista.isEmpty()){
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario no existe"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Datos Erróneos verifique usuario o contraseña"));
             }else{
                 for(int i=0; i<usuarioLista.size();i++){
                 System.out.println("informacion de usuario:"+usuarioLista.get(i).getUsuariousuario());
@@ -68,7 +63,7 @@ public class Ingresar implements Serializable {
                 redireccion = "/principal/bienvenida?faces-redirect=true";  
 
                 }else{
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Datos Erróneos"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Datos Erróneos verifique usuario o contraseña"));
                 System.out.println("dato incorrecto");
                 }
                 }
