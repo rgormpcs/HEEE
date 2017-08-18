@@ -93,7 +93,10 @@
                     <p:fieldset legend="Datos del Médico Solicitante" style="width:80%">
 
                         <h:panelGrid columns="6" id="pgDatosMedico">
-
+                            <p:outputLabel for="txtNombresMS" value="Nombres: " />
+                            <p:inputText id="txtNombresMS" value="#{amputacionesCrear.doctor.nombresdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:messages for="txtNombresMS"/>
+                            
                             <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
                             <p:inputText id="txtApellidosMS" value="#{amputacionesCrear.doctor.apellidosdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                             <p:messages for="txtApellidosMS"/>
@@ -101,10 +104,6 @@
                             <p:outputLabel for="txtEmail" value="Email: " />
                             <p:inputText id="txtEmail" value="#{amputacionesCrear.doctor.emaildoctor}" />
                             <p:messages for="txtEmail"/>
-
-                            <p:outputLabel for="txtNombresMS" value="Nombres: " />
-                            <p:inputText id="txtNombresMS" value="#{amputacionesCrear.doctor.nombresdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
-                            <p:messages for="txtNombresMS"/>
 
                             <p:outputLabel for="txtTel" value="Teléfono: " />
                             <p:inputText id="txtTel"  value="#{amputacionesCrear.doctor.telefonodoctor}"/>
@@ -115,23 +114,23 @@
 
                     </p:fieldset>
                     <br/>
-
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <p:fieldset legend="Datos del Paciente" style="width:87%">
+                    <p:fieldset legend="Datos del Paciente" style="width:80%">
+                    
+                        
 
                             <h:panelGrid columns="6" id="pgDatosPaciente">
 
-                                <h:outputLabel for="txtApellidos" value="Apellidos: " />
-                                <p:inputText id="txtApellidos" value="#{amputacionesCrear.paciente.apellidopaciente}" />
-                                <p:messages for="txtApellidos"/>
+                                <h:outputLabel for="txtNombres" value="Nombres: " />
+                                <p:inputText id="txtNombres" value="#{amputacionesCrear.paciente.nombrepaciente}" />
+                                <p:messages for="txtNombres"/>
 
                                 <h:outputLabel for="txtNumHCl" value="No. Historia Cl.: " />
                                 <p:inputText id="txtNumHCl" value="#{amputacionesCrear.paciente.numhistclinpaciente}"/>
                                 <p:messages for="txtNumHCl"/>
 
-                                <h:outputLabel for="txtNombres" value="Nombres: " />
-                                <p:inputText id="txtNombres" value="#{amputacionesCrear.paciente.nombrepaciente}" />
-                                <p:messages for="txtNombres"/>
+                                <h:outputLabel for="txtApellidos" value="Apellidos: " />
+                                <p:inputText id="txtApellidos" value="#{amputacionesCrear.paciente.apellidopaciente}" />
+                                <p:messages for="txtApellidos"/>
 
                                 <h:outputLabel for="txtServicio" value="Servicio: " />
                                 <p:inputText id="txtServicio" value="#{amputacionesCrear.cabecera.serviciocrm}"/>
@@ -177,19 +176,16 @@
                             <br/>    
                         </p:fieldset>
 
-                    </h:panelGrid>
+                    <br/>
 
-                    <h:panelGrid columns="1" cellpadding="10">
-
-
-                        <p:fieldset legend="Diagnostico presuntivo" style="width:50%">
-
-                            <h:panelGrid id="pgDiagPresuntivo">
+                        <p:fieldset legend="Diagnostico presuntivo" style="width:80%">
+                            <h:panelGrid columns="6" id="pgDiagPresuntivo" >
                                 <p:inputTextarea id="txtDiagPresuntivo" value="#{amputacionesCrear.cabecera.diagnosticopresunticocrm}" rows="2" cols="81"    queryDelay="750" minQueryLength="4" />
                                 <p:messages for="txtDiagPresuntivo"/>
                             </h:panelGrid>
 
                         </p:fieldset>
+                    <br/>
 
                         <p:fieldset legend="Resumen Clínico" style="width:80%">
 
@@ -202,7 +198,7 @@
                         <br/>
 
 
-                    </h:panelGrid>
+                  
 
                     <p:fieldset legend="Muestra o Pieza" style="width: 80%">
 
@@ -264,7 +260,7 @@
                     <!-- PopUP para codigo de barras-->
                     <p:dialog modal="true" header="Código de barras:" widgetVar="dlgCodigoBarras">
                         <h:form>
-                            <h:panelGrid columns="3" cellpadding="10" >
+                            <h:panelGrid columns="2" style="padding-left: 50%" >
                                 <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
                                 <p:barcode id="codigoB" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
                                 <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
