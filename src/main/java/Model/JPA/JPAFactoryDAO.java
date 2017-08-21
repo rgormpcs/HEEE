@@ -21,6 +21,7 @@ import Model.DAO.UsuarioDAO;
 import Model.DAO.ContadoresTipoEstudioAnioDAO;
 import Model.DAO.EspecialidadDAO;
 import Model.DAO.EstudiosAmputacionesDAO;
+import Model.DAO.EstudiosQuirurgicosDAO;
 import Model.DAO.MarcadoresEIHQDAO;
 import Model.DAO.OrganosSistemasDAO;
 import Model.DAO.SubcategoriaDAO;
@@ -149,6 +150,11 @@ public class JPAFactoryDAO extends FactoryDAO {
     @Override
     public EstudiosAmputacionesDAO getEstudiosAmputacionesDAO() {
         return new JPAEstudiosAmputacionesDAO();
+    }
+    
+    @Override
+    public EstudiosQuirurgicosDAO getEstudiosQuirurgicosDAO(){
+        return new JPAEstudiosQuirurgicosDAO();
     }
 
    

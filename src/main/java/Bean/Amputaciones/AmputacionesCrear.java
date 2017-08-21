@@ -28,6 +28,7 @@ import javax.faces.view.ViewScoped;
 //@RequestScoped
 public class AmputacionesCrear implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private List<Hospital> hospitalesEnBase;
     private List<Doctor> doctoresEnBase;
     private List<Paciente> pacientesEnBase;
@@ -41,6 +42,7 @@ public class AmputacionesCrear implements Serializable {
     private int numeroEstudio;
     private Partes partes;
     private Estudiosamputaciones estudioAmputaciones;
+    
 
     public AmputacionesCrear() {
         doctoresEnBase = null;

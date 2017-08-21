@@ -1,56 +1,85 @@
 package Bean.Quirurgico;
 
-import Bean.Menu.SessionBean;
+import Bean.Menu.Navegar;
+import Bean.Ubicacion.UbicacionListar;
 import Model.Entity.Organossistemas;
-import Model.Entity.Provincia;
 import Model.Entity.Subtipo;
 import Model.JPA.JPAFactoryDAO;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 
 @ManagedBean(name = "quirurgicoListar")
+@ViewScoped
 @SessionScoped
-public class QuirurgicoListar implements Serializable{
-   String organosSistemasID;
-   String subtipoID;
-   List<Organossistemas> organosSistemas;
-   List<Subtipo> subtipo;
-//   List<Provincia> subtipo;
+public class QuirurgicoListar implements Serializable {
+
+    private UbicacionListar ubicacionListar;
+    private Navegar navegar;
+    private String organosSistemasID;
+    private String subtipoID;
     
-    
-    
-    SessionBean sesion = new SessionBean();
-    String usuario ="";
-    
+    List<Organossistemas> listaOrganosSistemas;
+    List<Subtipo> listaSubtipo;
+
     /*Método Constructor*/
-    public QuirurgicoListar(){
-        organosSistemasID="";
-        subtipoID="";
-        organosSistemas=null;
-        subtipo=null;
-       ListarOrganosSistemas();
-       ListarSubtipo();
+    public QuirurgicoListar() {
+        ubicacionListar = new UbicacionListar();
+        navegar = new Navegar();
+        organosSistemasID = "0";
+        subtipoID = "0";
+        listaOrganosSistemas = null;
+        listaSubtipo = null;
+        listarOrganosSistemas();
+        listarSubtipo();
+    }
+
+    public void listarOrganosSistemas() {
+        listaOrganosSistemas = JPAFactoryDAO.getFactory().getOrganosSistemasDAO().find();
+    }
+
+    public void listarSubtipo() {
+        listaSubtipo = JPAFactoryDAO.getFactory().getSubtipoDAO().find();
     }
     
-    
-    
-    public void ListarOrganosSistemas(){
-    organosSistemas=JPAFactoryDAO.getFactory().getOrganosSistemasDAO().find();
-    System.out.println("entron a lista con el id:"+organosSistemasID);
+    public void resetCombo(){
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje:", "Ingrese los nuevos datos del estudio");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        
+        organosSistemasID = "0";
+        subtipoID = "0";
+        
+        listaOrganosSistemas = null;
+        listaSubtipo = null;
+        
+        listarOrganosSistemas();
+        listarSubtipo();
+        
+        ubicacionListar.resetCombo();
     }
-    
-    public void ListarSubtipo(){
-       subtipo=JPAFactoryDAO.getFactory().getSubtipoDAO().find();
-       System.out.println("entron a lista con el id:"+subtipoID);
-//    subtipo=JPAFactoryDAO.getFactory().getSubtipoDAO().find();
-    }
-    
+
     //getter and setter
-    
-    
+
+    public UbicacionListar getUbicacionListar() {
+        return ubicacionListar;
+    }
+
+    public void setUbicacionListar(UbicacionListar ubicacionListar) {
+        this.ubicacionListar = ubicacionListar;
+    }
+
+    public Navegar getNavegar() {
+        return navegar;
+    }
+
+    public void setNavegar(Navegar navegar) {
+        this.navegar = navegar;
+    }
+
     public String getOrganosSistemasID() {
         return organosSistemasID;
     }
@@ -67,40 +96,20 @@ public class QuirurgicoListar implements Serializable{
         this.subtipoID = subtipoID;
     }
 
-    public List<Organossistemas> getOrganosSistemas() {
-        
-        return organosSistemas;
+    public List<Organossistemas> getListaOrganosSistemas() {
+        return listaOrganosSistemas;
     }
 
-    public void setOrganosSistemas(List<Organossistemas> organosSistemas) {
-        this.organosSistemas = organosSistemas;
+    public void setListaOrganosSistemas(List<Organossistemas> listaOrganosSistemas) {
+        this.listaOrganosSistemas = listaOrganosSistemas;
     }
 
-    public List<Subtipo> getSubtipo() {
-        
-        return subtipo;
+    public List<Subtipo> getListaSubtipo() {
+        return listaSubtipo;
     }
 
-    public void setSubtipo(List<Subtipo> subtipo) {
-        this.subtipo = subtipo;
+    public void setListaSubtipo(List<Subtipo> listaSubtipo) {
+        this.listaSubtipo = listaSubtipo;
     }
 
-    public SessionBean getSesion() {
-        return sesion;
-    }
-
-    public void setSesion(SessionBean sesion) {
-        this.sesion = sesion;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-    
-    
-    
 }

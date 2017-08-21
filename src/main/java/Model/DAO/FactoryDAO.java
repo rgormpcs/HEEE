@@ -37,6 +37,9 @@ public abstract class FactoryDAO {
     public abstract ParteDAO getParteDAO();
     public abstract EstudiosAmputacionesDAO getEstudiosAmputacionesDAO();
     
+    //estudio quirurgico
+    public abstract EstudiosQuirurgicosDAO getEstudiosQuirurgicosDAO();
+    
     
     //codigo de barras
     public abstract TipoEstudioDAO getTipoEstudioDAO();
