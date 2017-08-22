@@ -16,10 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author EPN
- */
+
 @ManagedBean(name = "inmunohistoquimicaListar")
 @RequestScoped
 public class InmunohistoquimicaListar {
@@ -37,7 +34,7 @@ public class InmunohistoquimicaListar {
 
     
     public List<Marcadoreseihq> getMarcadores() {
-        marcadores=JPAFactoryDAO.getFactory().getMarcadoresEIHQ().find();
+        marcadores=JPAFactoryDAO.getFactory().getMarcadoresEIHQDAO().find();
         return marcadores;
     }
 

@@ -55,7 +55,14 @@ public abstract class FactoryDAO {
     public abstract SubcategoriaDAO getSubcategoriaDAO();
     
     //Inmunohistoquimica
-    public abstract MarcadoresEIHQDAO getMarcadoresEIHQ();
+    public abstract MarcadoresEIHQDAO getMarcadoresEIHQDAO();
+    
+    //Histoquimica
+    public abstract EstudiosHistoquimicaDAO getEstudiosHistoquimicaDAO();
+    
+    //marcadores Estudio Himunohistoquimica
+    public abstract MarcadoresEHDAO getMarcadoresEHDAO();
+    
     
 
 }

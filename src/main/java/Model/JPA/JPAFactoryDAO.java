@@ -28,6 +28,8 @@ import Model.DAO.SubcategoriaDAO;
 
 import Model.DAO.SubtipoDAO;
 import Model.DAO.TipoEstudioDAO;
+import Model.DAO.EstudiosHistoquimicaDAO;
+import Model.DAO.MarcadoresEHDAO;
 
 /*Esta clase es una extención de la clase FactoryDAO, en donde se relaciona la entidad de la clase DAO
 con el JPA*/
@@ -143,7 +145,7 @@ public class JPAFactoryDAO extends FactoryDAO {
     }
 
     @Override
-    public MarcadoresEIHQDAO getMarcadoresEIHQ() {
+    public MarcadoresEIHQDAO getMarcadoresEIHQDAO() {
         return new JPAMarcadoresEIHQDAO();
     }
 
@@ -156,6 +158,17 @@ public class JPAFactoryDAO extends FactoryDAO {
     public EstudiosQuirurgicosDAO getEstudiosQuirurgicosDAO(){
         return new JPAEstudiosQuirurgicosDAO();
     }
+
+    @Override
+    public EstudiosHistoquimicaDAO getEstudiosHistoquimicaDAO() {
+        return new JPAEstudiosHistoquimicaDAO();
+    }
+
+    @Override
+    public MarcadoresEHDAO getMarcadoresEHDAO() {
+        return new JPAMarcadoresEHDAO();
+    }
+
 
    
 

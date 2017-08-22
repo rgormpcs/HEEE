@@ -115,23 +115,34 @@
                     <p:fieldset legend="Datos del Paciente" style="width:80%">
                     
                         
+                        <h:panelGrid columns="3" id="pgDatosConsulta">
+                            <p:selectOneRadio id="rdbConsulta" value="#{amputacionesCrear.cabecera.tiposervicio}" >
+                                <f:selectItem itemValue="Consulta Externa" itemLabel="Consulta Externa" />
+                                <f:selectItem itemValue="Hospitalización" itemLabel="Hospitalización" />
+                                <f:selectItem itemValue="Otros" itemLabel="Otros" />
+                                <p:ajax  update="txtOtros" />
+                            </p:selectOneRadio>
+                            <p:inputText id="txtOtros" value="#{amputacionesCrear.cabecera.descriptiposerviciocrm}" disabled="#{(amputacionesCrear.cabecera.tiposervicio == 'Consulta Externa') || (amputacionesCrear.cabecera.tiposervicio == 'Hospitalización')}" />
+                            <p:messages for="rdbConsulta"/>
+                        </h:panelGrid>
+                         <br/>
 
                             <h:panelGrid columns="6" id="pgDatosPaciente">
 
-                                <h:outputLabel for="txtNombres" value="Nombres: " />
-                                <p:inputText id="txtNombres" />
+                                <h:outputLabel for="txtNombres" value="Nombres: "  />
+                                <p:inputText id="txtNombres" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                                 <p:messages for="txtNombres"/>
 
-                                <h:outputLabel for="txtNumHCl" value="No. Historia Cl.: " />
+                                <h:outputLabel for="txtNumHCl" value="No. Historia Cl.: "  />
                                 <p:inputText id="txtNumHCl" />
                                 <p:messages for="txtNumHCl"/>
 
                                 <h:outputLabel for="txtApellidos" value="Apellidos: " />
-                                <p:inputText id="txtApellidos"  />
+                                <p:inputText id="txtApellidos" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                                 <p:messages for="txtApellidos"/>
 
                                 <h:outputLabel for="txtServicio" value="Servicio: " />
-                                <p:inputText id="txtServicio" />
+                                <p:inputText id="txtServicio" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
                                 <p:messages for="txtServicio"/>
 
                                 <h:outputLabel for="txtEdad" value="Edad: " />
@@ -212,6 +223,24 @@
 
                     </p:fieldset>
                     <br/>
+                    
+                    <p:fieldset legend="Marcadores" style="width: 80%">
+                        
+                        <h:panelGrid id="pgMarcadores">
+                            <p:accordionPanel>
+
+                                <p:tab title="Marcadores" >
+                                    <h:panelGrid columns="3" cellpadding="10" id="descripcionCitologico" >
+                                        <p:selectManyCheckbox id="gridmarcadores" value="#{histoquimicaListar.marcadores}" layout="grid" columns="1" >
+                                            <f:selectItems value="#{histoquimicaListar.marcadores}" var="marcadores"  itemLabel="#{marcadores.detallemarcadoreh}" itemValue="#{marcadores.idmarcadoreh}" />
+                                        </p:selectManyCheckbox>  
+                                    </h:panelGrid>
+                                </p:tab>
+
+                            </p:accordionPanel>
+                        </h:panelGrid>
+                        
+                    </p:fieldset>
  
 
 
