@@ -47,6 +47,7 @@ public class QuirurgicoCrear implements Serializable {
         pacientesEnBase = null;
         hospitalesEnBase = null;
         this.cabecera = new Cabecerarecepcionmuestra();
+        this.paciente = new Paciente();
         this.doctor = new Doctor();
         this.hospital = new Hospital();
         this.parroquia = new Parroquia();
