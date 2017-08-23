@@ -203,7 +203,7 @@
 
                                 <p:tab title="Marcadores">
                                     <h:panelGrid columns="3" cellpadding="10" id="descripcionCitologico" >
-                                        <p:selectManyCheckbox id="gridmarcadores" value="#{inmunohistoquimicaListar.marcadores}" layout="grid" columns="1" >
+                                        <p:selectManyCheckbox id="gridmarcadores" value="#{inmunohistoquimicaListar.marcadores}" layout="grid" columns="3" >
                                             <f:selectItems value="#{inmunohistoquimicaListar.marcadores}" var="marcadores"  itemLabel="#{marcadores.detallemarcadorihq}" itemValue="#{marcadores.idmarcadorihq}" />
                                         </p:selectManyCheckbox>  
                                     </h:panelGrid>
@@ -270,7 +270,7 @@
 
                                     </p:commandButton>
 
-                                    <p:commandButton value="No" type="button" actionListener="#{amputacionesListar.volver()}" >
+                                    <p:commandButton value="No" type="button" >
 
                                     </p:commandButton>
 

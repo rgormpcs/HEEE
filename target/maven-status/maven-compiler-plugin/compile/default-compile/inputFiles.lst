@@ -52,6 +52,7 @@
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/Entity/Hospital.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/Entity/Estudiosinmunohistoquimica.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/JPA/JPAParteDAO.java
+/home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/JPA/JPAEstudiosHistoquimicaDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/SubcategoriaDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/Entity/Especialidad.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/Entity/Marcadoreseh.java
@@ -61,10 +62,11 @@
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/CargoDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/CategoriaDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/ParroquiaDAO.java
-/home/mpcs/NetBeansProjects/HEEE/src/main/java/MarcadoresEIHQDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/ContadoresTipoEstudioAnioDAO.java
+/home/mpcs/NetBeansProjects/HEEE/src/main/java/Bean/Histoquimica/HistoquimicaListar.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Bean/Inmunohistoquimica/InmunohistoquimicaListar.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/Entity/Estudioshistoquimica.java
+/home/mpcs/NetBeansProjects/HEEE/src/main/java/Bean/Histoquimica/HistoquimicaCrear.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/JPA/JPAEmpleadoDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/JPA/JPAPacienteDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/Entity/Empleado.java
@@ -73,6 +75,7 @@
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/CantonDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/UsuarioDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/EmpleadoDAO.java
+/home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/JPA/JPAMarcadoresEHDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/JPA/JPAExtremidadDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Bean/Empleado/previousPage.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Bean/Menu/SessionBean.java
@@ -96,9 +99,11 @@
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/EstudiosAmputacionesDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/Entity/Estudiosquirurgicos.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/JPA/JPACabecerarecepcionmuestraDAO.java
+/home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/EstudiosHistoquimicaDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/TipoEstudioDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/Entity/Organossistemas.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Bean/Empleado/EmpleadoCrear.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/MenuDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/JPA/JPAProvinciaDAO.java
+/home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/MarcadoresEHDAO.java
 /home/mpcs/NetBeansProjects/HEEE/src/main/java/Model/DAO/PacienteDAO.java
