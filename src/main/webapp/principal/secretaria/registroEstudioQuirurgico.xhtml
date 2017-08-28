@@ -10,10 +10,10 @@
         <ui:composition template="./../../WEB-INF/plantillas/plantillaInicial.xhtml">
             <ui:define name="content">               
 
-                <div class="ui-fluid">
-                    
-                    
-                    <h:form id="contenido">
+
+
+
+                <h:form id="contenido">
 
                     <h1 style="color: #045491;text-align: center">Registro de Estudio Quirúrgico</h1>
 
@@ -21,98 +21,90 @@
                     <h1 style="display:none;" >#{codigoBarrasListar.nombreEstudio='QUIRÚRGICO'}</h1>
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
 
-                    <p:fieldset id="hospital" legend="Datos del Hospital" style="width:80%" >
+                    <p:fieldset id="hospital" legend="Datos del hospital" style="width:80%" >                      
+                        <h:panelGrid id="panelGroup" columns="2">
 
-                        <h:panelGrid columns="7" id="pgDatosHospital">
                             <p:outputLabel for="txtInstSistema" value="Institución del Sistema: " />
-                            <p:inputText id="txtInstSistema" value="#{quirurgicoCrear.hospital.instituciondelsistema}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtInstSistema" value="#{quirurgicoCrear.hospital.instituciondelsistema}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50"/>
                             <p:watermark for="txtInstSistema" value="MSP" />
                             <p:messages for="txtInstSistema"/>
 
+                            <p:outputLabel for="txtUniOperat" value="Unidad Operativa: " />
+                            <p:inputText id="txtUniOperat" value="#{quirurgicoCrear.hospital.unidadoperativa}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50"/>
+                            <p:watermark for="txtUniOperat" value="HEEE" />
+                            <p:messages for="txtUniOperat"/>
+
+                            <p:outputLabel for="txtCodUO" value="Cod. UO: " />
+                            <p:inputText id="txtCodUO" value="#{quirurgicoCrear.hospital.codigouo}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();"  size="50"/>
+                            <p:watermark for="txtCodUO" value="0001" />
+                            <p:messages for="txtCodUO"/>
+
                             <h:outputLabel value="Provincia: " />
-                            <p:selectOneMenu id="cboProvincia" value="#{ubicacionListar.provinciaID}" filter="true" filterMatchMode="startsWith" >
+                            <p:selectOneMenu id="cboProvincia" value="#{ubicacionListar.provinciaID}" filter="true" filterMatchMode="startsWith" style="width: 500px">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{ubicacionListar.provincias}" var="provincias" itemLabel="#{provincias.nombreprovincia}" itemValue="#{provincias.idprovincia}"/>
                                 <p:ajax update="cboCanton ,cboParroquia"  />
                             </p:selectOneMenu>
-                            <p:messages for="cboProvincia"/>
-
-                            <p:outputLabel for="txtUniOperat" value="Unidad Operativa: " />
-                            <p:inputText id="txtUniOperat" value="#{quirurgicoCrear.hospital.unidadoperativa}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
-                            <p:watermark for="txtUniOperat" value="HEEE" />
-                            <p:messages for="txtUniOperat"/>
+                            <p:watermark for="cboProvincia" value="" />
+                            <p:messages for="cboProvincia"/>                            
 
                             <h:outputLabel value="Cantón: " />
-                            <p:selectOneMenu id="cboCanton" value="#{ubicacionListar.cantonID}"  filter="true" filterMatchMode="startsWith" required="false" requiredMessage="Seleccione el Cantón">
+                            <p:selectOneMenu id="cboCanton" value="#{ubicacionListar.cantonID}"  filter="true" filterMatchMode="startsWith" required="false" requiredMessage="Seleccione el Cantón" style="width: 500px">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{ubicacionListar.cantones}" var="cantones" itemLabel="#{cantones.nombrecanton}" itemValue="#{cantones.idcanton}"/>
                                 <p:ajax update="cboParroquia"/>
                             </p:selectOneMenu>
+                            <p:watermark for="cboCanton" value="" />
                             <p:messages for="cboCanton"/>
 
-                            <p:outputLabel for="txtCodUO" value="Cod. UO: " />
-                            <p:inputText id="txtCodUO" value="#{quirurgicoCrear.hospital.codigouo}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
-                            <p:watermark for="txtCodUO" value="0001" />
-                            <p:messages for="txtCodUO"/>
-
                             <h:outputLabel value="Parroquia: " />
-                            <p:selectOneMenu id="cboParroquia" value="#{quirurgicoCrear.parroquiaID}" filter="true" filterMatchMode="startsWith" >
+                            <p:selectOneMenu id="cboParroquia" value="#{quirurgicoCrear.parroquiaID}" filter="true" filterMatchMode="startsWith" style="width: 500px" >
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{ubicacionListar.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
                             </p:selectOneMenu>
+                            <p:watermark for="cboParroquia" value="" />
                             <p:messages for="cboParroquia"/>
                         </h:panelGrid>
+                    </p:fieldset>                    
+                    <br/>
+                    <p:fieldset id="muestra" legend="Datos de la muestra" style="width:80%" >
+                        <h:panelGrid columns="2" id="pgDatosMuestra">
 
-                        <p:separator />
-                        
-                        <h:panelGrid columns="6" id="pgDatosMuestra">
-
-                            <h:outputLabel for="txtFechaTomaMuestra" value="Fecha de toma de la muestra: " />
-                            <p:calendar id="txtFechaTomaMuestra"  locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" value="#{quirurgicoCrear.cabecera.fechatomamuestracrm}" />
+                            <h:outputLabel for="txtFechaTomaMuestra" value="Fecha de toma: " />
+                            <p:calendar id="txtFechaTomaMuestra"  locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" value="#{quirurgicoCrear.cabecera.fechatomamuestracrm}" size="50" />
                             <p:watermark for="txtFechaTomaMuestra" value="dd-mm-aaaa" />
                             <p:messages for="txtFechaTomaMuestra"/>
 
-                            <h:outputLabel for="txtHoraTomaMuestra" value="Hora de toma de la muestra: " />
-                            <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true" value="#{quirurgicoCrear.cabecera.horatomamuestracrm}"  />
+                            <h:outputLabel for="txtHoraTomaMuestra" value="Hora de toma: " />
+                            <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true" value="#{quirurgicoCrear.cabecera.horatomamuestracrm}" size="50" />
                             <p:watermark for="txtHoraTomaMuestra" value="hh:mm" />
                             <p:messages for="txtHoraTomaMuestra"/>
 
                         </h:panelGrid>
-                        
-                    </p:fieldset>
-
+                    </p:fieldset>                    
                     <br/>
-                    <br/>
+                    <p:fieldset legend="Datos del médico solicitante" style="width:80%">
+                        <h:panelGrid columns="3" id="pgDatosMedico">
 
-                    <p:fieldset legend="Datos del Médico Solicitante" style="width:80%">
-                        
-                        <h:panelGrid columns="6" id="pgDatosMedico">
-                            <p:outputLabel for="txtNombresMS" value="Nombres: " />
-                            <p:inputText id="txtNombresMS" value="#{quirurgicoCrear.doctor.nombresdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
-                            <p:messages for="txtNombresMS"/>
-                            
                             <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
-                            <p:inputText id="txtApellidosMS" value="#{quirurgicoCrear.doctor.apellidosdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtApellidosMS" value="#{quirurgicoCrear.doctor.apellidosdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" />
                             <p:messages for="txtApellidosMS"/>
 
-                            <p:outputLabel for="txtEmail" value="Email: " />
-                            <p:inputText id="txtEmail" value="#{quirurgicoCrear.doctor.emaildoctor}" />
+                            <p:outputLabel for="txtNombresMS" value="Nombres: " />
+                            <p:inputText id="txtNombresMS" value="#{quirurgicoCrear.doctor.nombresdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" />
+                            <p:messages for="txtNombresMS"/>
+
+                            <p:outputLabel for="txtEmail" value="Correo electrónico: " />
+                            <p:inputText id="txtEmail" value="#{quirurgicoCrear.doctor.emaildoctor}" size="50" />
                             <p:messages for="txtEmail"/>
 
                             <p:outputLabel for="txtTel" value="Teléfono: " />
-                            <p:inputText id="txtTel" value="#{quirurgicoCrear.doctor.telefonodoctor}" />
+                            <p:inputText id="txtTel" value="#{quirurgicoCrear.doctor.telefonodoctor}" size="50"/>
                             <p:messages for="txtTel"/>
-
                         </h:panelGrid>
                     </p:fieldset>
-
-
                     <br/>
-
-
-                    <p:fieldset legend="Datos del Paciente" style="width:80%">
-
-                       
+                    <p:fieldset legend="Datos del paciente" style="width:80%">
                         <h:panelGrid columns="3" id="pgDatosConsulta">
                             <p:selectOneRadio id="rdbConsulta" value="#{quirurgicoCrear.cabecera.tiposervicio}" >
                                 <f:selectItem itemValue="Consulta Externa" itemLabel="Consulta Externa" />
@@ -120,44 +112,43 @@
                                 <f:selectItem itemValue="Otros" itemLabel="Otros" />
                                 <p:ajax  update="txtOtros" />
                             </p:selectOneRadio>
-                            <p:inputText id="txtOtros" value="#{quirurgicoCrear.cabecera.descriptiposerviciocrm}" disabled="#{(quirurgicoCrear.cabecera.tiposervicio == 'Consulta Externa') || (quirurgicoCrear.cabecera.tiposervicio == 'Hospitalización')}" />
+                            <p:inputText id="txtOtros" value="#{quirurgicoCrear.cabecera.descriptiposerviciocrm}" disabled="#{(quirurgicoCrear.cabecera.tiposervicio == 'Consulta Externa') || (quirurgicoCrear.cabecera.tiposervicio == 'Hospitalización')}" size="31" />
                             <p:messages for="rdbConsulta"/>
                         </h:panelGrid>
-                         <br/>
+                        <br/>
+                        <h:panelGrid columns="3" id="pgDatosPaciente">
 
-                        <h:panelGrid columns="6" id="pgDatosPaciente">
-                            
-                            <h:outputLabel for="txtNombres" value="Nombres: " />
-                            <p:inputText id="txtNombres" value="#{quirurgicoCrear.paciente.nombrepaciente}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();"/>
-                            <p:messages for="txtNombres"/>
-                            
                             <h:outputLabel for="txtNumHCl" value="No. Historia: " />
-                            <p:inputText id="txtNumHCl" value="#{quirurgicoCrear.paciente.numhistclinpaciente}"/>
+                            <p:inputText id="txtNumHCl" value="#{quirurgicoCrear.paciente.numhistclinpaciente}" size="50" />
                             <p:messages for="txtNumHCl"/>
 
-                            <h:outputLabel for="txtApellidos" value="Apellidos: " />
-                            <p:inputText id="txtApellidos" value="#{quirurgicoCrear.paciente.apellidopaciente}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();"/>
-                            <p:messages for="txtApellidos"/>
-
                             <h:outputLabel for="txtServicio" value="Servicio: " />
-                            <p:inputText id="txtServicio" value="#{quirurgicoCrear.cabecera.serviciocrm}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();"/>
-                            <p:messages for="txtServicio"/>
-
-                            <h:outputLabel for="txtEdad" value="Edad: " />
-                            <p:inputText id="txtEdad" value="#{quirurgicoCrear.paciente.edadpaciente}"/>
-                            <p:messages for="txtEdad"/>
+                            <p:inputText id="txtServicio" value="#{quirurgicoCrear.cabecera.serviciocrm}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" />
+                            <p:messages for="txtServicio"/>                            
 
                             <h:outputLabel for="txtSala" value="Sala: " />
-                            <p:inputText id="txtSala" value="#{quirurgicoCrear.cabecera.salacrm}"/>
-                            <p:messages for="txtSala"/>
-
-                            <h:outputLabel for="txtCI" value="C.I.: " />
-                            <p:inputText id="txtCI" value="#{quirurgicoCrear.paciente.ceduidenpaciente}"/>
-                            <p:messages for="txtCI"/>
+                            <p:inputText id="txtSala" value="#{quirurgicoCrear.cabecera.salacrm}" size="50" />
+                            <p:messages for="txtSala"/>                           
 
                             <h:outputLabel for="txtCama" value="Cama: " />
-                            <p:inputText id="txtCama" value="#{quirurgicoCrear.cabecera.camacrm}"/>
+                            <p:inputText id="txtCama" value="#{quirurgicoCrear.cabecera.camacrm}" size="50" />
                             <p:messages for="txtCama"/>
+
+                            <h:outputLabel for="txtApellidos" value="Apellidos: " />
+                            <p:inputText id="txtApellidos" value="#{quirurgicoCrear.paciente.apellidopaciente}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50"  />
+                            <p:messages for="txtApellidos"/>
+
+                            <h:outputLabel for="txtNombres" value="Nombres: " />
+                            <p:inputText id="txtNombres" value="#{quirurgicoCrear.paciente.nombrepaciente}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50"/>
+                            <p:messages for="txtNombres"/>
+
+                            <h:outputLabel for="txtCI" value="Cédula: " />
+                            <p:inputText id="txtCI" value="#{quirurgicoCrear.paciente.ceduidenpaciente}" size="50" />
+                            <p:messages for="txtCI"/>
+
+                            <h:outputLabel for="txtEdad" value="Edad: " />
+                            <p:inputText id="txtEdad" value="#{quirurgicoCrear.paciente.edadpaciente}" size="50" />
+                            <p:messages for="txtEdad"/>
 
                             <h:outputLabel for="rdbGenero" value="Género: " />
                             <p:selectOneRadio id="rdbGenero" value="#{quirurgicoCrear.paciente.generopaciente}" >
@@ -166,28 +157,16 @@
                             </p:selectOneRadio>
                             <p:messages for="rdbGenero"/>
 
-                            <h:outputLabel for="rdbPrioridad" value="Prioridad: " />
-                            <p:selectOneRadio id="rdbPrioridad" value="#{quirurgicoCrear.cabecera.prioridad}" >
-                                <f:selectItem itemValue="U" itemLabel="Urgente" />
-                                <f:selectItem itemValue="R" itemLabel="Rutina" />
-                                <f:selectItem itemValue="C" itemLabel="Control" />
-                            </p:selectOneRadio>
-                            <p:messages for="rdbPrioridad"/>
-                        </h:panelGrid>
-
-                        <h:panelGrid columns="3" id="pgTratamiento">
                             <h:outputLabel for="txtTratamiento" value="Tratamiento que recibe: " />
-                            <p:inputTextarea id="txtTratamiento" value="#{quirurgicoCrear.cabecera.tratamientopacientecrm}" rows="3" cols="70"    queryDelay="750" minQueryLength="4" />
+                            <p:inputTextarea id="txtTratamiento" value="#{quirurgicoCrear.cabecera.tratamientopacientecrm}" rows="3" cols="51"    queryDelay="750" minQueryLength="4" />
                             <p:messages for="txtTratamiento"/>
+
                         </h:panelGrid>
-
                     </p:fieldset>
-
                     <br/>
-
                     <p:fieldset legend="Diagnóstico presuntivo" style="width:80%">
                         <h:panelGrid columns="6" id="pgDiagPresuntivo">
-                            <p:inputTextarea id="txtDiagPresuntivo" value="#{quirurgicoCrear.cabecera.diagnosticopresunticocrm}" rows="2" cols="81"    queryDelay="750" minQueryLength="4" />
+                            <p:inputTextarea id="txtDiagPresuntivo" value="#{quirurgicoCrear.cabecera.diagnosticopresunticocrm}" rows="2" cols="73"    queryDelay="750" minQueryLength="4" />
                             <p:messages for="txtDiagPresuntivo"/>
                         </h:panelGrid>
                     </p:fieldset>
@@ -196,20 +175,20 @@
 
                     <p:fieldset legend="Resumen clínico" style="width:80%">
                         <h:panelGrid id="pgResumenCl">
-                            <p:inputTextarea id="txtResumenCl" value="#{quirurgicoCrear.cabecera.resumenclinicocrm}" rows="2" cols="81"    queryDelay="750" minQueryLength="4" />
+                            <p:inputTextarea id="txtResumenCl" value="#{quirurgicoCrear.cabecera.resumenclinicocrm}" rows="2" cols="73"    queryDelay="750" minQueryLength="4" />
                             <p:messages for="txtResumenCl"/>
                         </h:panelGrid>
                     </p:fieldset>
 
                     <br/>
 
-                    <p:fieldset legend="Muestra o Pieza" style="width:80%">
+                    <p:fieldset legend="Muestra o pieza" style="width:80%">
                         <h:panelGrid id="pgMuestra">
                             <p:row>
                                 <p style="font-style: oblique">Describir el procedimiento, origen, número y zona.</p>
                             </p:row>
                             <p:row>
-                                <p:inputTextarea id="txtMuestra" value="#{quirurgicoCrear.cabecera.muestrapiezacrm}" rows="2" cols="80"    queryDelay="750" minQueryLength="4" />
+                                <p:inputTextarea id="txtMuestra" value="#{quirurgicoCrear.cabecera.muestrapiezacrm}" rows="2" cols="73"    queryDelay="750" minQueryLength="4" />
                                 <p:messages for="txtMuestra"/>
                             </p:row>
                         </h:panelGrid>
@@ -217,31 +196,40 @@
 
                     <br/>
 
-                    <p:fieldset legend="Estudio Solicitado de Tipo Quirurgico" style="width:80%">
-                        
+                    <p:fieldset legend="Datos del estudio Quirúrgico" style="width:80%">
+
+                        <h:panelGrid id="prioridad" columns="2">
+                            <h:outputLabel for="rdbPrioridad" value="Prioridad: " />
+                            <p:selectOneRadio id="rdbPrioridad" value="#{quirurgicoCrear.cabecera.prioridad}" >
+                                <f:selectItem itemValue="U" itemLabel="Urgente" />
+                                <f:selectItem itemValue="R" itemLabel="Rutina" />
+                                <f:selectItem itemValue="C" itemLabel="Control" />
+                            </p:selectOneRadio>
+                            <p:messages for="rdbPrioridad"/>
+                        </h:panelGrid>
+                        <br/>
                         <h:panelGrid columns="3" id="pgOrganos">
-                            
+
                             <h:outputLabel for="cboOrganos" value="Órganos / Sistemas: " />
-                            <p:selectOneMenu id="cboOrganos" value="#{quirurgicoCrear.organosSistemaID}" required="true" requiredMessage="Seleccione un Órganos / Sistemas">
+                            <p:selectOneMenu id="cboOrganos" value="#{quirurgicoCrear.organosSistemaID}" required="true" requiredMessage="Seleccione un Órganos / Sistemas" style="width: 540px">
                                 <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
                                 <f:selectItems value="#{quirurgicoListar.listaOrganosSistemas}" var="organosSistemas" itemLabel="#{organosSistemas.descripcionmarcadoros}" itemValue="#{organosSistemas.idos}" />
                             </p:selectOneMenu>
                             <p:messages for="cboOrganos"/>
 
                             <h:outputLabel for="cboSubtipo" value="Subtipo: " />
-                            <p:selectOneMenu id="cboSubtipo" value="#{quirurgicoCrear.subtipoID}" required="true" requiredMessage="Seleccione un Subtipo">
+                            <p:selectOneMenu id="cboSubtipo" value="#{quirurgicoCrear.subtipoID}" required="true" requiredMessage="Seleccione un Subtipo" style="width: 540px">
                                 <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
                                 <f:selectItems value="#{quirurgicoListar.listaSubtipo}" var="subtipo" itemLabel="#{subtipo.descripcionmarcadorsubtipo}" itemValue="#{subtipo.idsubtipo}" />                                
                             </p:selectOneMenu>
                             <p:messages for="cboSubtipo"/>
-                            
+
                             <p:column/>
-                            
-                            <p:inputText id="txtOtrosEnSubtipo" value="#{quirurgicoCrear.estudioQuirurgico.descripcionsubtipoeq}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" />
+                            <p:inputText id="txtOtrosEnSubtipo" value="#{quirurgicoCrear.estudioQuirurgico.descripcionsubtipoeq}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="54" />
                             <p:watermark for="txtOtrosEnSubtipo" value="Otro subtipo" />
 
                             <h:outputLabel for="txtDescripcion" value="Descripción: " /> 
-                            <p:inputTextarea id="txtDescripcion" value="#{quirurgicoCrear.estudioQuirurgico.descripcionquirurgicoeq}" rows="2" cols="70"    queryDelay="750" minQueryLength="4" />
+                            <p:inputTextarea id="txtDescripcion" value="#{quirurgicoCrear.estudioQuirurgico.descripcionquirurgicoeq}" rows="2" cols="55"    queryDelay="" minQueryLength="4" />
                             <p:messages for="txtDescripcion"/>
 
                         </h:panelGrid>
@@ -316,10 +304,10 @@
                     </p:dialog>
 
                 </h:form>
-                    
-                    
-                    
-                </div>
+
+
+
+
 
                 <!-- Script para usar el calendario en español-->
                 <h:outputScript library="js" name="spanishLocale.js" />
