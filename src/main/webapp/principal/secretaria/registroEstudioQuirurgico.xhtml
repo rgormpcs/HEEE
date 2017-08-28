@@ -21,7 +21,7 @@
                     <h1 style="display:none;" >#{codigoBarrasListar.nombreEstudio='QUIRÚRGICO'}</h1>
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
 
-                    <p:fieldset id="hospital" legend="Datos del hospital" style="width:80%" >                      
+                    <p:fieldset id="hospital" legend="Datos del hospital"  >                      
                         <h:panelGrid id="panelGroup" columns="2">
 
                             <p:outputLabel for="txtInstSistema" value="Institución del Sistema: " />
@@ -67,7 +67,7 @@
                         </h:panelGrid>
                     </p:fieldset>                    
                     <br/>
-                    <p:fieldset id="muestra" legend="Datos de la muestra" style="width:80%" >
+                    <p:fieldset id="muestra" legend="Datos de la muestra"  >
                         <h:panelGrid columns="2" id="pgDatosMuestra">
 
                             <h:outputLabel for="txtFechaTomaMuestra" value="Fecha de toma: " />
@@ -83,7 +83,7 @@
                         </h:panelGrid>
                     </p:fieldset>                    
                     <br/>
-                    <p:fieldset legend="Datos del médico solicitante" style="width:80%">
+                    <p:fieldset legend="Datos del médico solicitante" >
                         <h:panelGrid columns="3" id="pgDatosMedico">
 
                             <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
@@ -104,7 +104,7 @@
                         </h:panelGrid>
                     </p:fieldset>
                     <br/>
-                    <p:fieldset legend="Datos del paciente" style="width:80%">
+                    <p:fieldset legend="Datos del paciente" >
                         <h:panelGrid columns="3" id="pgDatosConsulta">
                             <p:selectOneRadio id="rdbConsulta" value="#{quirurgicoCrear.cabecera.tiposervicio}" >
                                 <f:selectItem itemValue="Consulta Externa" itemLabel="Consulta Externa" />
@@ -164,7 +164,7 @@
                         </h:panelGrid>
                     </p:fieldset>
                     <br/>
-                    <p:fieldset legend="Diagnóstico presuntivo" style="width:80%">
+                    <p:fieldset legend="Diagnóstico presuntivo" >
                         <h:panelGrid columns="6" id="pgDiagPresuntivo">
                             <p:inputTextarea id="txtDiagPresuntivo" value="#{quirurgicoCrear.cabecera.diagnosticopresunticocrm}" rows="2" cols="73"    queryDelay="750" minQueryLength="4" />
                             <p:messages for="txtDiagPresuntivo"/>
@@ -173,7 +173,7 @@
 
                     <br/>
 
-                    <p:fieldset legend="Resumen clínico" style="width:80%">
+                    <p:fieldset legend="Resumen clínico" >
                         <h:panelGrid id="pgResumenCl">
                             <p:inputTextarea id="txtResumenCl" value="#{quirurgicoCrear.cabecera.resumenclinicocrm}" rows="2" cols="73"    queryDelay="750" minQueryLength="4" />
                             <p:messages for="txtResumenCl"/>
@@ -182,7 +182,7 @@
 
                     <br/>
 
-                    <p:fieldset legend="Muestra o pieza" style="width:80%">
+                    <p:fieldset legend="Muestra o pieza" >
                         <h:panelGrid id="pgMuestra">
                             <p:row>
                                 <p style="font-style: oblique">Describir el procedimiento, origen, número y zona.</p>
@@ -196,7 +196,7 @@
 
                     <br/>
 
-                    <p:fieldset legend="Datos del estudio Quirúrgico" style="width:80%">
+                    <p:fieldset legend="Datos del estudio Quirúrgico" >
 
                         <h:panelGrid id="prioridad" columns="2">
                             <h:outputLabel for="rdbPrioridad" value="Prioridad: " />

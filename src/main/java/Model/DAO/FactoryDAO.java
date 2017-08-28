@@ -62,6 +62,8 @@ public abstract class FactoryDAO {
     
     //marcadores Estudio Himunohistoquimica
     public abstract MarcadoresEHDAO getMarcadoresEHDAO();
+    public abstract MarcadoresParteEHDAO getMarcadoresParteEHDAO();
+    public abstract MarcadoresParteEHPkDAO getMarcadoresParteEHPkDAO();
     
     
 

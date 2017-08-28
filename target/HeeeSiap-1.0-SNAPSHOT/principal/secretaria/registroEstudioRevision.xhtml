@@ -20,7 +20,7 @@
                     <h1 style="display:none;" >#{codigoBarrasListar.nombreEstudio='REVISIÓN'}</h1>
                     <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true"/>
 
-                    <p:fieldset legend="Datos del Hospital" style="width:80%" >
+                    <p:fieldset legend="Datos del Hospital" >
                         <h:panelGrid columns="7" id="pgDatosHospital">
 
                             <p:outputLabel for="txtInstSistema" value="Institución del Sistema: " />
@@ -83,7 +83,7 @@
 
                     <br/>
 
-                    <p:fieldset legend="Datos del Médico Solicitante" style="width:80%">
+                    <p:fieldset legend="Datos del Médico Solicitante" >
                         <h:panelGrid columns="6" id="pgDatosMedico">
 
                             <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
@@ -109,7 +109,7 @@
                     <br/>
 
 
-                    <p:fieldset legend="Datos del Paciente" style="width:80%">
+                    <p:fieldset legend="Datos del Paciente" >
 
                         <h:panelGrid columns="3" id="pgDatosConsulta">
                             <p:selectOneRadio id="rdbConsulta" value="" >
@@ -181,7 +181,7 @@
 
                     <br/>
 
-                    <p:fieldset legend="Diagnóstico presuntivo" style="width:80%">
+                    <p:fieldset legend="Diagnóstico presuntivo" >
                         <h:panelGrid id="pgDiagPresuntivo">
                             <p:inputTextarea id="txtDiagPresuntivo"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
                             <p:messages for="txtDiagPresuntivo"/>
@@ -190,7 +190,7 @@
 
                     <br/>
 
-                    <p:fieldset legend="Resumen clínico" style="width:80%">
+                    <p:fieldset legend="Resumen clínico" >
                         <h:panelGrid id="pgResumenCl">
                             <p:inputTextarea id="txtResumenCl"  rows="2" cols="82"    queryDelay="750" minQueryLength="4" />
                             <p:messages for="txtResumenCl"/>
@@ -199,7 +199,7 @@
 
                     <br/>
 
-                    <p:fieldset legend="Muestra o Pieza" style="width:80%">
+                    <p:fieldset legend="Muestra o Pieza" >
 
                         <h:panelGrid id="pgMuestra">
 
@@ -230,19 +230,19 @@
 
                     <br/>
 
-                    <p:fieldset legend="Datos del estudio" style="width:80%">
+                    <p:fieldset legend="Datos del estudio" >
                         <h:panelGrid columns="3" id="pgOrganos">
                             <h:outputLabel for="cboOrganos" value="Órganos / Sistemas: " />
                             <p:selectOneMenu id="cboOrganos" value="#{quirurgicoListar.organosSistemasID}" required="true" requiredMessage="Seleccione un Órganos / Sistemas">
                                 <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
-                                <f:selectItems value="#{quirurgicoListar.organosSistemas}" var="organosSistemas" itemLabel="#{organosSistemas.descripcionmarcadoros}" itemValue="#{organosSistemas.idos}" />
+                                <f:selectItems value="#{quirurgicoListar.listaOrganosSistemas}" var="organosSistemas" itemLabel="#{organosSistemas.descripcionmarcadoros}" itemValue="#{organosSistemas.idos}" />
                             </p:selectOneMenu>
                             <p:messages for="cboOrganos"/>
 
                             <h:outputLabel for="cboSubtipo" value="Subtipo: " />
                             <p:selectOneMenu id="cboSubtipo" value="#{quirurgicoListar.subtipoID}" required="true" requiredMessage="Seleccione un Subtipo">
                                 <f:selectItem itemLabel="Seleccione una opción" itemValue="" />
-                                <f:selectItems value="#{quirurgicoListar.subtipo}" var="subtipo" itemLabel="#{subtipo.descripcionmarcadorsubtipo}" itemValue="#{subtipo.idsubtipo}" />                                
+                                <f:selectItems value="#{quirurgicoListar.listaSubtipo}" var="subtipo" itemLabel="#{subtipo.descripcionmarcadorsubtipo}" itemValue="#{subtipo.idsubtipo}" />                                
 
                             </p:selectOneMenu>
                             <p:messages for="cboSubtipo"/>

@@ -1,4 +1,3 @@
-
 package Bean.Histoquimica;
 
 import Model.Entity.Cabecerarecepcionmuestra;
@@ -6,6 +5,8 @@ import Model.Entity.Doctor;
 import Model.Entity.Estudiosamputaciones;
 import Model.Entity.Estudioshistoquimica;
 import Model.Entity.Hospital;
+import Model.Entity.MarcadorEsParteDeEh;
+import Model.Entity.MarcadorEsParteDeEhPK;
 import Model.Entity.Marcadoreseh;
 import Model.Entity.Paciente;
 import Model.Entity.Parroquia;
@@ -15,7 +16,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-
 
 @ManagedBean(name = "histoquimicaCrear")
 @RequestScoped
@@ -37,8 +37,8 @@ public class HistoquimicaCrear implements Serializable {
     private Partes partes;
     private Estudiosamputaciones estudioAmputaciones;
     private Estudioshistoquimica estudioHistoquimica;
-    
- 
+    private MarcadorEsParteDeEh marcadorParteEH;
+    private MarcadorEsParteDeEhPK marcadorParteEHpk;
 
     public HistoquimicaCrear() {
         doctoresEnBase = null;
@@ -55,51 +55,43 @@ public class HistoquimicaCrear implements Serializable {
         numeroEstudio = 0;
         this.estudioAmputaciones = new Estudiosamputaciones();
         this.estudioHistoquimica = new Estudioshistoquimica();
-        
-        
+        this.marcadorParteEH = new MarcadorEsParteDeEh();
+        this.marcadorParteEHpk = new MarcadorEsParteDeEhPK();
+
     }
-    
-    public void regristrarHistoquimica(){
-//        System.out.println("ingreso a guardar himunohistoquimica");
-//        try {
-//                this.parroquia.setIdparroquia(parroquiaID);
-//                this.hospital.setIdparroquia(parroquia);
-//                JPAFactoryDAO.getFactory().getHospitalDAO().create(hospital);
-//                JPAFactoryDAO.getFactory().getDoctorDAO().create(doctor);
-//                JPAFactoryDAO.getFactory().getPacienteDAO().create(paciente);
-//        
-//                hospitalesEnBase=JPAFactoryDAO.getFactory().getHospitalDAO().find(); 
-//                this.cabecera.setIdhospital(hospitalesEnBase.get(hospitalesEnBase.size() - 1));
-//                doctoresEnBase=JPAFactoryDAO.getFactory().getDoctorDAO().find();
-//                this.cabecera.setIddoctor(doctoresEnBase.get(doctoresEnBase.size() - 1));
-//                pacientesEnBase=JPAFactoryDAO.getFactory().getPacienteDAO().find();
-//                this.cabecera.setIdpaciente(pacientesEnBase.get(pacientesEnBase.size() -1));
-//                JPAFactoryDAO.getFactory().getCabecerarecepcionmuestraDAO().create(cabecera);
+
+    public void regristrarHistoquimica() {
+        System.out.println("ingreso a guardar himunohistoquimica");
+        try {
+            this.parroquia.setIdparroquia(parroquiaID);
+            this.hospital.setIdparroquia(parroquia);
+            JPAFactoryDAO.getFactory().getHospitalDAO().create(hospital);
+            JPAFactoryDAO.getFactory().getDoctorDAO().create(doctor);
+            JPAFactoryDAO.getFactory().getPacienteDAO().create(paciente);
+
+            hospitalesEnBase = JPAFactoryDAO.getFactory().getHospitalDAO().find();
+            this.cabecera.setIdhospital(hospitalesEnBase.get(hospitalesEnBase.size() - 1));
+            doctoresEnBase = JPAFactoryDAO.getFactory().getDoctorDAO().find();
+            this.cabecera.setIddoctor(doctoresEnBase.get(doctoresEnBase.size() - 1));
+            pacientesEnBase = JPAFactoryDAO.getFactory().getPacienteDAO().find();
+            this.cabecera.setIdpaciente(pacientesEnBase.get(pacientesEnBase.size() - 1));
+            JPAFactoryDAO.getFactory().getCabecerarecepcionmuestraDAO().create(cabecera);
 //                JPAFactoryDAO.getFactory().getEstudiosHistoquimicaDAO().create(estudioHistoquimica);
-//        } catch (Exception e) {
-//            System.out.println("Hubo errores al guardar el estudio");
-//        }
-//estudioshistoquimicaEnBase=JPAFactoryDAO.getFactory().getEstudiosHistoquimicaDAO().find();
-//
-//    System.out.println("marcadores seleccionados:"+marcadoresSeleccionados [0]);
-//    this.marcadorEsParteDeEh(estudioshistoquimicaEnBase.get(estudioshistoquimicaEnBase.size()-1).getIdeh());
-//    this.marcadorEsParteDeEhPK.setIdmarcadoreh(Integer.parseInt(marcadoresSeleccionados [0]));
-    
-    
 
-        
-    }
+            estudioshistoquimicaEnBase = JPAFactoryDAO.getFactory().getEstudiosHistoquimicaDAO().find();
 
-    public Estudioshistoquimica getEstudioHistoquimica() {
-        return estudioHistoquimica;
-    }
+            for (String marcadoresSeleccionado : marcadoresSeleccionados) {
+                System.out.println("marcador:" + marcadoresSeleccionado);
+                this.marcadorParteEHpk.setIdeh(estudioshistoquimicaEnBase.get(estudioshistoquimicaEnBase.size() - 1).getIdeh());
+                this.marcadorParteEHpk.setIdmarcadoreh(Integer.parseInt(marcadoresSeleccionado));
+                this.marcadorParteEH.setMarcadorEsParteDeEhPK(marcadorParteEHpk);
+                JPAFactoryDAO.getFactory().getMarcadoresParteEHDAO().create(marcadorParteEH);
+            }
+        } catch (Exception e) {
+            System.out.println("Hubo errores al guardar el estudio");
+        }
 
-    public void setEstudioHistoquimica(Estudioshistoquimica estudioHistoquimica) {
-        this.estudioHistoquimica = estudioHistoquimica;
     }
-    
-    
-    
 
     public String[] getMarcadoresSeleccionados() {
         return marcadoresSeleccionados;
@@ -109,7 +101,6 @@ public class HistoquimicaCrear implements Serializable {
         this.marcadoresSeleccionados = marcadoresSeleccionados;
     }
 
-    
     public Cabecerarecepcionmuestra getCabecera() {
         return cabecera;
     }
@@ -189,11 +180,29 @@ public class HistoquimicaCrear implements Serializable {
     public void setEstudioAmputaciones(Estudiosamputaciones estudioAmputaciones) {
         this.estudioAmputaciones = estudioAmputaciones;
     }
-    
 
+    public Estudioshistoquimica getEstudioHistoquimica() {
+        return estudioHistoquimica;
+    }
 
-    
-    
-    
-    
+    public void setEstudioHistoquimica(Estudioshistoquimica estudioHistoquimica) {
+        this.estudioHistoquimica = estudioHistoquimica;
+    }
+
+    public MarcadorEsParteDeEh getMarcadorParteEH() {
+        return marcadorParteEH;
+    }
+
+    public void setMarcadorParteEH(MarcadorEsParteDeEh marcadorParteEH) {
+        this.marcadorParteEH = marcadorParteEH;
+    }
+
+    public MarcadorEsParteDeEhPK getMarcadorParteEHpk() {
+        return marcadorParteEHpk;
+    }
+
+    public void setMarcadorParteEHpk(MarcadorEsParteDeEhPK marcadorParteEHpk) {
+        this.marcadorParteEHpk = marcadorParteEHpk;
+    }
+
 }
