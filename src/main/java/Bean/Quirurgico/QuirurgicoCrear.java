@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import org.primefaces.event.FlowEvent;
 
 @ManagedBean(name = "quirurgicoCrear")
 @RequestScoped
@@ -37,6 +38,8 @@ public class QuirurgicoCrear implements Serializable {
     
     private int organosSistemaID;
     private int subtipoID;
+    
+    private boolean skip;
 
     /*Método Constructor*/
     public QuirurgicoCrear() {
@@ -93,6 +96,17 @@ public class QuirurgicoCrear implements Serializable {
         JPAFactoryDAO.getFactory().getEstudiosQuirurgicosDAO().create(estudioQuirurgico);
         
         System.out.println("Salio del metodo registrarQuirurgico");
+    }
+    
+    //Metodo para el uso del wizard
+    public String onFlowProcess(FlowEvent event) {
+        if(skip) {
+            skip = false;   //reset in case user goes back
+            return "confirm";
+        }
+        else {
+            return event.getNewStep();
+        }
     }
 
     /*Getters & Setters*/
@@ -217,5 +231,11 @@ public class QuirurgicoCrear implements Serializable {
         this.subtipoID = subtipoID;
     }
     
-    
+    public boolean isSkip() {
+        return skip;
+    }
+ 
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }
 }
