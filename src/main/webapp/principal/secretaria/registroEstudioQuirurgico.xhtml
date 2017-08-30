@@ -92,14 +92,14 @@
                             <p:panel header="Datos del médico solicitante">
                                 <p:messages />
                                 <h:panelGrid columns="3" id="pgDatosMedico" columnClasses="label, value">
-
-                                    <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
-                                    <p:inputText id="txtApellidosMS" value="#{quirurgicoCrear.doctor.apellidosdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" />
-                                    <p:messages for="txtApellidosMS"/>
-
+                                    
                                     <p:outputLabel for="txtNombresMS" value="Nombres: " />
                                     <p:inputText id="txtNombresMS" value="#{quirurgicoCrear.doctor.nombresdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" />
                                     <p:messages for="txtNombresMS"/>
+                                    
+                                    <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
+                                    <p:inputText id="txtApellidosMS" value="#{quirurgicoCrear.doctor.apellidosdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" />
+                                    <p:messages for="txtApellidosMS"/>
 
                                     <p:outputLabel for="txtEmail" value="Correo electrónico: " />
                                     <p:inputText id="txtEmail" value="#{quirurgicoCrear.doctor.emaildoctor}" size="50" />
