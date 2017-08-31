@@ -99,17 +99,6 @@ public class QuirurgicoCrear implements Serializable {
         System.out.println("Salio del metodo registrarQuirurgico");
     }
     
-    //Metodo para el uso del wizard
-    public String onFlowProcess(FlowEvent event) {
-        if(skip) {
-            skip = false;   //reset in case user goes back
-            return "confirm";
-        }
-        else {
-            return event.getNewStep();
-        }
-    }
-
     /*Getters & Setters*/
 
     public List<Hospital> getHospitalesEnBase() {
