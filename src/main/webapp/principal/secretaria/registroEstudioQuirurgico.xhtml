@@ -178,24 +178,22 @@
                         <p:tab id="registros" title="Registros">
                             <p:panel header="Registro de diagnóstico presuntivo, resumen clínico, información de la muestra" >
                                 <p:messages />
-                                <h:panelGrid columns="6" id="pgDiagPresuntivo" columnClasses="label, value">
+                                <h:panelGrid id="pgDiagPresuntivo" columnClasses="label, value">
+                                    <h:outputLabel for="txtDiagPresuntivo" value="Diagnostico Presuntivo: " />
                                     <p:inputTextarea id="txtDiagPresuntivo" value="#{quirurgicoCrear.cabecera.diagnosticopresunticocrm}" rows="2" cols="73"    queryDelay="750" minQueryLength="4" />
                                     <p:messages for="txtDiagPresuntivo"/>
                                 </h:panelGrid>
 
                                 <h:panelGrid id="pgResumenCl" columnClasses="label, value">
+                                    <h:outputLabel for="txtResumenCl" value="Resumen clinico: " />
                                     <p:inputTextarea id="txtResumenCl" value="#{quirurgicoCrear.cabecera.resumenclinicocrm}" rows="2" cols="73"    queryDelay="750" minQueryLength="4" />
                                     <p:messages for="txtResumenCl"/>
                                 </h:panelGrid>
 
                                 <h:panelGrid id="pgMuestra" columnClasses="label, value">
-                                    <p:row>
-                                        <p style="font-style: oblique">Describir el procedimiento, origen, número y zona.</p>
-                                    </p:row>
-                                    <p:row>
-                                        <p:inputTextarea id="txtMuestra" value="#{quirurgicoCrear.cabecera.muestrapiezacrm}" rows="2" cols="73"    queryDelay="750" minQueryLength="4" />
-                                        <p:messages for="txtMuestra"/>
-                                    </p:row>
+                                    <h:outputLabel for="txtResumenCl" value=" Muestra o pieza (Describir el procedimiento, origen, número y zona):" />
+                                    <p:inputTextarea id="txtMuestra" value="#{quirurgicoCrear.cabecera.muestrapiezacrm}" rows="2" cols="73"    queryDelay="750" minQueryLength="4" />
+                                    <p:messages for="txtMuestra"/>
                                 </h:panelGrid>
                             </p:panel>
                         </p:tab>
@@ -239,7 +237,7 @@
 
                                 </h:panelGrid>
 
-                                
+
                                 <p:commandButton icon="fa fa-save" value="Guardar" action="#{quirurgicoCrear.registrarQuirurgico()}" oncomplete="limpiar()" />
 
                                 <p:commandButton  icon="fa fa-fw fa-remove" value="Cancelar" update="contenido" process="@this"  actionListener="#{navegar.direccionarInicio()}" />
