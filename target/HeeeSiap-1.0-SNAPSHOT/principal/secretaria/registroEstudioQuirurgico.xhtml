@@ -19,7 +19,7 @@
 
                     <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                    <p:wizard flowListener="#{userWizard.onFlowProcess}">
+                    <p:wizard flowListener="#{quirurgicoCrear.onFlowProcess}">
                         <p:tab id="hospital" title="Hospital">
                             <p:panel header="Datos del hospital">
                                 <p:messages />
@@ -92,11 +92,11 @@
                             <p:panel header="Datos del médico solicitante">
                                 <p:messages />
                                 <h:panelGrid columns="3" id="pgDatosMedico" columnClasses="label, value">
-                                    
+
                                     <p:outputLabel for="txtNombresMS" value="Nombres: " />
                                     <p:inputText id="txtNombresMS" value="#{quirurgicoCrear.doctor.nombresdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" />
                                     <p:messages for="txtNombresMS"/>
-                                    
+
                                     <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
                                     <p:inputText id="txtApellidosMS" value="#{quirurgicoCrear.doctor.apellidosdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" />
                                     <p:messages for="txtApellidosMS"/>
@@ -238,6 +238,13 @@
                                     <p:messages for="txtDescripcion"/>
 
                                 </h:panelGrid>
+
+                                
+                                <p:commandButton icon="fa fa-save" value="Guardar" action="#{quirurgicoCrear.registrarQuirurgico()}" oncomplete="limpiar()" />
+
+                                <p:commandButton  icon="fa fa-fw fa-remove" value="Cancelar" update="contenido" process="@this"  actionListener="#{navegar.direccionarInicio()}" />
+
+                                <p:commandButton icon="fa fa-chain-broken" value="Guardar y Rechazar"/>
 
                             </p:panel>
                         </p:tab>
