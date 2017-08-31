@@ -172,7 +172,7 @@
                         <p:tab id="registros" title="Registros">
                             <p:panel header="Registro de diagnóstico presuntivo, resumen clínico, información de la muestra" >
                                 <h:panelGrid id="pgDiagPresuntivo" >
-                                   <h:outputLabel for="txtDiagPresuntivo" value="Diagnostico Presuntivo: " />
+                                    <h:outputLabel for="txtDiagPresuntivo" value="Diagnostico Presuntivo: " />
                                     <p:inputTextarea id="txtDiagPresuntivo" value="#{amputacionesCrear.cabecera.diagnosticopresunticocrm}" rows="2" cols="81"    queryDelay="750" minQueryLength="4" />
                                     <p:messages for="txtDiagPresuntivo"/>
                                 </h:panelGrid>
@@ -183,27 +183,27 @@
                                 </h:panelGrid>
                                 <h:panelGrid id="pgMuestra">
 
-                                    
-<h:outputLabel for="txtResumenCl" value=" Muestra o pieza (Describir el procedimiento, origen, número y zona):" />
-                                        <p:inputTextarea id="txtMuestra" value="#{amputacionesCrear.cabecera.muestrapiezacrm}" rows="2" cols="80"    queryDelay="750" minQueryLength="4" />
-                                        <p:messages for="txtMuestra"/>
-                                    
+
+                                    <h:outputLabel for="txtResumenCl" value=" Muestra o pieza (Describir el procedimiento, origen, número y zona):" />
+                                    <p:inputTextarea id="txtMuestra" value="#{amputacionesCrear.cabecera.muestrapiezacrm}" rows="2" cols="80"    queryDelay="750" minQueryLength="4" />
+                                    <p:messages for="txtMuestra"/>
+
                                 </h:panelGrid>
                             </p:panel>
                         </p:tab>
                         <p:tab id="amputaciones" title="Amputaciones">
                             <p:panel header="Registro datos de amputación">
-                                
-                                    <h:panelGrid columns="3" id="pgDatosConsulta1" columnClasses="label, value">
-                                        <h:outputLabel for="rdbPrioridad" value="Prioridad: " />
-                                        <p:selectOneRadio id="rdbPrioridad" value="#{amputacionesCrear.cabecera.prioridad}">
-                                            <f:selectItem itemValue="U" itemLabel="Urgente" />
-                                            <f:selectItem itemValue="R" itemLabel="Rutina" />
-                                            <f:selectItem itemValue="C" itemLabel="Control" />
-                                        </p:selectOneRadio>
-                                        <p:messages for="rdbPrioridad"/>
-                                    </h:panelGrid>
-                                
+
+                                <h:panelGrid columns="3" id="pgDatosConsulta1" columnClasses="label, value">
+                                    <h:outputLabel for="rdbPrioridad" value="Prioridad: " />
+                                    <p:selectOneRadio id="rdbPrioridad" value="#{amputacionesCrear.cabecera.prioridad}">
+                                        <f:selectItem itemValue="U" itemLabel="Urgente" />
+                                        <f:selectItem itemValue="R" itemLabel="Rutina" />
+                                        <f:selectItem itemValue="C" itemLabel="Control" />
+                                    </p:selectOneRadio>
+                                    <p:messages for="rdbPrioridad"/>
+                                </h:panelGrid>
+
                                 <br/>
                                 <h:panelGrid columns="3" id="pgExtremidades">
                                     <h:outputLabel value="Extremidad: " />
