@@ -24,6 +24,11 @@
                             <p:panel header="Personal Details">
                                 <h:panelGrid columns="2" id="pgDatosHospital">
 
+                                    <p:outputLabel for="txtCodigoFormado" value="Código del Estudio: " />
+                                    <p:inputText id="txtCodigoFormado" value="#{amputacionesCrear.cabecera.codigoestudio=codigoBarrasListar.codigo}" disabled="true" size="56" />
+                                    <p:watermark for="txtCodigoFormado" value="#{codigoBarrasListar.codigo}"/>
+                                    <p:messages for="txtCodigoFormado"/>
+
                                     <p:outputLabel for="txtInstSistema" value="Institución del Sistema: " />
                                     <p:inputText id="txtInstSistema" value="#{amputacionesCrear.hospital.instituciondelsistema}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="56"  required="true" label="txtInstSistema"/>
                                     <p:watermark for="txtInstSistema" value="MSP" />
@@ -58,7 +63,7 @@
                                     <p:messages for="cboCanton"/>
 
                                     <h:outputLabel value="Parroquia: " />
-                                    <p:selectOneMenu id="cboParroquia" value="#{quirurgicoCrear.parroquiaID}" filter="true" filterMatchMode="startsWith" style="width: 500px" >
+                                    <p:selectOneMenu id="cboParroquia" value="#{amputacionesCrear.parroquiaID}" filter="true" filterMatchMode="startsWith" style="width: 500px" >
                                         <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                         <f:selectItems value="#{ubicacionListar.parroquias}" var="parroquias" itemLabel="#{parroquias.nombreparroquia}" itemValue="#{parroquias.idparroquia}"/>
                                     </p:selectOneMenu>
@@ -73,12 +78,12 @@
                                 <h:panelGrid columns="2" id="pgDatosMuestra">
 
                                     <h:outputLabel for="txtFechaTomaMuestra" value="Fecha de toma de la muestra: " />
-                                    <p:calendar id="txtFechaTomaMuestra" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="true" value="#{amputacionesCrear.cabecera.fechatomamuestracrm}" size="50" required="true" label="Fecha de toma de muestra" />
+                                    <p:calendar id="txtFechaTomaMuestra" locale="es" pattern="dd-MM-yyyy" navigator="true" mask="false" value="#{amputacionesCrear.cabecera.fechatomamuestracrm}" size="50" required="false" label="Fecha de toma de muestra" />
                                     <p:watermark for="txtFechaTomaMuestra" value="dd-mm-aaaa" />
                                     <p:messages for="txtFechaTomaMuestra"/>
 
                                     <h:outputLabel for="txtHoraTomaMuestra" value="Hora de toma de la muestra: " />
-                                    <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true" value="#{amputacionesCrear.cabecera.horatomamuestracrm}" size="50" required="true" label="Hora de toma de muestra" />
+                                    <p:calendar id="txtHoraTomaMuestra" locale="es" pattern="HH:mm" timeOnly="true" value="#{amputacionesCrear.cabecera.horatomamuestracrm}" size="50" required="false" label="Hora de toma de muestra" />
                                     <p:watermark for="txtHoraTomaMuestra" value="hh:mm" />
                                     <p:messages for="txtHoraTomaMuestra"/>
 
@@ -90,15 +95,15 @@
                             <p:panel header="Datos del médico solicitante">
                                 <h:panelGrid columns="3" id="pgDatosMedico" columnClasses="label, value">
                                     <p:outputLabel for="txtNombresMS" value="Nombres: " />
-                                    <p:inputText id="txtNombresMS" value="#{amputacionesCrear.doctor.nombresdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" required="true" label="Nombres" />
+                                    <p:inputText id="txtNombresMS" value="#{amputacionesCrear.doctor.nombresdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" required="false" label="Nombres" />
                                     <p:messages for="txtNombresMS"/>
 
                                     <p:outputLabel for="txtApellidosMS" value="Apellidos: " />
-                                    <p:inputText id="txtApellidosMS" value="#{amputacionesCrear.doctor.apellidosdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" required="true" label="Apellidos" />
+                                    <p:inputText id="txtApellidosMS" value="#{amputacionesCrear.doctor.apellidosdoctor}" style="text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" size="50" required="false" label="Apellidos" />
                                     <p:messages for="txtApellidosMS"/>
 
                                     <p:outputLabel for="txtEmail" value="Email:   " />
-                                    <p:inputText id="txtEmail" value="#{amputacionesCrear.doctor.emaildoctor}" size="50" required="true" label="Email"/>
+                                    <p:inputText id="txtEmail" value="#{amputacionesCrear.doctor.emaildoctor}" size="50" required="false" label="Email"/>
                                     <p:messages for="txtEmail"/>
 
                                     <p:outputLabel for="txtTel" value="Teléfono: " />
@@ -110,16 +115,17 @@
                         <p:tab id="paciente" title="Paciente">
                             <p:panel header="Datos del paciente">
                                 <p:messages />
-                                <h:panelGrid columns="3" id="pgDatosConsulta" columnClasses="label, value">
-                                    <p:selectOneRadio id="rdbConsulta" value="#{amputacionesCrear.cabecera.tiposervicio}" >
+                                <h:panelGrid columns="3" id="pgTipoEstudio" columnClasses="label, value">
+                                    <p:selectOneRadio id="rdbTipoEstudio" value="#{amputacionesCrear.cabecera.tiposervicio}" >
                                         <f:selectItem itemValue="Consulta Externa" itemLabel="Consulta Externa" />
                                         <f:selectItem itemValue="Hospitalización" itemLabel="Hospitalización" />
                                         <f:selectItem itemValue="Otros" itemLabel="Otros" />
                                         <p:ajax  update="txtOtros" />
                                     </p:selectOneRadio>
-                                    <p:inputText id="txtOtros" value="#{amputacionesCrear.cabecera.descriptiposerviciocrm}" disabled="#{(quirurgicoCrear.cabecera.tiposervicio == 'Consulta Externa') || (quirurgicoCrear.cabecera.tiposervicio == 'Hospitalización')}" size="31" />
+                                    <p:inputText id="txtOtros" value="#{amputacionesCrear.cabecera.descriptiposerviciocrm}" disabled="#{(amputacionesCrear.cabecera.tiposervicio == 'Consulta Externa') || (amputacionesCrear.cabecera.tiposervicio == 'Hospitalización') }" size="31" />
                                     <p:messages for="rdbConsulta"/>
                                 </h:panelGrid>
+
 
                                 <h:panelGrid columns="3" id="pgDatosPaciente" columnClasses="label, value">
 
@@ -215,7 +221,7 @@
                                     <p:messages for="cboExtremidades"/>
 
                                     <h:outputLabel value="Parte: " />
-                                    <p:selectOneMenu id="cboPartes" value="#{amputacionesCrear.partesID}" filter="true" filterMatchMode="startsWith"  required="false" requiredMessage="Seleccione una Parte de la Extremidad" >
+                                    <p:selectOneMenu id="cboPartes" value="#{amputacionesCrear.partesID}" filter="false" filterMatchMode="startsWith"  required="false" requiredMessage="Seleccione una Parte de la Extremidad" >
                                         <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                         <f:selectItems value="#{amputacionesListar.listaPartes}" var="listaPartes" itemLabel="#{listaPartes.nombrepartes}" itemValue="#{listaPartes.idpartes}" />                                
                                     </p:selectOneMenu>
@@ -225,66 +231,44 @@
                                     <p:inputTextarea id="txtDescripcion1" value="#{amputacionesCrear.estudioAmputaciones.descripcionamputacionea}" rows="2" cols="70"    queryDelay="750" minQueryLength="4" />
                                     <p:messages for="txtDescripcion"/>
 
+
                                 </h:panelGrid>
+
+                                
+                            </p:panel>
+                        </p:tab>
+                        <p:tab id="estadoEstudio" title="Estado">
+                            <p:panel header="Estado de Estudio">
+
+                                
+                                <h:panelGrid columns="3" id="pgEstado" columnClasses="label, value" >
+
+                                    <h:outputLabel for="rdbEstudio" value="Estudio: " />
+                                    <p:selectOneRadio id="rdbConsulta" value="#{amputacionesCrear.cabecera.estadoestudio}" >
+                                        <f:selectItem itemValue="Aceptado" itemLabel="Aceptado" />
+                                        <f:selectItem itemValue="Rechazado" itemLabel="Rechazado" />
+                                        <p:ajax  update="txtRechazo" />
+                                    </p:selectOneRadio>
+                                    <p:messages for="rdbEstudio"/>
+
+
+                                    <h:outputLabel for="txtRechazo" value="Motivo rechazo: " />
+                                    <p:inputTextarea id="txtRechazo" value="#{amputacionesCrear.cabecera.razonrechazo}" disabled="#{amputacionesCrear.cabecera.estadoestudio == 'Aceptado'}" rows="3" cols="51" queryDelay="750" minQueryLength="4" />
+                                    <p:messages for="rdbRechazo"/>
+
+                                </h:panelGrid> 
+                                <br/>
+                                <br/>
+                                <p:commandButton icon="fa fa-save" value="Guardar" action="#{amputacionesCrear.registrarAmputaciones()}" oncomplete="limpiar()" />
+
+                                <p:commandButton  icon="fa fa-fw fa-remove" value="Cancelar" update="contenido" process="@this"  actionListener="#{navegar.direccionarInicio()}" />
+
+                                <p:commandButton icon="fa fa-chain-broken" value="Guardar y Rechazar" action="PF('dlgMotivoRechazo').show();" />
                             </p:panel>
                         </p:tab>
                     </p:wizard>
 
 
-                    <!-- PopUP para codigo de barras-->
-                    <p:dialog modal="true" header="Código de barras:" widgetVar="dlgCodigoBarras">
-                        <h:form>
-                            <h:panelGrid columns="2" style="padding-left: 50%" >
-                                <h:outputText value="Estudio:" style="padding-bottom: 20px"/>
-                                <p:barcode id="codigoB" value="#{codigoBarrasListar.codigoFormado()}" type="code39"  width="300px;" />
-                                <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style=" text-align: center;display:block;margin-bottom: 20px">
-                                    <p:printer target="codigoB" />
-                                </p:commandButton>
-                            </h:panelGrid>
-
-                            <p:fieldset legend="Desea Ingresar otra solicitud de estudio amputaciones" style="width:90%">
-
-                                <h:panelGrid columns="2" cellpadding="10" style="padding-left: 30%" >
-
-                                    <p:commandButton  value="Si" update="contenido" process="@this"  actionListener="#{amputacionesListar.resetCombo()}" >
-
-
-                                    </p:commandButton>
-
-
-                                    <p:commandButton value="No" update="contenido" process="@this"   onclick="PF('dlgCodigoBarras').hide"  >
-
-                                    </p:commandButton>
-
-                                </h:panelGrid>
-                            </p:fieldset>
-                        </h:form>
-                    </p:dialog> 
-
-                    <!--PopUp para motivo de rechazo--> 
-                    <p:dialog modal="true" header="Motivo de rechaso:" widgetVar="dlgMotivoRechazo">
-
-                        <h:panelGrid columns="1" id="pgMotivoRechazo">
-
-                            <p:row>
-                                <p style="font-style: oblique">Por favor indique el motivo de rechazo:</p>
-                            </p:row>
-                            <p:row>
-                                <p:inputTextarea id="txtMotivoRechazo"  rows="2" cols="40"    queryDelay="750" minQueryLength="4" />
-                                <p:messages for="txtMotivoRechazo"/>
-                            </p:row>
-
-
-                        </h:panelGrid>
-                        <h:panelGrid columns="2" id="pgMotivoRechazoBotones">
-                            <p:commandButton  value="Guardar"  type="button"  >
-                            </p:commandButton>
-
-                            <p:commandButton value="Cancelar" type="button" >  
-                            </p:commandButton>
-                        </h:panelGrid>
-
-                    </p:dialog>
 
                 </h:form>
 

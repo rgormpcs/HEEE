@@ -5,6 +5,7 @@
  */
 package Bean.Amputaciones;
 
+import Bean.CodigoBarras.CodigoBarrasListar;
 import Bean.Menu.Navegar;
 import Model.Entity.Cabeceraestudiocitologico;
 import Model.Entity.Cabecerarecepcionmuestra;
@@ -20,12 +21,13 @@ import Model.Entity.Partes;
 import Model.JPA.JPAFactoryDAO;
 import java.io.Serializable;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean(name = "amputacionesCrear")
 @ViewScoped
-//@RequestScoped
+@RequestScoped
 public class AmputacionesCrear implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,7 +44,7 @@ public class AmputacionesCrear implements Serializable {
     private int numeroEstudio;
     private Partes partes;
     private Estudiosamputaciones estudioAmputaciones;
-    
+    private CodigoBarrasListar codigo;
 
     public AmputacionesCrear() {
         doctoresEnBase = null;
@@ -58,6 +60,7 @@ public class AmputacionesCrear implements Serializable {
         partesID = 0;
         numeroEstudio = 0;
         this.estudioAmputaciones = new Estudiosamputaciones();
+        this.codigo = new CodigoBarrasListar();
     }
 
     public void registrarAmputaciones() {
@@ -70,21 +73,25 @@ public class AmputacionesCrear implements Serializable {
         JPAFactoryDAO.getFactory().getDoctorDAO().create(doctor);
         JPAFactoryDAO.getFactory().getPacienteDAO().create(paciente);
 
-        //asignacion FK a cabecera
         hospitalesEnBase = JPAFactoryDAO.getFactory().getHospitalDAO().find();
         this.cabecera.setIdhospital(hospitalesEnBase.get(hospitalesEnBase.size() - 1));
         doctoresEnBase = JPAFactoryDAO.getFactory().getDoctorDAO().find();
         this.cabecera.setIddoctor(doctoresEnBase.get(doctoresEnBase.size() - 1));
         pacientesEnBase = JPAFactoryDAO.getFactory().getPacienteDAO().find();
         this.cabecera.setIdpaciente(pacientesEnBase.get(pacientesEnBase.size() - 1));
+        
+    
         JPAFactoryDAO.getFactory().getCabecerarecepcionmuestraDAO().create(cabecera);
 
         this.partes.setIdpartes(partesID);
         this.estudioAmputaciones.setIdpartes(partes);
         JPAFactoryDAO.getFactory().getEstudiosAmputacionesDAO().create(estudioAmputaciones);
 
+        System.out.println("codigo:" + cabecera.getCodigoestudio());
 
     }
+    
+    
 
     //getter and setter
     public Doctor getDoctor() {

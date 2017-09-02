@@ -7,9 +7,7 @@ package Model.Entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,45 +17,53 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author EPN
+ * @author mpcs
  */
 @Entity
 @Table(name = "cabecerarecepcionmuestra")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findAll", query = "SELECT c FROM Cabecerarecepcionmuestra c"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByIdcrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.idcrm = :idcrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByFechatomamuestracrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.fechatomamuestracrm = :fechatomamuestracrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByHoratomamuestracrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.horatomamuestracrm = :horatomamuestracrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByTiposervicio", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.tiposervicio = :tiposervicio"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByDescriptiposerviciocrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.descriptiposerviciocrm = :descriptiposerviciocrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByTratamientopacientecrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.tratamientopacientecrm = :tratamientopacientecrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByServiciocrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.serviciocrm = :serviciocrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findBySalacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.salacrm = :salacrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByCamacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.camacrm = :camacrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByPrioridad", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.prioridad = :prioridad"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByDiagnosticopresunticocrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.diagnosticopresunticocrm = :diagnosticopresunticocrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByResumenclinicocrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.resumenclinicocrm = :resumenclinicocrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByMuestrapiezacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.muestrapiezacrm = :muestrapiezacrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByNumbloquescrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.numbloquescrm = :numbloquescrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByNumplacascrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.numplacascrm = :numplacascrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByRefrigeracionmuestra", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.refrigeracionmuestra = :refrigeracionmuestra"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByTempambientemuestra", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.tempambientemuestra = :tempambientemuestra"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByFechacreacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.fechacreacrm = :fechacreacrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByUsuariocreacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.usuariocreacrm = :usuariocreacrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByFechaactualizacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.fechaactualizacrm = :fechaactualizacrm"),
-    @NamedQuery(name = "Cabecerarecepcionmuestra.findByUsuarioactualizacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.usuarioactualizacrm = :usuarioactualizacrm")})
+    @NamedQuery(name = "Cabecerarecepcionmuestra.findAll", query = "SELECT c FROM Cabecerarecepcionmuestra c")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByIdcrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.idcrm = :idcrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByFechatomamuestracrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.fechatomamuestracrm = :fechatomamuestracrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByHoratomamuestracrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.horatomamuestracrm = :horatomamuestracrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByTiposervicio", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.tiposervicio = :tiposervicio")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByDescriptiposerviciocrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.descriptiposerviciocrm = :descriptiposerviciocrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByTratamientopacientecrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.tratamientopacientecrm = :tratamientopacientecrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByServiciocrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.serviciocrm = :serviciocrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findBySalacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.salacrm = :salacrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByCamacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.camacrm = :camacrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByPrioridad", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.prioridad = :prioridad")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByDiagnosticopresunticocrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.diagnosticopresunticocrm = :diagnosticopresunticocrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByResumenclinicocrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.resumenclinicocrm = :resumenclinicocrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByMuestrapiezacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.muestrapiezacrm = :muestrapiezacrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByNumbloquescrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.numbloquescrm = :numbloquescrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByNumplacascrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.numplacascrm = :numplacascrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByRefrigeracionmuestra", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.refrigeracionmuestra = :refrigeracionmuestra")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByTempambientemuestra", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.tempambientemuestra = :tempambientemuestra")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByFechacreacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.fechacreacrm = :fechacreacrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByUsuariocreacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.usuariocreacrm = :usuariocreacrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByFechaactualizacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.fechaactualizacrm = :fechaactualizacrm")
+    , @NamedQuery(name = "Cabecerarecepcionmuestra.findByUsuarioactualizacrm", query = "SELECT c FROM Cabecerarecepcionmuestra c WHERE c.usuarioactualizacrm = :usuarioactualizacrm")})
 public class Cabecerarecepcionmuestra implements Serializable {
+
+    @Size(max = 20)
+    @Column(name = "codigoestudio")
+    private String codigoestudio;
+    @Size(max = 20)
+    @Column(name = "estadoestudio")
+    private String estadoestudio;
+    @Size(max = 254)
+    @Column(name = "razonrechazo")
+    private String razonrechazo;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -128,8 +134,6 @@ public class Cabecerarecepcionmuestra implements Serializable {
     @JoinColumn(name = "idpaciente", referencedColumnName = "idpaciente")
     @ManyToOne(optional = false)
     private Paciente idpaciente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcrm")
-    private List<Detallerecepcionmuestra> detallerecepcionmuestraList;
 
     public Cabecerarecepcionmuestra() {
     }
@@ -330,15 +334,6 @@ public class Cabecerarecepcionmuestra implements Serializable {
         this.idpaciente = idpaciente;
     }
 
-    @XmlTransient
-    public List<Detallerecepcionmuestra> getDetallerecepcionmuestraList() {
-        return detallerecepcionmuestraList;
-    }
-
-    public void setDetallerecepcionmuestraList(List<Detallerecepcionmuestra> detallerecepcionmuestraList) {
-        this.detallerecepcionmuestraList = detallerecepcionmuestraList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -362,6 +357,30 @@ public class Cabecerarecepcionmuestra implements Serializable {
     @Override
     public String toString() {
         return "Model.Entity.Cabecerarecepcionmuestra[ idcrm=" + idcrm + " ]";
+    }
+
+    public String getCodigoestudio() {
+        return codigoestudio;
+    }
+
+    public void setCodigoestudio(String codigoestudio) {
+        this.codigoestudio = codigoestudio;
+    }
+
+    public String getEstadoestudio() {
+        return estadoestudio;
+    }
+
+    public void setEstadoestudio(String estadoestudio) {
+        this.estadoestudio = estadoestudio;
+    }
+
+    public String getRazonrechazo() {
+        return razonrechazo;
+    }
+
+    public void setRazonrechazo(String razonrechazo) {
+        this.razonrechazo = razonrechazo;
     }
     
 }
