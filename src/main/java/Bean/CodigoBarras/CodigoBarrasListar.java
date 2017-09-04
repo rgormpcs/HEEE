@@ -23,6 +23,7 @@ public class CodigoBarrasListar implements Serializable {
      * Creates a new instance of CodigoBarrasListar
      */
     private String codigo;
+    private String codigoBase;
     private String nombreEstudio;
     private String anioDigitos;
     private Date fecha;
@@ -33,6 +34,7 @@ public class CodigoBarrasListar implements Serializable {
 
     public CodigoBarrasListar() {
         numeroEstudios = 0;
+        codigo="";
         fecha = new Date();
         anioDigitos = new SimpleDateFormat("yy").format(fecha);
         nombreEstudio = "";
@@ -46,8 +48,54 @@ public class CodigoBarrasListar implements Serializable {
 
     }
 
-    public String codigoFormado() {
-//         System.out.println("**********variable estudio:"+nombreEstudio);
+    public String getCodigoBase() {
+        return codigoBase;
+    }
+
+//    public String codigoFormado() {
+////         System.out.println("**********variable estudio:"+nombreEstudio);
+//        String[] campoTipo = {"nombrete"};
+//        String[] valorCampoTipo = {nombreEstudio};
+//        TiposEstudioporNombre = JPAFactoryDAO.getFactory().getTipoEstudioDAO().find(campoTipo, valorCampoTipo);
+//
+//        //sacar el id unicamente del estudio que esta en la coleccion anterior
+//        idTipoEstudio = TiposEstudioporNombre.get(0).getIdte();
+//
+//        EstudiosPorIdTipo = JPAFactoryDAO.getFactory().getContadoresTipoEstudioAnioDAO().find();
+//
+//        for (Contadorestipoestudioanio obj : EstudiosPorIdTipo) {
+//            if (obj.getIdte().getIdte() == idTipoEstudio) {
+//                numeroEstudios += 1;
+//            }
+//        }
+////        para sacar el numero del estudio que se esta ingresando en este momento
+//        numeroEstudios += 1;
+//
+//        switch (nombreEstudio) {
+//            case "AMPUTACION":
+//                codigo = nombreEstudio = "AMP" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+//                break;
+//            case "BIOLOGIA MOLECULAR":
+//                codigo = nombreEstudio = "BM" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+//                break;
+//            case "INMUNO HISTOQUIMICA":
+//                codigo = nombreEstudio = "IHQ" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+//                break;
+//            default:
+//                codigo = nombreEstudio.charAt(0) + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+//                break;
+//
+//        }
+//
+//        return codigo;
+//
+//    }
+    //getter and setter
+    public void setCodigoBase(String codigoBase) {
+        this.codigoBase = codigoBase;
+    }
+
+    public String getCodigo() {
         String[] campoTipo = {"nombrete"};
         String[] valorCampoTipo = {nombreEstudio};
         TiposEstudioporNombre = JPAFactoryDAO.getFactory().getTipoEstudioDAO().find(campoTipo, valorCampoTipo);
@@ -63,29 +111,32 @@ public class CodigoBarrasListar implements Serializable {
             }
         }
 //        para sacar el numero del estudio que se esta ingresando en este momento
-        numeroEstudios += 1;
+numeroEstudios += 1;
 
-        switch (nombreEstudio) {
-            case "AMPUTACION":
-                codigo = nombreEstudio = "AMP" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
-                break;
-            case "BIOLOGIA MOLECULAR":
-                codigo = nombreEstudio = "BM" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
-                break;
-            case "INMUNO HISTOQUIMICA":
-                codigo = nombreEstudio = "IHQ" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
-                break;
-            default:
-                codigo = nombreEstudio.charAt(0) + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
-                break;
-
-        }
-
-        return codigo;
-
+switch (nombreEstudio) {
+    case "AMPUTACION":
+        codigo = nombreEstudio = "AMP" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+        break;
+    case "BIOLOGIA MOLECULAR":
+        codigo = nombreEstudio = "BM" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+        break;
+    case "INMUNO HISTOQUIMICA":
+        codigo = nombreEstudio = "IHQ" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+        break;
+    default:
+        codigo = nombreEstudio.charAt(0) + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
+        break;
+        
+}
+codigoBase=codigo;
+return codigo;
     }
-    //getter and setter
 
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    
     public String getNombreEstudio() {
         return nombreEstudio;
     }
