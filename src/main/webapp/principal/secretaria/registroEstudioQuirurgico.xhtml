@@ -116,7 +116,7 @@
                             <p:panel header="Datos del paciente">
                                 <p:messages />
                                 <h:panelGrid columns="3" id="pgDatosConsulta" columnClasses="label, value">
-                                    <p:selectOneRadio id="rdbConsulta" value="#{quirurgicoCrear.cabecera.tiposervicio}" >
+                                    <p:selectOneRadio id="rdbConsulta" value="#{quirurgicoCrear.cabecera.tiposervicio}" required="true">
                                         <f:selectItem itemValue="Consulta Externa" itemLabel="Consulta Externa" />
                                         <f:selectItem itemValue="Hospitalización" itemLabel="Hospitalización" />
                                         <f:selectItem itemValue="Otros" itemLabel="Otros" />
