@@ -5,7 +5,7 @@
  */
 package Bean.Amputaciones;
 
-import Bean.CodigoBarras.CodigoBarrasListar;
+import Bean.CodigoBarras.CodigoEstudioListar;
 import Bean.Menu.Navegar;
 import Model.Entity.Cabeceraestudiocitologico;
 import Model.Entity.Cabecerarecepcionmuestra;
@@ -44,7 +44,7 @@ public class AmputacionesCrear implements Serializable {
     private int numeroEstudio;
     private Partes partes;
     private Estudiosamputaciones estudioAmputaciones;
-    private CodigoBarrasListar codigo;
+    
 
     public AmputacionesCrear() {
         doctoresEnBase = null;
@@ -60,7 +60,7 @@ public class AmputacionesCrear implements Serializable {
         partesID = 0;
         numeroEstudio = 0;
         this.estudioAmputaciones = new Estudiosamputaciones();
-        this.codigo = new CodigoBarrasListar();
+        
     }
 
     public void registrarAmputaciones() {

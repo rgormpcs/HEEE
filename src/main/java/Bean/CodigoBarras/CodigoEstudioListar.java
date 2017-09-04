@@ -15,12 +15,12 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-@ManagedBean(name = "codigoBarrasListar")
+@ManagedBean(name = "codigoEstudioListar")
 
-public class CodigoBarrasListar implements Serializable {
+public class CodigoEstudioListar implements Serializable {
 
     /**
-     * Creates a new instance of CodigoBarrasListar
+     * Creates a new instance of CodigoEstudioListar
      */
     private String codigo;
     private String codigoBase;
@@ -32,7 +32,7 @@ public class CodigoBarrasListar implements Serializable {
     private List<Contadorestipoestudioanio> EstudiosPorIdTipo;
     List<Tipoestudio> TiposEstudioporNombre;
 
-    public CodigoBarrasListar() {
+    public CodigoEstudioListar() {
         numeroEstudios = 0;
         codigo="";
         fecha = new Date();
@@ -114,7 +114,7 @@ public class CodigoBarrasListar implements Serializable {
 numeroEstudios += 1;
 
 switch (nombreEstudio) {
-    case "AMPUTACION":
+    case "AMPUTACIÓN":
         codigo = nombreEstudio = "AMP" + "-" + anioDigitos + "-" + String.valueOf(numeroEstudios);
         break;
     case "BIOLOGIA MOLECULAR":
