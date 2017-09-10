@@ -16,9 +16,12 @@ import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean(name = "histoquimicaCrear")
+@ViewScoped
 @RequestScoped
+
 public class HistoquimicaCrear implements Serializable {
 
     private List<Hospital> hospitalesEnBase;
@@ -171,14 +174,6 @@ public class HistoquimicaCrear implements Serializable {
 
     public void setPartes(Partes partes) {
         this.partes = partes;
-    }
-
-    public Estudiosamputaciones getEstudioAmputaciones() {
-        return estudioAmputaciones;
-    }
-
-    public void setEstudioAmputaciones(Estudiosamputaciones estudioAmputaciones) {
-        this.estudioAmputaciones = estudioAmputaciones;
     }
 
     public Estudioshistoquimica getEstudioHistoquimica() {
