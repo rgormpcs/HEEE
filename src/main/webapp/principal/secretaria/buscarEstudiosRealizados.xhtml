@@ -16,9 +16,13 @@
 
                     <h1 style="color: #045491;text-align: center">Búsqueda de Estudios Realizados</h1>
 
-                    <p:dataTable var="car" value="" widgetVar="carsTable" filteredValue="" rows="15"
+                    <p:dataTable id="busqueda" value="#{buscarEstudios.estudiosEnBase}" var="bEstudios"  widgetVar="carsTable" filteredValue="" rows="15"
                          paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="15,20,30">
 
+                        <p:column filterBy="" headerText="No." filterMatchMode="No">
+                            <h:outputText value="#{bEstudios.idcrm}" />
+                        </p:column>
+                        
                         <p:column filterBy="" headerText="No. Historia Clínica" filterMatchMode="HClinica">
                             <h:outputText value="" />
                         </p:column>
@@ -36,6 +40,10 @@
                         </p:column>
                         
                         <p:column filterBy="" headerText="Código" filterMatchMode="codigo">
+                            <h:outputText value="" />
+                        </p:column>
+                        
+                        <p:column filterBy="" headerText="Estado" filterMatchMode="estado">
                             <h:outputText value="" />
                         </p:column>
                         

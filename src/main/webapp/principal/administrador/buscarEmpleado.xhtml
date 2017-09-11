@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/plantillas/plantillaInicial.xhtml">
+
+            <ui:define name="content">
+
+                <h:form id="contenido">
+
+                    <h1 style="color: #045491;text-align: center">Búsqueda de Empleados</h1>
+
+                    <p:dataTable id="busquedaEmpleado" value="#{empleadoListar.empleadoLista}" var="itemEstudio"  widgetVar="empleadoTabla" filteredValue="#{empleadoListar.empleadoFiltrado}" rows="15"
+                                 paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="15,20,30"
+                                 paginatorPosition="top"  >
+
+                        <p:column headerText="No." filterMatchMode="contains" style="width: 25px">
+                            <h:outputLabel value="#{itemEstudio.idempleado}" />
+                        </p:column>
+
+                        <p:column filterBy="#{itemEstudio.nombresempleado}" headerText="Nombres" filterMatchMode="nombres" style="width: 360px">
+                            <h:outputText value="#{itemEstudio.nombresempleado} #{itemEstudio.apellidosempleado}" />
+                        </p:column>
+
+                        <p:column filterBy="#{itemEstudio.ceduidenempleado}" headerText="Cédula" filterMatchMode="cedula" style="text-align: center">
+                            <h:outputText value="#{itemEstudio.ceduidenempleado}" />
+                        </p:column>
+
+                        <p:column filterBy="#{empleadoListar.cargoID}" headerText="Cargo" filterMatchMode="exact">
+                            <h:outputText value="#{itemEstudio.idcargo}" />
+                        </p:column>
+
+                        <p:column filterBy="" headerText="Estado" filterMatchMode="estado">
+                            <h:outputText value="" />
+                        </p:column>
+
+                        <p:column headerText="Acción" filterMatchMode="accion">
+                            <p:commandLink>
+                                <h:graphicImage library="images" name="ver.PNG" />
+                            </p:commandLink>
+                            <p:commandLink>
+                                <h:graphicImage library="images" name="editar.PNG" />
+                            </p:commandLink>
+                            <p:commandLink>
+                                <h:graphicImage library="images" name="eliminar.PNG" />
+                            </p:commandLink>
+                        </p:column>
+
+                    </p:dataTable>
+
+                </h:form>
+
+                <!-- Script de estilos para el contenido fel formulario-->
+                <h:outputStylesheet library="css" name="estudios.css" />
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,5 +1,6 @@
 package Bean.Quirurgico;
 
+import Bean.CodigoBarras.CodigoEstudioListar;
 import Bean.Menu.SessionBean;
 import Model.Entity.Cabecerarecepcionmuestra;
 import Model.Entity.Doctor;
@@ -37,8 +38,10 @@ public class QuirurgicoCrear implements Serializable {
     private Subtipo subtipo;
     private Estudiosquirurgicos estudioQuirurgico;
     
+    
     private int organosSistemaID;
     private int subtipoID;
+    
     
     private boolean skip;
 
